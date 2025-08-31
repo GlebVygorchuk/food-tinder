@@ -1,0 +1,6 @@
+@mixin resetButton() {
+    border: none;
+    background-color: var(--color-background);
+    font-family: var(--font-family);
+    cursor: pointer;
+}

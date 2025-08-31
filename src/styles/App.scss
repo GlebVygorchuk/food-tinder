@@ -1,0 +1,32 @@
+@import 
+'../pages/Homepage/Homepage.scss',
+'../pages/Login/Login.scss',
+'../pages/Register/Register.scss',
+'./variables.scss',
+'./mixins.scss',
+'./fonts.scss';
+
+body {
+    font-family: var(--font-family);
+    margin: 0;
+}
+
+button {
+    @include resetButton();
+}
+
+* {
+    box-sizing: border-box;
+    animation: appear 0.3s forwards;
+}
+
+@keyframes appear {
+    from {
+        opacity: 0;
+    } 
+    to {
+        opacity: 1;
+    }
+}
+
+
