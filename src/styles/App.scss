@@ -2,13 +2,23 @@
 '../pages/Homepage/Homepage.scss',
 '../pages/Login/Login.scss',
 '../pages/Register/Register.scss',
+'../pages/Main/Main.scss',
 './variables.scss',
 './mixins.scss',
 './fonts.scss';
 
 body {
     font-family: var(--font-family);
+    font-weight: 300;
+    background: var(--color-background);
     margin: 0;
+}
+
+.Toastify__toast {
+    font-family: var(--font-family);
+    font-weight: 300;
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius)
 }
 
 button {
@@ -17,8 +27,8 @@ button {
 
 * {
     box-sizing: border-box;
-    animation: appear 0.3s forwards;
 }
+
 
 @keyframes appear {
     from {

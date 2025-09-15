@@ -2,7 +2,7 @@ import { Link } from "react-router-dom"
 
 export default function Homepage() {
     return (
-        <div className="homepage">
+        <section className="homepage">
 
             <header className="homepage__header">
                 <h1 className="homepage__header__title">FoodSeeker</h1>
@@ -28,12 +28,13 @@ export default function Homepage() {
                     </Link>
                 </div>
                 <div className="homepage__main__pictures">
-                    <img id="salad" width='400px' className="homepage__main__pictures__picture" src="src/assets/salad.jpg" alt="" />
-                    <img id="pizza" width='350px' className="homepage__main__pictures__picture" src="src/assets/pizza.jpg" alt="" />
-                    <img id="cruassan" width='300px' className="homepage__main__pictures__picture" src="src/assets/cruassan.jpg" alt="" />
+                    <img id="salad" width='175px' className="homepage__main__pictures__picture" src="src/assets/coffee.jpg" alt="" />
+                    <img id="pizza" width='175px' className="homepage__main__pictures__picture" src="src/assets/cake.jpg" alt="" />
+                    <img id="cruassan" width='175px' className="homepage__main__pictures__picture" src="src/assets/matcha.jpg" alt="" />
+                     <img id="cruassan" width='175px' className="homepage__main__pictures__picture" src="src/assets/cruassan.jpg" alt="" />
                 </div>
             </main>
 
-        </div>
+        </section>
     )
 }

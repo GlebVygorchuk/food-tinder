@@ -1,37 +1,174 @@
 .register {
     display: flex;
     justify-content: center;
+    animation: appear 0.5s forwards;
 
-    &__form-header {
-        font-size: 27.5px;
-        font-weight: 400;
-        padding: 17.5px 22.5px;
-        color: var(--color-background);
-        background-color: var(--color-text);
-        border-bottom-left-radius: 0px;
-        border-bottom-right-radius: 30px;
+    &__already-registered {
+        align-self: center;
+        margin: 5px;
+        color: var(--color-text);
     }
 
-    &__form-wrapper {
-        margin-top: 50px;
-        width: 30%;
-        border: 1px solid var(--color-text);
-        border-radius: var(--border-radius);
-    }
+    &__log-in {
+        color: var(--color-text-additional);
+        text-decoration: underline;
+        transition: 0.3s;
 
-    &__form {
+        &:hover {
+            color: var(--color-text);
+        }
+    }
+}
+
+.form {
         display: flex;
         flex-direction: column;
         row-gap: 15px;
         padding: 25px 30px;
+        background-color: var(--color-block);
 
         &__input {
+            width: 100%;
             font-family: var(--font-family);
             font-size: 20px;
             padding: 10px 15px;
             border-radius: var(--border-radius);
             outline: none;
-            border: 1.5px solid rgb(167, 167, 167);
+            border: 1px solid var(--color-border);
+            background-color: var(--color-block);
+            color: var(--color-text);
+            transition: 0.3s;
+
+            &:focus {
+                border: 1px solid var(--color-text);
+            }
+        }
+
+        &__input-wrapper {
+            position: relative;
+
+            svg {
+                position: absolute;
+                right: 12.5px;
+                top: 11px;
+                cursor: pointer;
+            }
+        }
+
+        &__eye {
+            fill: var(--color-text-additional);
+        }
+
+        &__advice {
+            opacity: 0;
+            display: flex;
+            flex-direction: column;
+            row-gap: 7.5px;
+            font-size: 14px;
+            font-weight: 300;
+            padding: 13px 22.5px 13px 10px;
+            position: absolute;
+            background-color: var(--color-block);
+            border-radius: var(--border-radius);
+            border: 1px solid var(--color-border);
+            top: -35px;
+            right: -220px;
+            z-index: 20;
+            transition: 0.3s;
+            color: var(--color-text);
+
+            &__condition {
+                position: relative;
+                display: flex;
+
+                p {
+                    margin: 0;
+                    margin-left: 25px;
+                }
+            }
+
+            &__svg {
+                left: 0;
+                margin-top: -15px;
+            }
+        }
+
+        &__placeholder {
+            position: absolute;
+            background-color: var(--color-block);
+            padding-inline: 5px;
+            top: -19px;
+            left: 12.5px;
+            font-size: 12.5px;
+            color: var(--color-text-additional);
+            z-index: 10;
+            user-select: none;
+        }
+
+        &__button {
+            font-size: 20px;
+            font-weight: 300;
+            color: var(--color-text);
+            background-color: var(--color-button);
+            border: 1px solid var(--color-border);
+            padding: 12.5px;
+            border-radius: var(--border-radius);
+            margin-top: 5px;
+            transition: 0.3s;
+
+            &:hover {
+                background-color: var(--color-border);
+                box-shadow: var(--box-shadow);
+            }
         }
     }
+
+.form-header {
+    font-size: 25px;
+    font-weight: 300;
+    padding: 17.5px 22.5px;
+    color: var(--color-text);
+    background-color: var(--color-block);
+    border-bottom: 1px solid var(--color-border);
+}
+
+.form-wrapper {
+    margin-top: 65px;
+    width: 30%;
+    border-radius: var(--border-radius);
+    background-color: var(--color-background);
+    border: 1px solid var(--color-border);
+}
+
+.show {
+    right: -210px;
+    opacity: 1;
+}
+
+.error {
+    border: 1px solid red;
+}
+
+.info {
+    color: var(--color-text);
+    margin: 0;
+}
+
+.repeat {
+    margin: 3px;
+    color: var(--color-text-additional);
+    text-decoration: underline;
+    transition: 0.3s;
+    align-self: center;
+    cursor: pointer;
+
+    &:hover {
+        color: var(--color-text);
+    }
+}
+
+.extra {
+    margin: 0;
+    display: flex;
+    justify-content: center;
 }

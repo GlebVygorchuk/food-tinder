@@ -1,0 +1,51 @@
+.login {
+  display: flex;
+  justify-content: center;
+  animation: appear 0.5s forwards;
+}
+
+.form__remember {
+  display: flex;
+  -moz-column-gap: 7.5px;
+       column-gap: 7.5px;
+  margin-left: 2.5px;
+  cursor: pointer;
+  color: var(--color-text);
+}
+.form__remember__checkbox {
+  position: relative;
+  width: 20px;
+  aspect-ratio: 1/1;
+  border: 1px solid rgb(71, 71, 71);
+  border-radius: 5px;
+  transition: 0.3s;
+}
+.form__remember__checkbox:hover {
+  border: 1px solid var(--color-text);
+}
+.form__remember__checkbox svg {
+  position: absolute;
+  left: -3px;
+  top: -3.5px;
+}
+.form__remember__text {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+}
+.form__forgot-password {
+  margin: 0;
+  align-self: center;
+  color: var(--color-text-additional);
+  text-decoration: underline;
+  transition: 0.3s;
+  cursor: pointer;
+}
+.form__forgot-password:hover {
+  color: var(--color-text);
+}
+
+.active {
+  background-color: var(--color-text);
+  border: 1px solid var(--color-text);
+}/*# sourceMappingURL=Login.css.map */
