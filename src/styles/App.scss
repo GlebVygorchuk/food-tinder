@@ -3,22 +3,25 @@
 '../pages/Login/Login.scss',
 '../pages/Register/Register.scss',
 '../pages/Main/Main.scss',
+'../components/Modal/Modal.scss',
 './variables.scss',
 './mixins.scss',
 './fonts.scss';
 
 body {
     font-family: var(--font-family);
-    font-weight: 300;
+    font-weight: 500;
     background: var(--color-background);
     margin: 0;
 }
 
 .Toastify__toast {
     font-family: var(--font-family);
-    font-weight: 300;
-    border: 1px solid var(--color-border);
-    border-radius: var(--border-radius)
+    background-color: var(--color-extra);
+    border-radius: var(--border-radius);
+    color: var(--color-text);
+    font-size: 20px;
+    font-weight: 600;
 }
 
 button {

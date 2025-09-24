@@ -1,12 +1,11 @@
 :root {
-    --font-family: 'Montserrat';
-    --color-background: rgb(11, 11, 11);
-    --color-text: rgb(255, 255, 255);
-    --color-hover: rgb(52, 52, 52);
-    --color-block: rgb(19, 19, 19);
-    --color-border: rgb(41, 41, 41);
-    --color-button: rgb(27, 27, 27);
-    --color-text-additional: #969696;
-    --border-radius: 5px;
-    --box-shadow: 0px 0px 10px var(--color-border);
+    --font-family: 'Advent';
+    --color-background: rgb(241, 240, 232);
+    --color-extra: rgb(224, 222, 207);
+    --color-dark-extra: rgb(137, 134, 111);
+    --color-dark: rgb(188, 184, 159);
+    --color-hover: rgb(31, 72, 255);
+    --color-text: black;
+    --border-radius: 2.5px;
+    --box-shadow: none;
 }

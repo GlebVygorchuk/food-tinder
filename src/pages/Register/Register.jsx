@@ -184,30 +184,30 @@ export default function Register() {
                         <div className={`form__advice ${adviceActive ? 'show' : ''}`}>
 
                             <div className="form__advice__condition">
-                                {conditions.symbolsAmount? <svg className='form__advice__svg' width="25" height="25" fill="green" viewBox="0 0 16 16">
+                                {conditions.symbolsAmount? <svg className='form__advice__svg' width="25" height="25" fill="black" viewBox="0 0 16 16">
                                     <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425z"/>
-                                </svg> : <svg className='form__advice__svg' width="23" height="23" fill='#cb0b0bff' viewBox="0 0 16 16"><path d="m4.12 6.137 1.521-1.52 7 7-1.52 1.52z"/><path d="m4.12 11.61 7.001-7 1.52 1.52-7 7z"/></svg>}
+                                </svg> : <svg className='form__advice__svg' width="23" height="23" fill='black' viewBox="0 0 16 16"><path d="m4.12 6.137 1.521-1.52 7 7-1.52 1.52z"/><path d="m4.12 11.61 7.001-7 1.52 1.52-7 7z"/></svg>}
                                 <p>8-20 символов</p>
                             </div>
 
                             <div className="form__advice__condition">
-                                {conditions.specialSymbols? <svg className='form__advice__svg' width="25" height="25" fill="green" viewBox="0 0 16 16">
+                                {conditions.specialSymbols? <svg className='form__advice__svg' width="25" height="25" fill="black" viewBox="0 0 16 16">
                                     <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425z"/>
-                                </svg> : <svg className='form__advice__svg' width="23" height="23" fill='#cb0b0bff' viewBox="0 0 16 16"><path d="m4.12 6.137 1.521-1.52 7 7-1.52 1.52z"/><path d="m4.12 11.61 7.001-7 1.52 1.52-7 7z"/></svg>}
+                                </svg> : <svg className='form__advice__svg' width="23" height="23" fill='black' viewBox="0 0 16 16"><path d="m4.12 6.137 1.521-1.52 7 7-1.52 1.52z"/><path d="m4.12 11.61 7.001-7 1.52 1.52-7 7z"/></svg>}
                                 <p>Спецсимволы</p>
                             </div>
 
                             <div className="form__advice__condition">
-                                {conditions.lettersIncluded? <svg className='form__advice__svg' width="25" height="25" fill="green" viewBox="0 0 16 16">
+                                {conditions.lettersIncluded? <svg className='form__advice__svg' width="25" height="25" fill="black" viewBox="0 0 16 16">
                                     <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425z"/>
-                                </svg> : <svg className='form__advice__svg' width="23" height="23" fill='#cb0b0bff' viewBox="0 0 16 16"><path d="m4.12 6.137 1.521-1.52 7 7-1.52 1.52z"/><path d="m4.12 11.61 7.001-7 1.52 1.52-7 7z"/></svg>}
+                                </svg> : <svg className='form__advice__svg' width="23" height="23" fill='black' viewBox="0 0 16 16"><path d="m4.12 6.137 1.521-1.52 7 7-1.52 1.52z"/><path d="m4.12 11.61 7.001-7 1.52 1.52-7 7z"/></svg>}
                                 <p>Буквы</p>
                             </div>
 
                             <div className="form__advice__condition">
-                                {conditions.numbersIncluded? <svg className='form__advice__svg' width="25" height="25" fill="green" viewBox="0 0 16 16">
+                                {conditions.numbersIncluded? <svg className='form__advice__svg' width="25" height="25" fill="black" viewBox="0 0 16 16">
                                     <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425z"/>
-                                </svg> : <svg className='form__advice__svg' width="23" height="23" fill='#cb0b0bff' viewBox="0 0 16 16"><path d="m4.12 6.137 1.521-1.52 7 7-1.52 1.52z"/><path d="m4.12 11.61 7.001-7 1.52 1.52-7 7z"/></svg>}
+                                </svg> : <svg className='form__advice__svg' width="23" height="23" fill='black' viewBox="0 0 16 16"><path d="m4.12 6.137 1.521-1.52 7 7-1.52 1.52z"/><path d="m4.12 11.61 7.001-7 1.52 1.52-7 7z"/></svg>}
                                 <p>Числа</p>
                             </div>
                            
@@ -240,13 +240,16 @@ export default function Register() {
 
                     <p className="register__already-registered">Уже есть аккаунт? <Link to='/login'><span className='register__log-in'>Войти</span></Link></p>
 
+                    {info ?
                     <div className="extra">
-                        {info ? <RepeatEmail 
+                        <RepeatEmail 
                         defaultMessage={'Отправить снова'}
                         timerStartPoint={30}
                         toastMessage={'Письмо с подтверждением отправлено повторно'}
-                        action={sendEmailVerification(auth.currentUser)} /> : null}
+                        action={sendEmailVerification(auth.currentUser)} />
                     </div>
+                     : null}
+
                 </form>
             </div>
         </section>

@@ -10,12 +10,12 @@
     }
 
     &__log-in {
-        color: var(--color-text-additional);
         text-decoration: underline;
+        color: var(--color-text);
         transition: 0.3s;
 
         &:hover {
-            color: var(--color-text);
+            color: var(--color-hover);
         }
     }
 }
@@ -25,23 +25,19 @@
         flex-direction: column;
         row-gap: 15px;
         padding: 25px 30px;
-        background-color: var(--color-block);
 
         &__input {
+            display: flex;
+            align-items: center;
             width: 100%;
             font-family: var(--font-family);
             font-size: 20px;
-            padding: 10px 15px;
-            border-radius: var(--border-radius);
+            font-weight: 600;
+            padding: 25px 15px 15px 15px;
             outline: none;
-            border: 1px solid var(--color-border);
-            background-color: var(--color-block);
-            color: var(--color-text);
-            transition: 0.3s;
-
-            &:focus {
-                border: 1px solid var(--color-text);
-            }
+            border: none;
+            border-bottom: 1.5px solid var(--color-text);
+            background-color: var(--color-background);
         }
 
         &__input-wrapper {
@@ -49,14 +45,14 @@
 
             svg {
                 position: absolute;
-                right: 12.5px;
-                top: 11px;
+                right: 15px;
+                top: 19px;
                 cursor: pointer;
             }
         }
 
         &__eye {
-            fill: var(--color-text-additional);
+            fill: var(--color-text);
         }
 
         &__advice {
@@ -64,18 +60,16 @@
             display: flex;
             flex-direction: column;
             row-gap: 7.5px;
-            font-size: 14px;
-            font-weight: 300;
+            font-size: 20px;
             padding: 13px 22.5px 13px 10px;
             position: absolute;
-            background-color: var(--color-block);
-            border-radius: var(--border-radius);
-            border: 1px solid var(--color-border);
+            background-color: var(--color-extra);
             top: -35px;
-            right: -220px;
+            right: -217.5px;
             z-index: 20;
             transition: 0.3s;
             color: var(--color-text);
+            border-radius: var(--border-radius);
 
             &__condition {
                 position: relative;
@@ -83,13 +77,13 @@
 
                 p {
                     margin: 0;
-                    margin-left: 25px;
+                    margin-left: 27.5px;
                 }
             }
 
             &__svg {
                 left: 0;
-                margin-top: -15px;
+                margin-top: -18px;
             }
         }
 
@@ -97,47 +91,43 @@
             position: absolute;
             background-color: var(--color-block);
             padding-inline: 5px;
-            top: -19px;
-            left: 12.5px;
-            font-size: 12.5px;
-            color: var(--color-text-additional);
+            top: -15px;
+            left: 10px;
+            font-size: 15px;
+            color: var(--color-text);
             z-index: 10;
             user-select: none;
         }
 
         &__button {
             font-size: 20px;
-            font-weight: 300;
-            color: var(--color-text);
-            background-color: var(--color-button);
-            border: 1px solid var(--color-border);
+            font-weight: 600;
+            width: 50%;
+            color: white;
+            align-self: center;
+            background-color: var(--color-text);
             padding: 12.5px;
             border-radius: var(--border-radius);
             margin-top: 5px;
             transition: 0.3s;
 
             &:hover {
-                background-color: var(--color-border);
-                box-shadow: var(--box-shadow);
+                background-color: var(--color-hover);
             }
         }
     }
 
 .form-header {
-    font-size: 25px;
-    font-weight: 300;
-    padding: 17.5px 22.5px;
-    color: var(--color-text);
-    background-color: var(--color-block);
-    border-bottom: 1px solid var(--color-border);
+    font-size: 45px;
 }
 
 .form-wrapper {
-    margin-top: 65px;
-    width: 30%;
-    border-radius: var(--border-radius);
-    background-color: var(--color-background);
-    border: 1px solid var(--color-border);
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+    margin-top: 40px;
+    width: 40%;
+    border-radius: 0px;
 }
 
 .show {
@@ -146,7 +136,7 @@
 }
 
 .error {
-    border: 1px solid red;
+    border-bottom: 1.5px solid red;
 }
 
 .info {
@@ -156,14 +146,13 @@
 
 .repeat {
     margin: 3px;
-    color: var(--color-text-additional);
     text-decoration: underline;
-    transition: 0.3s;
     align-self: center;
     cursor: pointer;
+    transition: 0.3s;
 
     &:hover {
-        color: var(--color-text);
+        color: var(--color-hover);
     }
 }
 
