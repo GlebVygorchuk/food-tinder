@@ -4,8 +4,8 @@
   --color-extra: rgb(224, 222, 207);
   --color-dark-extra: rgb(137, 134, 111);
   --color-dark: rgb(188, 184, 159);
-  --color-hover: rgb(31, 72, 255);
+  --color-hover: rgb(36, 76, 255);
   --color-text: black;
-  --border-radius: 2.5px;
+  --border-radius: 10px;
   --box-shadow: none;
 }/*# sourceMappingURL=variables.css.map */

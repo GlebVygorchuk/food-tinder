@@ -1,12 +1,59 @@
 .main {
-  display: flex;
-  height: 100vh;
+  min-height: 100vh;
+  height: auto;
   animation: appear 0.3s forwards;
+  padding-bottom: 30px;
+}
+.main__header {
+  font-size: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-inline: 20px;
+  height: 50px;
+  background-color: var(--color-extra);
+}
+.main__header svg {
+  transition: 0.2s;
+  cursor: pointer;
+}
+.main__header svg:hover {
+  fill: var(--color-hover);
+}
+.main__header__info {
+  display: flex;
+  -moz-column-gap: 30px;
+       column-gap: 30px;
+  align-items: center;
+}
+.main__header__info h1 {
+  font-size: 40px;
+}
+.main__header__about-us {
+  transition: 0.2s;
+  cursor: pointer;
+}
+.main__header__about-us:hover {
+  color: var(--color-hover);
+}
+.main__header__feedback {
+  transition: 0.2s;
+  cursor: pointer;
+}
+.main__header__feedback:hover {
+  color: var(--color-hover);
+}
+.main__main {
+  display: flex;
+  justify-content: space-between;
+  padding: 40px 50px;
+  height: auto;
   overflow: hidden;
 }
 .main__info {
   width: 30%;
   background-color: var(--color-extra);
+  border-radius: 10px;
 }
 .main__info__profile {
   display: flex;
@@ -14,6 +61,7 @@
   padding-inline: 20px;
   background-color: var(--color-extra);
   height: 70px;
+  border-radius: 10px;
 }
 .main__info__profile svg {
   cursor: pointer;
@@ -37,10 +85,11 @@
   flex-direction: column;
   row-gap: 15px;
   color: var(--color-text);
-  height: 100%;
   padding-inline: 20px;
+  padding-bottom: 20px;
 }
 .main__info__favorite {
+  position: relative;
   display: flex;
   font-size: 25px;
   align-items: center;
@@ -51,7 +100,19 @@
   border-radius: var(--border-radius);
   transition: 0.3s;
   cursor: pointer;
-  animation: appear 0.3s forwards;
+  animation: slide 0.3s forwards;
+}
+@keyframes slide {
+  from {
+    top: -10px;
+    opacity: 0;
+    transform: scale(0.9, 0.9);
+  }
+  to {
+    top: 0;
+    opacity: 1;
+    transform: scale(1, 1);
+  }
 }
 .main__info__favorite:hover {
   background-color: var(--color-dark-extra);
@@ -59,58 +120,72 @@
 .main__info__favorite__image {
   width: 60px;
   aspect-ratio: 1/1;
-  border-radius: 10px;
-  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.134);
+  border-radius: 7.5px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  filter: brightness(0.9);
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.151);
 }
 .main__cards-container {
-  width: 75%;
-  padding: 50px 75px;
+  position: relative;
+  width: 65%;
+  height: 460px;
   display: flex;
   justify-content: center;
+  background-color: var(--color-extra);
+  border-radius: var(--border-radius);
 }
 .main__cards {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: flex-start;
   align-items: center;
   background-color: var(--color-block);
   width: 100%;
   height: 100%;
   position: relative;
-  border-radius: 20px;
+}
+.main__cards__hint {
+  position: absolute;
+  top: 40%;
+  fill: var(--color-dark-extra);
 }
 .main__card {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
   position: absolute;
   width: 250px;
   height: 350px;
-  background-color: var(--color-extra);
-  padding: 30px 25px 10px 25px;
   color: var(--color-text);
-  border-radius: 5px;
+  border-radius: var(--border-radius);
   -o-object-fit: cover;
      object-fit: cover;
-  margin-top: -40px;
+  margin-top: 30px;
   -webkit-user-select: none;
      -moz-user-select: none;
           user-select: none;
+  color: var(--color-text);
+  background-color: var(--color-dark);
   cursor: grab;
 }
-.main__card h3 {
-  font-size: 25px;
-  text-align: center;
-}
 .main__card__image {
+  width: 100%;
+  height: 100%;
   border-radius: var(--border-radius);
-  width: 90%;
-  aspect-ratio: 1/1;
-  background-color: var(--color-text);
-  -webkit-user-select: none;
-     -moz-user-select: none;
-          user-select: none;
+  background-color: black;
   pointer-events: none;
+  -o-object-fit: cover;
+     object-fit: cover;
+  filter: brightness(0.5);
+}
+.main__card h3 {
+  font-size: 35px;
+  font-weight: 600;
+  position: absolute;
+  bottom: -10px;
+  opacity: 1;
+  color: white;
+  padding-left: 15px;
 }
 .main__swipe-buttons {
   display: flex;
@@ -124,7 +199,7 @@
   align-items: center;
   aspect-ratio: 1/1;
   border-radius: 10px;
-  background-color: var(--color-extra);
+  background-color: var(--color-dark);
   box-shadow: var(--box-shadow);
   width: 40px;
   transition: 0.3s;
@@ -154,13 +229,14 @@
   padding-inline: 50px;
   font-size: 25px;
   font-weight: 500;
-  margin-top: 27.5vh;
+  margin-top: 12vh;
 }
 .unauthorized__button {
   color: white;
   border-radius: var(--border-radius);
   background-color: var(--color-text);
   font-size: 20px;
+  font-weight: 600;
   width: 60%;
   padding: 10px;
   transition: 0.3s;
@@ -193,6 +269,25 @@
   font-size: 30px;
   font-weight: 600;
 }
+.recipe-modal__ingredients {
+  list-style-type: "- ";
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+}
+.recipe-modal__ingredients li {
+  margin-left: 20px;
+  font-weight: 600;
+}
+.recipe-modal hr {
+  height: 2px;
+  width: 100%;
+  background-color: black;
+  border-color: black;
+  border: 1px solid black;
+}
 
 #deleteRecipe {
   transition: 0.3s;
@@ -205,4 +300,20 @@
 }
 #deleteRecipe svg {
   fill: rgb(255, 69, 28);
+}
+
+#swipeRight {
+  right: 15%;
+}
+
+#swipeLeft {
+  left: 15%;
+}
+
+#arrowRight {
+  transform: rotate(180deg);
+}
+
+#fingerLeft {
+  transform: rotate(180deg);
 }/*# sourceMappingURL=Main.css.map */

@@ -1,6 +1,7 @@
 import Register from './pages/Register/Register'
 import Login from './pages/Login/Login'
 import Main from './pages/Main/Main'
+import AboutProject from './pages/AboutProject/AboutProject'
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'
 import ContextProvider from './components/AppContext'
 import { ToastContainer } from 'react-toastify'
@@ -11,12 +12,13 @@ function App() {
     <ContextProvider>
     <Router>
       <ToastContainer 
-      autoClose={5000}
+      autoClose={3000}
       theme='dark'/>
       <Routes>
         <Route path='/' element={<Main />}/>
         <Route path='/register' element={<Register />}/>
         <Route path='/login' element={<Login />}/>
+        <Route path='/about-project' element={<AboutProject />} />
       </Routes>
     </Router>
     </ContextProvider>

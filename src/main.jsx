@@ -3,6 +3,7 @@ import './styles/index.scss'
 import App from './App.jsx'
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth"
+import { getFirestore } from "firebase/firestore"
 
 const firebaseConfig = {
   apiKey: "AIzaSyDERFstsqpX-2RltaIbJO8nS_PS_aRDG5U",
@@ -17,6 +18,8 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 
 const auth = getAuth(app)
+
+export const database = getFirestore(app)
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
 root.render(

@@ -291,8 +291,7 @@
 }
 
 .error {
-  border: 1px solid red;
-  box-shadow: 0px 0px 3px red, inset 0px 0px 3px red;
+  border-bottom: 1.5px solid red;
 }
 
 .info {
@@ -318,14 +317,35 @@
 }
 
 .main {
-  display: flex;
-  height: 100vh;
+  min-height: 100vh;
+  height: auto;
   animation: appear 0.3s forwards;
+  padding-bottom: 30px;
+}
+.main__header {
+  font-size: 20px;
+  display: flex;
+  -moz-column-gap: 30px;
+       column-gap: 30px;
+  align-items: center;
+  padding-inline: 20px;
+  height: 50px;
+  background-color: var(--color-extra);
+}
+.main__header h1 {
+  margin: 0;
+}
+.main__main {
+  display: flex;
+  justify-content: space-between;
+  padding: 40px 50px;
+  height: auto;
   overflow: hidden;
 }
 .main__info {
   width: 30%;
   background-color: var(--color-extra);
+  border-radius: 10px;
 }
 .main__info__profile {
   display: flex;
@@ -333,6 +353,7 @@
   padding-inline: 20px;
   background-color: var(--color-extra);
   height: 70px;
+  border-radius: 10px;
 }
 .main__info__profile svg {
   cursor: pointer;
@@ -356,10 +377,11 @@
   flex-direction: column;
   row-gap: 15px;
   color: var(--color-text);
-  height: 100%;
   padding-inline: 20px;
+  padding-bottom: 20px;
 }
 .main__info__favorite {
+  position: relative;
   display: flex;
   font-size: 25px;
   align-items: center;
@@ -370,6 +392,19 @@
   border-radius: var(--border-radius);
   transition: 0.3s;
   cursor: pointer;
+  animation: slide 0.3s forwards;
+}
+@keyframes slide {
+  from {
+    top: -10px;
+    opacity: 0;
+    transform: scale(0.9, 0.9);
+  }
+  to {
+    top: 0;
+    opacity: 1;
+    transform: scale(1, 1);
+  }
 }
 .main__info__favorite:hover {
   background-color: var(--color-dark-extra);
@@ -378,47 +413,62 @@
   width: 60px;
   aspect-ratio: 1/1;
   border-radius: 10px;
-  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.243);
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.134);
 }
 .main__cards-container {
-  width: 75%;
-  padding: 50px 75px;
+  width: 65%;
+  height: 460px;
   display: flex;
   justify-content: center;
+  background-color: var(--color-extra);
+  border-radius: var(--border-radius);
 }
 .main__cards {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: flex-start;
   align-items: center;
   background-color: var(--color-block);
   width: 100%;
   height: 100%;
   position: relative;
-  border-radius: 20px;
 }
 .main__card {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
   position: absolute;
   width: 250px;
   height: 350px;
-  background-color: var(--color-extra);
-  padding: 30px 25px 10px 25px;
+  background-image: url("/src/assets/onigiri.jpg");
   color: var(--color-text);
-  border-radius: 5px;
+  border-radius: 10px;
   -o-object-fit: cover;
      object-fit: cover;
-  margin-top: -40px;
+  margin-top: 30px;
   -webkit-user-select: none;
      -moz-user-select: none;
           user-select: none;
+  color: white;
   cursor: grab;
+  box-shadow: inset 0px 0px 100px black;
+}
+.main__card__backdrop {
+  background-color: rgb(0, 0, 0);
+  filter: sepia(100%);
+  width: 100%;
+  height: 100%;
+  opacity: 0.3;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: inset 0px 0px 100px black;
 }
 .main__card h3 {
-  font-size: 25px;
+  font-size: 40px;
   text-align: center;
+  position: absolute;
+  opacity: 1;
 }
 .main__card__image {
   border-radius: var(--border-radius);
@@ -442,7 +492,7 @@
   align-items: center;
   aspect-ratio: 1/1;
   border-radius: 10px;
-  background-color: var(--color-extra);
+  background-color: var(--color-dark);
   box-shadow: var(--box-shadow);
   width: 40px;
   transition: 0.3s;
@@ -464,27 +514,27 @@
 .unauthorized {
   display: flex;
   flex-direction: column;
+  text-align: center;
+  align-items: center;
   row-gap: 10px;
   align-self: center;
   color: var(--color-text-additional);
   padding-inline: 50px;
-  font-size: 17.5px;
+  font-size: 25px;
   font-weight: 500;
-  margin-top: 30vh;
+  margin-top: 27.5vh;
 }
 .unauthorized__button {
-  color: var(--color-text);
-  border: 1px solid var(--color-border);
+  color: white;
   border-radius: var(--border-radius);
-  background-color: var(--color-button);
-  font-size: 17.5px;
-  width: 70%;
-  padding: 7.5px 15px;
+  background-color: var(--color-text);
+  font-size: 20px;
+  width: 60%;
+  padding: 10px;
   transition: 0.3s;
 }
 .unauthorized__button:hover {
-  background-color: var(--color-border);
-  box-shadow: var(--box-shadow);
+  background-color: var(--color-hover);
 }
 
 .cross-line {
@@ -512,11 +562,24 @@
   font-weight: 600;
 }
 
+#deleteRecipe {
+  transition: 0.3s;
+}
+#deleteRecipe:hover {
+  background-color: rgb(255, 69, 28);
+}
+#deleteRecipe:hover svg {
+  fill: white;
+}
+#deleteRecipe svg {
+  fill: rgb(255, 69, 28);
+}
+
 .backdrop {
   top: 0;
   position: absolute;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   background-color: rgba(0, 0, 0, 0.856);
   display: flex;
   justify-content: center;
@@ -535,7 +598,7 @@
   background-color: var(--color-background);
   border: 1.5px solid var(--color-text);
   box-shadow: var(--box-shadow);
-  border-radius: 10px;
+  border-radius: 5px;
   transition: 0.3s;
   position: relative;
   color: var(--color-text);
@@ -558,7 +621,7 @@
 
 .button-wrapper {
   position: absolute;
-  right: 27.5px;
+  right: 30px;
   top: 0;
 }
 
@@ -584,7 +647,7 @@
   --color-dark: rgb(188, 184, 159);
   --color-hover: rgb(31, 72, 255);
   --color-text: black;
-  --border-radius: 2.5px;
+  --border-radius: 10px;
   --box-shadow: none;
 }
 
