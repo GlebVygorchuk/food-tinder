@@ -373,6 +373,24 @@
   background-color: var(--color-extra);
   border-radius: 10px;
 }
+.main__info__saved__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.main__info__saved__header button {
+  margin-top: -10px;
+  margin-right: 5px;
+}
+.main__info__saved__header button svg {
+  fill: rgb(255, 69, 28);
+}
+.main__info__saved__header button:hover {
+  background-color: rgb(255, 69, 28);
+}
+.main__info__saved__header button:hover svg {
+  fill: white;
+}
 .main__info__profile {
   display: flex;
   justify-content: space-between;
@@ -412,7 +430,6 @@
   font-size: 25px;
   align-items: center;
   justify-content: space-between;
-  background-color: var(--color-dark);
   padding-inline: 15px;
   padding-block: 5px;
   border-radius: var(--border-radius);

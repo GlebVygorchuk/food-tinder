@@ -193,10 +193,20 @@ export default function Main() {
             <header className="main__header">
                 <div className="main__header__info">
                     <h1 className="main__header__title">foodHunter</h1>
+                    <svg className="logo" width="50" height="50" viewBox="0 0 125 89" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect x="63" y="3" width="59" height="83" rx="4.5" stroke="black" stroke-width="6"/>
+<line x1="32" y1="46" x2="50" y2="46" stroke="black" stroke-width="4"/>
+<path d="M18 68L50 68" stroke="black" stroke-width="4"/>
+<line x1="23" y1="22" x2="50" y2="22" stroke="black" stroke-width="4"/>
+<rect x="80" y="39" width="25" height="35" rx="2.5" fill="black"/>
+<path d="M77 30.5C77 29.1193 78.1193 28 79.5 28H105.5C106.881 28 108 29.1193 108 30.5V35.5C108 36.8807 106.881 38 105.5 38H79.5C78.1193 38 77 36.8807 77 35.5V30.5Z" fill="black"/>
+<path d="M97 24.6L102 15" stroke="black" stroke-width="3"/>
+<path d="M97 24V27.5" stroke="black" stroke-width="3"/>
+</svg>
                     <p onClick={() => navigate('/about-project')} className="main__header__about-us">О проекте</p>
                     <p className="main__header__feedback">Обратная связь</p>
                 </div>
-                {auth.currentUser ? <svg onClick={() => leave()} fill="black" width='27.5' data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M10.95 15.84h-11V.17h11v3.88h-1V1.17h-9v13.67h9v-2.83h1v3.83z"/><path d="M5 8h6v1H5zM11 5.96l4.4 2.54-4.4 2.54V5.96z"/></svg> : null}
+                {auth.currentUser ? <svg className="main__header__leave" onClick={() => leave()} fill="black" width='27.5' data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M10.95 15.84h-11V.17h11v3.88h-1V1.17h-9v13.67h9v-2.83h1v3.83z"/><path d="M5 8h6v1H5zM11 5.96l4.4 2.54-4.4 2.54V5.96z"/></svg> : null}
             </header>
             <main className="main__main">
                 <aside className="main__info">
@@ -210,7 +220,7 @@ export default function Main() {
                         <button onClick={wipe} className="main__swipe-button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M22 5a1 1 0 0 1-1 1H3a1 1 0 0 1 0-2h5V3a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v1h5a1 1 0 0 1 1 1zM4.934 21.071 4 8h16l-.934 13.071a1 1 0 0 1-1 .929H5.931a1 1 0 0 1-.997-.929zM15 18a1 1 0 0 0 2 0v-6a1 1 0 0 0-2 0zm-4 0a1 1 0 0 0 2 0v-6a1 1 0 0 0-2 0zm-4 0a1 1 0 0 0 2 0v-6a1 1 0 0 0-2 0z"/></svg></button>
                     </div>
                     {favorites.map((item, index) => 
-                    <div key={item.data.id} onClick={() => showSavedRecipe(index)} className="main__info__favorite">
+                    <div style={{backgroundImage: `url(${item.data.image})`}} key={item.data.id} onClick={() => showSavedRecipe(index)} className="main__info__favorite">
                         <p className="main__info__favorite__title">{item.data.title}</p>
                         <img className="main__info__favorite__image" src={item.data.image} alt="" />
                     </div>
