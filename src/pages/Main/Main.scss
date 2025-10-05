@@ -64,6 +64,31 @@
         background-color: var(--color-extra);
         border-radius: 10px;
 
+        &__saved {
+            &__header {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+
+                button {
+                    margin-top: -10px;
+                    margin-right: 5px;
+
+                    svg {
+                        fill: rgb(255, 69, 28);
+                    }
+
+                    &:hover {
+                        background-color: rgb(255, 69, 28);
+                    }
+
+                    &:hover svg {
+                        fill: white;
+                    }
+                }
+            }
+        }
+
         &__profile {
             display: flex;
             justify-content: space-between;

@@ -1,5 +1,5 @@
 import { getAuth, onAuthStateChanged, signOut } from "firebase/auth"
-import { collection, addDoc, onSnapshot, doc, deleteDoc } from "firebase/firestore"
+import { collection, addDoc, onSnapshot, doc, deleteDoc, getDocs, query, where } from "firebase/firestore"
 import { useNavigate } from "react-router-dom"
 import React, { useEffect, useState, useRef, useContext } from "react"
 import TinderCard from 'react-tinder-card'
@@ -33,6 +33,7 @@ export default function Main() {
 
     const navigate = useNavigate() 
     const cardRefs = useRef([])
+    const favoritesRef = useRef([])
 
     cardRefs.current = example.map(() => React.createRef())
 
@@ -56,7 +57,6 @@ export default function Main() {
     }
 
     function handleLeftScreen(id) {
-        console.log(id)
         // const copy = [...dishes]
         // const index = copy.findIndex(dish => dish.id === id) + 1
         // const updated = copy.filter(item => item !== copy[index])
@@ -87,31 +87,26 @@ export default function Main() {
         setDishes(result)
     }
 
-    async function addToFavorites(e, inModal) {
+    const addToFavorites = async (e, inModal) => {
         setModalActive(false)
         e.stopPropagation()
-        
-        if (auth.currentUser) {
-            // setFavorites(prev => {
-            // if (!prev.includes(dishes[currentIndex])) {
-            //     toast.success('Добавлено в избранное!')
-            //     !inModal ? swipe('right', currentIndex, true) : null
-            //     return inModal ? [...prev, currentDish] : [...prev, selectedDish]
-            // } else {
-            //     toast.warn('Рецепт уже добавлен! :)')
-            //     return [...prev]
-            // }
-            // })
-            !inModal ? swipe('right', currentIndex, true) : null
-            try {
-                const docRef = await addDoc(collection(database, 'users', userID, 'favorites'), selectedDish)
-                .then(() => console.log(`added!`))
-            } 
-            catch(err) {
-                console.error(err)
-            }
-        } else {
+        const docsRef = collection(database, 'users', userID, 'favorites')
+        const favorite = inModal ? currentDish : selectedDish
+
+        if (!auth.currentUser) {
             toast.warn('Войдите в аккаунт чтобы добавлять рецепты в избранное!')
+            return
+        }
+
+        const hasDublicate = favoritesRef.current.some(fav => fav.data.id === favorite.id)
+
+        !inModal ? swipe('right', currentIndex, true) : null
+
+        try {
+            !hasDublicate ? await addDoc(docsRef, favorite).then(() => toast.success('Сохранено!')) : toast.warn('Рецепт уже добавлен :)') 
+        } 
+        catch(err) {
+            console.error(err)
         }
     }
 
@@ -129,6 +124,16 @@ export default function Main() {
     async function deleteRecipe(id) {
         await deleteDoc(doc(database, 'users', userID, 'favorites', favorites[id].id))
         toast.info('Рецепт удалён')
+    }
+
+    async function wipe() {
+        const favs = await getDocs(collection(database, 'users', userID, 'favorites'))
+        favs.docs.forEach(async (fav) => {
+            await deleteDoc(doc(database, 'users', userID, 'favorites', fav.id))
+        })
+        if (favs.size > 0) {
+            toast.info('Рецепты удалены')
+        }
     }
 
     function leave() {
@@ -151,10 +156,6 @@ export default function Main() {
     }, [currentIndex])
 
     useEffect(() => {
-        console.log(favorites)
-    }, [favorites])
-
-    useEffect(() => {
         const unsub = onAuthStateChanged(auth, user => {
             if (user) {
                 setUserdata({
@@ -171,7 +172,6 @@ export default function Main() {
         if (userID) {
             const getFavorites = onSnapshot(collection(database, 'users', userID, 'favorites'), snapshot => {
                 const docs = []
-                snapshot.forEach(doc => console.log(doc.id))
                 snapshot.forEach(doc => docs.push({
                     id: doc.id,
                     data: doc.data()
@@ -182,6 +182,10 @@ export default function Main() {
             return () => getFavorites()
         }
     }, [userID])
+
+    useEffect(() => {
+        favoritesRef.current = favorites
+    }, [favorites]) 
 
     return (
         <>
@@ -201,7 +205,10 @@ export default function Main() {
                 </div>
                 {auth.currentUser ? 
                 <div className="main__info__saved">
-                    <p className="main__info__title">Сохранённые блюда:</p>
+                    <div className="main__info__saved__header">
+                        <p className="main__info__title">Сохранённые блюда:</p>
+                        <button onClick={wipe} className="main__swipe-button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M22 5a1 1 0 0 1-1 1H3a1 1 0 0 1 0-2h5V3a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v1h5a1 1 0 0 1 1 1zM4.934 21.071 4 8h16l-.934 13.071a1 1 0 0 1-1 .929H5.931a1 1 0 0 1-.997-.929zM15 18a1 1 0 0 0 2 0v-6a1 1 0 0 0-2 0zm-4 0a1 1 0 0 0 2 0v-6a1 1 0 0 0-2 0zm-4 0a1 1 0 0 0 2 0v-6a1 1 0 0 0-2 0z"/></svg></button>
+                    </div>
                     {favorites.map((item, index) => 
                     <div key={item.data.id} onClick={() => showSavedRecipe(index)} className="main__info__favorite">
                         <p className="main__info__favorite__title">{item.data.title}</p>
