@@ -2,7 +2,6 @@
     min-height: 100vh;
     height: auto;
     animation: appear 0.3s forwards;
-    padding-bottom: 30px;
 
     &__header {
         font-size: 20px;
@@ -54,7 +53,7 @@
     &__main {
         display: flex;
         justify-content: space-between;
-        padding: 40px 50px;
+        padding: 30px 40px;
         height: auto;
         overflow: hidden;
     }
@@ -180,9 +179,79 @@
         }
     }
 
+    &__content {
+        display: flex;
+        flex-direction: column;
+        row-gap: 10px;
+        position: relative;
+        width: 67.5%;
+    }
+
+    &__filters {
+        position: relative;
+        display: flex;
+        column-gap: 5px;
+        height: 60px;
+        background-color: var(--color-extra);
+        border-radius: var(--border-radius);
+        padding-inline: 15px;
+        padding-block: 10px;
+
+        &__button {
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--color-dark-extra);
+            background-color: var(--color-extra);
+            border-radius: var(--border-radius);
+            padding-inline: 15px;
+            transition: 0.2s;
+            border: 1.5px solid transparent;
+
+            &__arrow {
+                display: inline-block;
+                transform: rotate(90deg);
+                margin-left: 5px;
+                transition: 0.3s;
+            }
+
+            &:hover {
+                color: var(--color-hover);           
+            }
+        }
+
+        &__cuisine {
+            display: grid;
+            gap: 15px;
+            grid-template-columns: 1fr 1fr;
+            padding: 20px 25px;
+            transition: 0.3s;
+            opacity: 0;
+            pointer-events: none;
+            position: absolute;
+            background-color: var(--color-dark);
+            border-radius: 10px;
+            z-index: 2;
+            transform: translateY(15%);
+
+            &__button {
+                font-size: 22.5px;
+                background-color: transparent;
+                border-bottom: 1.5px solid var(--color-dark-extra);
+                padding-bottom: 5px;
+                font-weight: 600;
+                transition: 0.2s;
+                text-align: left;
+
+                &:hover {
+                    color: var(--color-hover);
+                    border-bottom: 1.5px solid var(--color-hover);
+                }
+            }
+        }
+    }
+
     &__cards-container {
         position: relative;
-        width: 65%;
         height: 460px;
         display: flex;
         justify-content: center;
@@ -389,4 +458,15 @@
 
 #fingerLeft {
     transform: rotate(180deg);
+}
+
+.active {
+    color: var(--color-hover);
+    border: 1.5px solid var(--color-hover);
+}
+
+.show-cuisine {
+    transform: translateY(20%);
+    opacity: 1;
+    pointer-events: all;
 }
