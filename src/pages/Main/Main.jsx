@@ -3,6 +3,7 @@ import { collection, addDoc, onSnapshot, doc, deleteDoc, getDocs, query, where }
 import { useNavigate } from "react-router-dom"
 import React, { useEffect, useState, useRef, useContext } from "react"
 import TinderCard from 'react-tinder-card'
+import Loader from "../../components/Loader"
 import Modal from "../../components/Modal/Modal"
 import { AppContext } from "../../components/AppContext"
 import { toast } from "react-toastify"
@@ -27,6 +28,7 @@ export default function Main() {
     const [selectedDish, setSelectedDish] = useState('')
     const [currentDish, setCurrentDish] = useState('')
     const [alreadySaved, setAlreadySaved] = useState(false)
+    const [loading, setLoading] = useState(false)
     const [filters, setFilters] = useState({
         showCuisine: false,
         healthy: false,
@@ -86,6 +88,7 @@ export default function Main() {
     }
 
     async function fetchRecipes() {
+        setLoading(true)
         const url = `https://68d8fc2490a75154f0d93941.mockapi.io/recipes`
 
         const response = await fetch(url)
@@ -93,6 +96,9 @@ export default function Main() {
 
         setDishes(result)
         setAllDishes(result)
+        setTimeout(() => {
+            setLoading(false)
+        }, 1000)
     }
 
     const addToFavorites = async (e, inModal) => {
@@ -130,18 +136,28 @@ export default function Main() {
     }
 
     async function deleteRecipe(id) {
-        await deleteDoc(doc(database, 'users', userID, 'favorites', favorites[id].id))
-        toast.info('Рецепт удалён')
+        let fav = document.getElementById(favorites[id].id)
+        fav.classList.add('vanish')
+        setTimeout(() => {
+            deleteDoc(doc(database, 'users', userID, 'favorites', favorites[id].id))
+            toast.info('Рецепт удалён')
+        }, 250)      
     }
 
     async function wipe() {
-        const favs = await getDocs(collection(database, 'users', userID, 'favorites'))
-        favs.docs.forEach(async (fav) => {
-            await deleteDoc(doc(database, 'users', userID, 'favorites', fav.id))
+        favorites.forEach(item => {
+            const fav = document.getElementById(item.id)
+            fav.classList.add('vanish')
         })
-        if (favs.size > 0) {
-            toast.info('Рецепты удалены')
-        }
+        const favs = await getDocs(collection(database, 'users', userID, 'favorites'))
+        setTimeout(() => {
+            favs.docs.forEach(async (fav) => {
+                await deleteDoc(doc(database, 'users', userID, 'favorites', fav.id))
+            })
+            if (favs.size > 0) {
+                toast.info('Рецепты удалены')
+            }
+        }, 250)
     }
 
     function chooseCuisine(cuisine) {
@@ -153,26 +169,42 @@ export default function Main() {
         filterByCuisine(cuisine)
     }
 
-    function filterByCuisine(cuisine) {
-        const copy = [...allDishes]
-        const filtered = copy.filter(item => item.cuisine === cuisine)
-        setDishes(cuisine !== 'Любая' ? filtered : copy)
-    }
-
-    function filterByHealthy() {
-        // ...
-    }
-
-    function filterByVegetarian() {
-        // ...
-    }
-
     function leave() {
         signOut(auth)
         .then(() => {
             navigate('/register')
         })
     }
+
+    useEffect(() => {
+        const copy = [...allDishes]
+
+        const filtered = copy.filter(item => {
+            if (cuisine !== 'Кухня' && !filters.healthy && !filters.vegetarian) {
+                return item.cuisine === cuisine
+            } else if (cuisine !== 'Кухня' && filters.healthy && !filters.vegetarian) {
+                return item.cuisine === cuisine && item.healthy
+            } else if (cuisine !== 'Кухня' && !filters.healthy && filters.vegetarian) {
+                return item.cuisine === cuisine && item.vegetarian
+            } else if (cuisine !== 'Кухня' && filters.healthy && filters.vegetarian) {
+                return item.cuisine === cuisine && item.healthy && item.vegetarian
+            } else if (cuisine === 'Кухня' && !filters.healthy && filters.vegetarian) {
+                return item.vegetarian
+            } else if (cuisine === 'Кухня' && filters.healthy && !filters.vegetarian) {
+                return item.healthy
+            } else if (cuisine === 'Кухня' && filters.healthy && filters.vegetarian) {
+                return item.healthy && item.vegetarian
+            } else {
+                return copy
+            }
+        })
+
+        setDishes(filtered)
+        setLoading(true)
+        setTimeout(() => {
+            setLoading(false)
+        }, 750)
+    }, [filters.healthy, filters.vegetarian, cuisine])
 
     useEffect(() => {
         fetchRecipes()
@@ -251,7 +283,7 @@ export default function Main() {
                         <button onClick={wipe} className="main__swipe-button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M22 5a1 1 0 0 1-1 1H3a1 1 0 0 1 0-2h5V3a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v1h5a1 1 0 0 1 1 1zM4.934 21.071 4 8h16l-.934 13.071a1 1 0 0 1-1 .929H5.931a1 1 0 0 1-.997-.929zM15 18a1 1 0 0 0 2 0v-6a1 1 0 0 0-2 0zm-4 0a1 1 0 0 0 2 0v-6a1 1 0 0 0-2 0zm-4 0a1 1 0 0 0 2 0v-6a1 1 0 0 0-2 0z"/></svg></button>
                     </div>
                     {favorites.map((item, index) => 
-                    <div style={{backgroundImage: `url(${item.data.image})`}} key={item.data.id} onClick={() => showSavedRecipe(index)} className="main__info__favorite">
+                    <div id={item.id} style={{backgroundImage: `url(${item.data.image})`}} key={item.data.id} onClick={() => showSavedRecipe(index)} className="main__info__favorite">
                         <p className="main__info__favorite__title">{item.data.title}</p>
                         <img className="main__info__favorite__image" src={item.data.image} alt="" />
                     </div>
@@ -294,7 +326,7 @@ export default function Main() {
                         <button onClick={() => chooseCuisine('Ближневосточная')}  className="main__filters__cuisine__button">Ближневосточная</button>
                         <button onClick={() => chooseCuisine('Мексиканская')}  className="main__filters__cuisine__button">Мексиканская</button>
                         <button onClick={() => chooseCuisine('Другое')}  className="main__filters__cuisine__button">Другое</button>
-                        <button onClick={() => chooseCuisine('Любая')}  className="main__filters__cuisine__button">Любая</button>
+                        <button onClick={() => chooseCuisine('Кухня')}  className="main__filters__cuisine__button">Любая</button>
                     </div>
                 </div>
                 <div className="main__cards-container">
@@ -307,7 +339,7 @@ export default function Main() {
                     <svg id="arrowRight" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M32 15H3.41l8.29-8.29-1.41-1.42-10 10a1 1 0 0 0 0 1.41l10 10 1.41-1.41L3.41 17H32z"/></svg>
                 </div>
                 <div className="main__cards">
-                    {dishes.map((item, index) => (
+                    {!loading ? dishes.map((item, index) => (
                         <TinderCard
                         preventSwipe={['up', 'down']}
                         key={item.id} 
@@ -318,7 +350,7 @@ export default function Main() {
                             <img src={item.image} className="main__card__image"></img>
                             <h3>{item.title}</h3>
                         </TinderCard>
-                    ))}
+                    )) : <Loader />}
                     <div className="main__swipe-buttons">
                         <button style={{position: 'relative'}} onClick={() => swipe('left', currentIndex, false)} className="main__swipe-button">
                             <span style={{transform: 'rotate(45deg)'}} className="cross-line"></span><span style={{transform: 'rotate(-45deg)'}} className="cross-line"></span>
