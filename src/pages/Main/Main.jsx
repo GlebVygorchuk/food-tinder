@@ -267,7 +267,6 @@ export default function Main() {
 <path d="M97 24V27.5" stroke="black" stroke-width="3"/>
 </svg>
                     <p onClick={() => navigate('/about-project')} className="main__header__about-us">О проекте</p>
-                    <p className="main__header__feedback">Обратная связь</p>
                 </div>
                 {auth.currentUser ? <svg className="main__header__leave" onClick={() => leave()} fill="black" width='27.5' data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M10.95 15.84h-11V.17h11v3.88h-1V1.17h-9v13.67h9v-2.83h1v3.83z"/><path d="M5 8h6v1H5zM11 5.96l4.4 2.54-4.4 2.54V5.96z"/></svg> : null}
             </header>
@@ -317,16 +316,16 @@ export default function Main() {
                         Вегетарианское
                     </button>
                     <div className={`main__filters__cuisine ${filters.showCuisine ? 'show-cuisine' : ''}`}>
-                        <button onClick={() => chooseCuisine('Русская')} className="main__filters__cuisine__button">Русская</button>
-                        <button onClick={() => chooseCuisine('Греческая')}  className="main__filters__cuisine__button">Греческая</button>
+                        <button style={{borderTopLeftRadius: '5px'}} onClick={() => chooseCuisine('Русская')} className="main__filters__cuisine__button">Русская</button>
+                        <button style={{borderTopRightRadius: '5px'}} onClick={() => chooseCuisine('Греческая')}  className="main__filters__cuisine__button">Греческая</button>
                         <button onClick={() => chooseCuisine('Итальянская')}  className="main__filters__cuisine__button">Итальянская</button>
                         <button onClick={() => chooseCuisine('Американская')}  className="main__filters__cuisine__button">Американская</button>
                         <button onClick={() => chooseCuisine('Восточно-азиатская')}  className="main__filters__cuisine__button">Восточно-азиатская</button>
                         <button onClick={() => chooseCuisine('Французская')} className="main__filters__cuisine__button">Французская</button>
                         <button onClick={() => chooseCuisine('Ближневосточная')}  className="main__filters__cuisine__button">Ближневосточная</button>
                         <button onClick={() => chooseCuisine('Мексиканская')}  className="main__filters__cuisine__button">Мексиканская</button>
-                        <button onClick={() => chooseCuisine('Другое')}  className="main__filters__cuisine__button">Другое</button>
-                        <button onClick={() => chooseCuisine('Кухня')}  className="main__filters__cuisine__button">Любая</button>
+                        <button style={{borderBottomLeftRadius: '5px'}} onClick={() => chooseCuisine('Другое')}  className="main__filters__cuisine__button">Другое</button>
+                        <button style={{borderBottomRightRadius: '5px'}} onClick={() => chooseCuisine('Кухня')}  className="main__filters__cuisine__button">Любая</button>
                     </div>
                 </div>
                 <div className="main__cards-container">
