@@ -35,7 +35,8 @@ export default function Login() {
 
     return (
         <section className="login">
-            <div style={{marginTop: '90px'}} className="form-wrapper">
+            <div className="form__container">
+            <div className="form-wrapper">
                 <div className="form-header">Вход</div>
                 <form className="form">
 
@@ -71,6 +72,7 @@ export default function Login() {
                         action={sendPasswordResetEmail(auth, email)}/>
                     </div>
                 </form>
+            </div>
             </div>
         </section>
     )

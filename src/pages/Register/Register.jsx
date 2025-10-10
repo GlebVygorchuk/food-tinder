@@ -135,6 +135,7 @@ export default function Register() {
 
     return (
         <section className="register">
+            <div className="form__container">
             <div className="form-wrapper">
                 <div className="form-header">Создайте аккаунт</div>
                 <form className="form">
@@ -251,6 +252,7 @@ export default function Register() {
                      : null}
 
                 </form>
+            </div>
             </div>
         </section>
     )

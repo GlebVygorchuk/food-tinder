@@ -1,7 +1,10 @@
+@import '../../styles/mixins.scss';
+
 .register {
     display: flex;
     justify-content: center;
     animation: appear 0.5s forwards;
+    height: 100vh;
 
     &__already-registered {
         align-self: center;
@@ -21,41 +24,49 @@
 }
 
 .form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    row-gap: 15px;
+    padding: 25px 30px;
+
+    &__container {
         display: flex;
-        flex-direction: column;
-        row-gap: 15px;
-        padding: 25px 30px;
+        justify-content: center;
+        width: 100%;
+    }
 
-        &__input {
-            display: flex;
-            align-items: center;
-            width: 100%;
-            font-family: var(--font-family);
-            font-size: 20px;
-            font-weight: 600;
-            padding: 25px 15px 15px 15px;
-            outline: none;
-            border: none;
-            border-bottom: 1.5px solid var(--color-text);
-            background-color: var(--color-background);
+    &__input {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        font-family: var(--font-family);
+        font-size: 20px;
+        font-weight: 600;
+        padding: 25px 15px 15px 15px;
+        outline: none;
+        border: none;
+        border-bottom: 1.5px solid var(--color-text);
+        background-color: var(--color-background);
+    }
+
+    &__input-wrapper {
+        position: relative;
+
+        svg {
+            position: absolute;
+            right: 15px;
+            top: 19px;
+            cursor: pointer;
         }
-
-        &__input-wrapper {
-            position: relative;
-
-            svg {
-                position: absolute;
-                right: 15px;
-                top: 19px;
-                cursor: pointer;
-            }
-        }
+    }
 
         &__eye {
             fill: var(--color-text);
         }
 
         &__advice {
+            width: 180px;
             opacity: 0;
             display: flex;
             flex-direction: column;
@@ -70,6 +81,7 @@
             transition: 0.3s;
             color: var(--color-text);
             border-radius: var(--border-radius);
+            pointer-events: none;
 
             &__condition {
                 position: relative;
@@ -84,6 +96,11 @@
             &__svg {
                 left: 0;
                 margin-top: -18px;
+            }
+
+            @include mobile {
+                left: 0px;
+                top: -130px;
             }
         }
 
@@ -114,25 +131,52 @@
             &:hover {
                 background-color: var(--color-hover);
             }
+
+            @include mobile {
+                width: 70%;
+            }
         }
-    }
+}
 
 .form-header {
     font-size: 45px;
+
+    @include mobile-small {
+        padding-left: 20px;
+        font-size: 40px;
+    }
 }
 
 .form-wrapper {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     row-gap: 10px;
-    margin-top: 40px;
     width: 40%;
     border-radius: 0px;
+
+    @include tablet {
+        width: 60%;
+    }
+
+    @include mobile {
+        width: 80%;
+    }
+
+    @include mobile-small {
+        width: 95%;
+        margin-top: 30px;
+    }
 }
 
 .show {
     right: -210px;
     opacity: 1;
+
+    @include mobile {
+        left: 0px;
+        top: -145px;
+    }
 }
 
 .error {

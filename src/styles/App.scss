@@ -1,13 +1,13 @@
 @import 
+'./mixins.scss',
+'./variables.scss',
+'./fonts.scss',
 '../pages/Homepage/Homepage.scss',
 '../pages/Login/Login.scss',
 '../pages/Register/Register.scss',
 '../pages/Main/Main.scss',
 '../pages/AboutProject/AboutProject.scss',
-'../components/Modal/Modal.scss',
-'./variables.scss',
-'./mixins.scss',
-'./fonts.scss';
+'../components/Modal/Modal.scss';
 
 body {
     font-family: var(--font-family);

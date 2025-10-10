@@ -101,6 +101,9 @@ export default function Main() {
         }, 1000)
     }
 
+    // НУЖНО БУДЕТ ДЕЛАТЬ ЗАПРОСЫ ПОЭТАПНО А НЕ ВСЁ СРАЗУ
+    // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
     const addToFavorites = async (e, inModal) => {
         setModalActive(false)
         e.stopPropagation()
