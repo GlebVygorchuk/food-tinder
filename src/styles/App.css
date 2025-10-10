@@ -134,6 +134,7 @@
   display: flex;
   justify-content: center;
   animation: appear 0.5s forwards;
+  height: 100vh;
 }
 
 .form__remember {
@@ -185,6 +186,7 @@
   display: flex;
   justify-content: center;
   animation: appear 0.5s forwards;
+  height: 100vh;
 }
 .register__already-registered {
   align-self: center;
@@ -203,8 +205,14 @@
 .form {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   row-gap: 15px;
   padding: 25px 30px;
+}
+.form__container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
 }
 .form__input {
   display: flex;
@@ -232,6 +240,7 @@
   fill: var(--color-text);
 }
 .form__advice {
+  width: 180px;
   opacity: 0;
   display: flex;
   flex-direction: column;
@@ -246,6 +255,7 @@
   transition: 0.3s;
   color: var(--color-text);
   border-radius: var(--border-radius);
+  pointer-events: none;
 }
 .form__advice__condition {
   position: relative;
@@ -258,6 +268,12 @@
 .form__advice__svg {
   left: 0;
   margin-top: -18px;
+}
+@media (max-width: 770px) {
+  .form__advice {
+    left: 0px;
+    top: -130px;
+  }
 }
 .form__placeholder {
   position: absolute;
@@ -287,28 +303,56 @@
 .form__button:hover {
   background-color: var(--color-hover);
 }
+@media (max-width: 770px) {
+  .form__button {
+    width: 70%;
+  }
+}
 
 .form-header {
   font-size: 45px;
+}
+@media (max-width: 480px) {
+  .form-header {
+    padding-left: 20px;
+    font-size: 40px;
+  }
 }
 
 .form-wrapper {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   row-gap: 10px;
-  margin-top: 40px;
   width: 40%;
   border-radius: 0px;
 }
 @media (max-width: 1080px) {
   .form-wrapper {
-    width: 55%;
+    width: 60%;
+  }
+}
+@media (max-width: 770px) {
+  .form-wrapper {
+    width: 80%;
+  }
+}
+@media (max-width: 480px) {
+  .form-wrapper {
+    width: 95%;
+    margin-top: 30px;
   }
 }
 
 .show {
   right: -210px;
   opacity: 1;
+}
+@media (max-width: 770px) {
+  .show {
+    left: 0px;
+    top: -145px;
+  }
 }
 
 .error {
@@ -430,6 +474,11 @@
   align-self: center;
   font-size: 25px;
   font-weight: 600;
+}
+@media (max-width: 770px) {
+  .main__info__greetings {
+    font-size: 20px;
+  }
 }
 .main__info__title {
   color: var(--color-text);

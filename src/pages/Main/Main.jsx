@@ -274,31 +274,7 @@ export default function Main() {
                 {auth.currentUser ? <svg className="main__header__leave" onClick={() => leave()} fill="black" width='27.5' data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M10.95 15.84h-11V.17h11v3.88h-1V1.17h-9v13.67h9v-2.83h1v3.83z"/><path d="M5 8h6v1H5zM11 5.96l4.4 2.54-4.4 2.54V5.96z"/></svg> : null}
             </header>
             <main className="main__main">
-                <aside className="main__info">
-                <div className="main__info__profile">
-                    <p className="main__info__greetings">{auth.currentUser ? `Добро пожаловать, ${userdata.name}!` : 'Вы не вошли в аккаунт :('}</p>
-                </div>
-                {auth.currentUser ? 
-                <div className="main__info__saved">
-                    <div className="main__info__saved__header">
-                        <p className="main__info__title">Сохранённые блюда:</p>
-                        <button onClick={wipe} className="main__swipe-button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M22 5a1 1 0 0 1-1 1H3a1 1 0 0 1 0-2h5V3a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v1h5a1 1 0 0 1 1 1zM4.934 21.071 4 8h16l-.934 13.071a1 1 0 0 1-1 .929H5.931a1 1 0 0 1-.997-.929zM15 18a1 1 0 0 0 2 0v-6a1 1 0 0 0-2 0zm-4 0a1 1 0 0 0 2 0v-6a1 1 0 0 0-2 0zm-4 0a1 1 0 0 0 2 0v-6a1 1 0 0 0-2 0z"/></svg></button>
-                    </div>
-                    {favorites.map((item, index) => 
-                    <div id={item.id} style={{backgroundImage: `url(${item.data.image})`}} key={item.data.id} onClick={() => showSavedRecipe(index)} className="main__info__favorite">
-                        <p className="main__info__favorite__title">{item.data.title}</p>
-                        <img className="main__info__favorite__image" src={item.data.image} alt="" />
-                    </div>
-                    )}
-                </div> : 
-                <div className="unauthorized">
-                    Чтобы сохранять рецепты, войдите в аккаунт =&gt;
-                    <button onClick={() => navigate('/register')} style={{marginTop: '10px'}} className="unauthorized__button">Регистрация</button>
-                    <button onClick={() => navigate('/login')} className="unauthorized__button">Войти</button>
-                </div>
-                }
-            </aside>
-            <div className="main__content">
+                <div className="main__content">
                 <div className="main__filters">
                     <button
                     style={filters.showCuisine ? {color: '#244cff'} : null}
@@ -367,6 +343,30 @@ export default function Main() {
                 </div>
             </div>
             </div>
+                <aside className="main__info">
+                <div className="main__info__profile">
+                    <p className="main__info__greetings">{auth.currentUser ? `Добро пожаловать, ${userdata.name}!` : 'Вы не вошли в аккаунт :('}</p>
+                </div>
+                {auth.currentUser ? 
+                <div className="main__info__saved">
+                    <div className="main__info__saved__header">
+                        <p className="main__info__title">Сохранённые блюда:</p>
+                        <button onClick={wipe} className="main__swipe-button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M22 5a1 1 0 0 1-1 1H3a1 1 0 0 1 0-2h5V3a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v1h5a1 1 0 0 1 1 1zM4.934 21.071 4 8h16l-.934 13.071a1 1 0 0 1-1 .929H5.931a1 1 0 0 1-.997-.929zM15 18a1 1 0 0 0 2 0v-6a1 1 0 0 0-2 0zm-4 0a1 1 0 0 0 2 0v-6a1 1 0 0 0-2 0zm-4 0a1 1 0 0 0 2 0v-6a1 1 0 0 0-2 0z"/></svg></button>
+                    </div>
+                    {favorites.map((item, index) => 
+                    <div id={item.id} style={{backgroundImage: `url(${item.data.image})`}} key={item.data.id} onClick={() => showSavedRecipe(index)} className="main__info__favorite">
+                        <p className="main__info__favorite__title">{item.data.title}</p>
+                        <img className="main__info__favorite__image" src={item.data.image} alt="" />
+                    </div>
+                    )}
+                </div> : 
+                <div className="unauthorized">
+                    Чтобы сохранять рецепты, войдите в аккаунт =&gt;
+                    <button onClick={() => navigate('/register')} style={{marginTop: '10px'}} className="unauthorized__button">Регистрация</button>
+                    <button onClick={() => navigate('/login')} className="unauthorized__button">Войти</button>
+                </div>
+                }
+            </aside>
             </main>
         </section>
         <Modal>

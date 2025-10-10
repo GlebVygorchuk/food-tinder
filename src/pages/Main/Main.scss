@@ -1,4 +1,8 @@
+@import '../../styles/mixins.scss';
+
 .main {
+    display: flex;
+    flex-direction: column;
     min-height: 100vh;
     height: auto;
     animation: appear 0.3s forwards;
@@ -56,12 +60,19 @@
         padding: 30px 40px;
         height: auto;
         overflow: hidden;
+
+        @include mobile {
+            flex-direction: column;
+            row-gap: 20px;
+            width: 100%;
+            padding: 10px 20px;
+        }
     }
     
     &__info {
         width: 30%;
         background-color: var(--color-extra);
-        border-radius: 10px;
+        border-radius: var(--border-radius);
 
         &__saved {
             &__header {
@@ -110,12 +121,20 @@
             align-self: center;
             font-size: 25px;
             font-weight: 600;
+
+            @include tablet {
+                font-size: 22.5px;
+            }
         }
 
         &__title {
             color: var(--color-text);
             font-size: 25px;
             margin-top: 10px;
+
+            @include tablet {
+                font-size: 22.5px;
+            }
         }
 
         &__saved {
@@ -140,6 +159,14 @@
             transition: 0.3s;
             cursor: pointer;
             animation: slide 0.3s forwards;
+
+            @include tablet {
+                font-size: 20px;
+            }
+
+            @include mobile {
+                font-size: 25px;
+            }
 
             @keyframes slide {
                 from {
@@ -172,10 +199,24 @@
             &__title {
                 position: absolute;
                 z-index: 2;
-                font-weight: 400;
+                font-weight: 500;
                 left: 20px;
                 color: white;
+
+                @include tablet {
+                    left: 15px;
+                    font-weight: 500;
+                }
+
+                @include mobile {
+                    font-weight: 400;
+                    left: 20px;
+                }
             }
+        }
+
+        @include mobile {
+            width: 100%;
         }
     }
 
@@ -185,6 +226,10 @@
         row-gap: 10px;
         position: relative;
         width: 67.5%;
+
+        @include mobile {
+            width: 100%;
+        }
     }
 
     &__filters {
@@ -206,6 +251,16 @@
             padding-inline: 15px;
             transition: 0.2s;
             border: 2px solid transparent;
+
+            @include tablet {
+                font-size: 20px;
+                padding-inline: 10px;
+            }
+
+            @include mobile {
+                padding-inline: 2.5px;
+                font-size: 15px;
+            }
 
             &__arrow {
                 display: inline-block;
@@ -256,6 +311,7 @@
         justify-content: center;
         background-color: var(--color-extra);
         border-radius: var(--border-radius);
+        overflow: hidden;
     }
 
     &__cards {
@@ -461,10 +517,26 @@
 
 #swipeRight {
     right: 15%;
+
+    @include tablet {
+        right: 10%;
+    }
+
+    @include mobile {
+        right: 5%;
+    }
 }
 
 #swipeLeft {
     left: 15%;
+
+    @include tablet {
+        left: 10%;
+    }
+
+    @include mobile {
+        left: 5%;
+    }
 }
 
 #arrowRight {
