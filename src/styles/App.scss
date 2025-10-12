@@ -9,6 +9,10 @@
 '../pages/AboutProject/AboutProject.scss',
 '../components/Modal/Modal.scss';
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     font-family: var(--font-family);
     font-weight: 500;

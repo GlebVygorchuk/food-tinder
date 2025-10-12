@@ -9,6 +9,7 @@
 $desktop: 1280px;
 $tablet: 1080px;
 $mobile: 770px;
+$mobile-middle: 560px;
 $mobile-small: 480px;
 $mobile-xs: 400px;
 
@@ -26,6 +27,12 @@ $mobile-xs: 400px;
 
 @mixin mobile {
     @media(max-width: $mobile) {
+        @content
+    }
+};
+
+@mixin mobile-middle {
+    @media(max-width: $mobile-middle) {
         @content
     }
 };

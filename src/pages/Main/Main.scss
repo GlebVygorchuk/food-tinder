@@ -30,8 +30,13 @@
             column-gap: 30px;
             align-items: center;
 
+
             h1 {
                 font-size: 40px;
+
+                @include mobile-small {
+                    font-size: 35px;
+                }
             }
         }
 
@@ -42,15 +47,6 @@
             &:hover {
                 color: var(--color-hover);
             }
-        }
-
-        &__feedback {
-            transition: 0.2s;
-            cursor: pointer;
-
-            &:hover {
-                color: var(--color-hover);
-            } 
         }
     }
 
@@ -257,13 +253,23 @@
             border: 2px solid transparent;
 
             @include tablet {
-                font-size: 20px;
-                padding-inline: 10px;
+                font-size: 17.5px;
+                padding-inline: 7.5px;
             }
 
             @include mobile {
                 padding-inline: 2.5px;
-                font-size: 15px;
+                font-size: 20px;
+            }
+
+            @include mobile-middle {
+                font-size: 17.5px;
+            }
+
+            @include mobile-small {
+                font-size: 22px;
+                text-align: left;
+                padding-inline: 10px;
             }
 
             &__arrow {
@@ -287,7 +293,7 @@
             position: absolute;
             background-color: black;
             border-radius: 5px;
-            z-index: 2;
+            z-index: 5;
             transform: translateY(22%) translateX(-5%);
             box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.451);
 
@@ -300,11 +306,40 @@
                 transition: 0.2s;
                 text-align: left;
 
+                @include mobile-small {
+                    font-size: 20px;
+                }
+
                 &:hover {
                     color: white;
                     background-color: var(--color-hover);
                 }
             }
+
+            @include mobile-small {
+                transform: translateY(30%)
+            }
+
+            @include mobile {
+                transform: translateY(35%)
+            }
+        }
+
+        &__mobile {
+            background-color: var(--color-extra);
+            display: flex;
+            flex-direction: column;
+            row-gap: 5px;
+            z-index: 4;
+            position: absolute;
+            top: 55px;
+            padding: 5px;
+            border-radius: var(--border-radius);
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.083);
+            transform: translateY(-10px);
+            opacity: 0;
+            transition: 0.2s;
+            pointer-events: none;
         }
     }
 
@@ -318,7 +353,7 @@
         overflow: hidden;
 
         @include mobile-small {
-            height: 600px;
+            height: 650px;
         }
     }
 
@@ -361,7 +396,7 @@
 
         @include mobile-small {
             width: 325px;
-            height: 450px;
+            height: 475px;
             border-radius: 10px;
         }
 
@@ -396,7 +431,7 @@
         margin-top: 400px;
 
         @include mobile-small {
-            margin-top: 500px;
+            margin-top: 525px;
         }
     }
 
@@ -460,6 +495,19 @@
         &:hover {
             background-color: var(--color-hover);
         }
+
+        @include tablet {
+            width: 100%;
+        }
+
+        @include mobile {
+            width: 60%;
+        }
+    }
+
+    @include mobile {
+        margin-top: 10vh;
+        min-height: 300px;
     }
 }
 
@@ -515,6 +563,10 @@
         background-color: var(--color-hover);
         border-radius: 50%;
         animation: spin 0.5s infinite;
+    }
+
+    @include mobile-small {
+        margin-top: 250px;
     }
 }
 
@@ -574,6 +626,20 @@
 .show-cuisine {
     transform: translateY(26%) translateX(-5%);
     opacity: 1;
+    pointer-events: all;
+
+    @include mobile-small {
+        transform: translateY(30%);
+    }
+
+    @include mobile-small {
+        transform: translateY(45%);
+    }
+}
+
+.show-mobile-filters {
+    opacity: 1;
+    transform: translateY(0);
     pointer-events: all;
 }
 
@@ -651,5 +717,27 @@
     @include mobile-small {
         width: 32.5px;
         height: 32.5px;
+    }
+}
+
+#filters-mobile, #saved {
+    display: none;
+    font-size: 22.5px;
+    padding-inline: 5px;
+
+    @include mobile-small {
+        display: block;
+    }
+}
+
+#saved {
+    text-decoration: none;
+    margin: 0;
+    align-self: center;
+}
+
+#cuisine-select, #healthy-filter, #vegetarian-filter {
+    @include mobile-small {
+        display: none;
     }
 }

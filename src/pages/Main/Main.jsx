@@ -34,6 +34,7 @@ export default function Main() {
         healthy: false,
         vegetarian: false
     })
+    const [mobileFilters, setMobileFilters] = useState(false)
     const [cuisine, setCuisine] = useState('Кухня')
     const { modalActive, setModalActive } = useContext(AppContext)
 
@@ -253,6 +254,10 @@ export default function Main() {
         favoritesRef.current = favorites
     }, [favorites]) 
 
+    useEffect(() => {
+        !mobileFilters ? setFilters(prev => ({...prev, showCuisine: false})) : null
+    }, [mobileFilters])
+
     return (
         <>
         <section className="main">
@@ -277,6 +282,48 @@ export default function Main() {
                 <div className="main__content">
                 <div className="main__filters">
                     <button
+                    id="cuisine-select"
+                    style={filters.showCuisine ? {color: '#244cff'} : null}
+                    onClick={() => setFilters(prev => ({...prev, showCuisine: !prev.showCuisine}))} 
+                    className="main__filters__button">
+                        {cuisine} <span style={filters.showCuisine ? {transform: 'rotate(270deg)'} : null} className="main__filters__button__arrow">&lt;</span>
+                    </button>
+
+                    <button 
+                    id="healthy-filter"
+                    onClick={() => setFilters(prev => ({...prev, healthy: !prev.healthy}))} 
+                    className={`main__filters__button ${filters.healthy ? 'active' : ''}`}>
+                        Здоровое питание
+                    </button>
+
+                    <button 
+                    id="vegetarian-filter"
+                    onClick={() => setFilters(prev => ({...prev, vegetarian: !prev.vegetarian}))} 
+                    className={`main__filters__button ${filters.vegetarian ? 'active' : ''}`}>
+                        Вегетарианское 
+                    </button>
+
+                    <button onClick={() => setMobileFilters(prev => !prev)} id="filters-mobile" className="main__filters__button">
+                        Фильтры <span style={mobileFilters ? {transform: 'rotate(270deg)'} : null} className="main__filters__button__arrow">&lt;</span>
+                    </button>
+
+                    <a href="#information" id="saved" className="main__filters__button">Сохранённые</a>
+
+                    <div className={`main__filters__cuisine ${filters.showCuisine ? 'show-cuisine' : ''}`}>
+                        <button style={{borderTopLeftRadius: '5px'}} onClick={() => chooseCuisine('Русская')} className="main__filters__cuisine__button">Русская</button>
+                        <button style={{borderTopRightRadius: '5px'}} onClick={() => chooseCuisine('Греческая')}  className="main__filters__cuisine__button">Греческая</button>
+                        <button onClick={() => chooseCuisine('Итальянская')}  className="main__filters__cuisine__button">Итальянская</button>
+                        <button onClick={() => chooseCuisine('Американская')}  className="main__filters__cuisine__button">Американская</button>
+                        <button onClick={() => chooseCuisine('Восточно-азиатская')}  className="main__filters__cuisine__button">Восточно-азиатская</button>
+                        <button onClick={() => chooseCuisine('Французская')} className="main__filters__cuisine__button">Французская</button>
+                        <button onClick={() => chooseCuisine('Ближневосточная')}  className="main__filters__cuisine__button">Ближневосточная</button>
+                        <button onClick={() => chooseCuisine('Мексиканская')}  className="main__filters__cuisine__button">Мексиканская</button>
+                        <button style={{borderBottomLeftRadius: '5px'}} onClick={() => chooseCuisine('Другое')}  className="main__filters__cuisine__button">Другое</button>
+                        <button style={{borderBottomRightRadius: '5px'}} onClick={() => chooseCuisine('Кухня')}  className="main__filters__cuisine__button">Любая</button>
+                    </div>
+
+                    <div className={`main__filters__mobile ${mobileFilters ? 'show-mobile-filters' : ''}`}>
+                    <button
                     style={filters.showCuisine ? {color: '#244cff'} : null}
                     onClick={() => setFilters(prev => ({...prev, showCuisine: !prev.showCuisine}))} 
                     className="main__filters__button">
@@ -292,19 +339,8 @@ export default function Main() {
                     <button 
                     onClick={() => setFilters(prev => ({...prev, vegetarian: !prev.vegetarian}))} 
                     className={`main__filters__button ${filters.vegetarian ? 'active' : ''}`}>
-                        Вегетарианское
+                        Вегетарианское 
                     </button>
-                    <div className={`main__filters__cuisine ${filters.showCuisine ? 'show-cuisine' : ''}`}>
-                        <button style={{borderTopLeftRadius: '5px'}} onClick={() => chooseCuisine('Русская')} className="main__filters__cuisine__button">Русская</button>
-                        <button style={{borderTopRightRadius: '5px'}} onClick={() => chooseCuisine('Греческая')}  className="main__filters__cuisine__button">Греческая</button>
-                        <button onClick={() => chooseCuisine('Итальянская')}  className="main__filters__cuisine__button">Итальянская</button>
-                        <button onClick={() => chooseCuisine('Американская')}  className="main__filters__cuisine__button">Американская</button>
-                        <button onClick={() => chooseCuisine('Восточно-азиатская')}  className="main__filters__cuisine__button">Восточно-азиатская</button>
-                        <button onClick={() => chooseCuisine('Французская')} className="main__filters__cuisine__button">Французская</button>
-                        <button onClick={() => chooseCuisine('Ближневосточная')}  className="main__filters__cuisine__button">Ближневосточная</button>
-                        <button onClick={() => chooseCuisine('Мексиканская')}  className="main__filters__cuisine__button">Мексиканская</button>
-                        <button style={{borderBottomLeftRadius: '5px'}} onClick={() => chooseCuisine('Другое')}  className="main__filters__cuisine__button">Другое</button>
-                        <button style={{borderBottomRightRadius: '5px'}} onClick={() => chooseCuisine('Кухня')}  className="main__filters__cuisine__button">Любая</button>
                     </div>
                 </div>
                 <div className="main__cards-container">
@@ -343,7 +379,7 @@ export default function Main() {
                 </div>
             </div>
             </div>
-                <aside className="main__info">
+                <aside id="information" className="main__info">
                 <div className="main__info__profile">
                     <p className="main__info__greetings">{auth.currentUser ? `Добро пожаловать, ${userdata.name}!` : 'Вы не вошли в аккаунт :('}</p>
                 </div>
