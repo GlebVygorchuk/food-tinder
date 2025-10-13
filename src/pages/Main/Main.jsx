@@ -102,9 +102,6 @@ export default function Main() {
         }, 1000)
     }
 
-    // НУЖНО БУДЕТ ДЕЛАТЬ ЗАПРОСЫ ПОЭТАПНО А НЕ ВСЁ СРАЗУ
-    // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
     const addToFavorites = async (e, inModal) => {
         setModalActive(false)
         e.stopPropagation()
@@ -213,6 +210,10 @@ export default function Main() {
     useEffect(() => {
         fetchRecipes()
     }, [])
+
+    useEffect(() => {
+        console.log(allDishes)
+    }, [allDishes])
 
     useEffect(() => {
         setCurrentIndex(dishes.length - 1)
@@ -361,7 +362,7 @@ export default function Main() {
                         onSwipe={handleSwipe}
                         onCardLeftScreen={() => handleLeftScreen(index)}
                         ref={cardRefs.current[index]}>
-                            <img src={item.image} className="main__card__image"></img>
+                            <img loading="lazy" src={item.image} className="main__card__image"></img>
                             <h3>{item.title}</h3>
                         </TinderCard>
                     )) : <Loader />}
