@@ -294,7 +294,8 @@
             background-color: black;
             border-radius: 5px;
             z-index: 5;
-            transform: translateY(22%) translateX(-5%);
+            left: -10px;
+            transform: translateY(22%);
             box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.451);
 
             &__button {
@@ -317,11 +318,12 @@
             }
 
             @include mobile-small {
-                transform: translateY(30%)
+                transform: translateY(0);
+                left: 20px;
             }
 
             @include mobile {
-                transform: translateY(35%)
+                transform: translateY(20%)
             }
         }
 
@@ -393,6 +395,7 @@
         color: var(--color-text);
         background-color: var(--color-dark);
         cursor: grab;
+        z-index: 2;
 
         @include mobile-small {
             width: 325px;
@@ -624,12 +627,12 @@
 }
 
 .show-cuisine {
-    transform: translateY(26%) translateX(-5%);
+    transform: translateY(26%);
     opacity: 1;
     pointer-events: all;
 
-    @include mobile-small {
-        transform: translateY(30%);
+    @include mobile {
+        transform: translateY(25%);
     }
 
     @include mobile-small {
