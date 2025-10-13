@@ -36,6 +36,11 @@ export default function Main() {
     })
     const [mobileFilters, setMobileFilters] = useState(false)
     const [cuisine, setCuisine] = useState('Кухня')
+    const [cardsLeft, setCardsLeft] = useState('')
+    const [slicePoints, setSlicePoints] = useState({
+        start: 0,
+        end: 15
+    })
     const { modalActive, setModalActive } = useContext(AppContext)
 
     const auth = getAuth()
@@ -80,6 +85,7 @@ export default function Main() {
 
         const current = ( {...dishes[currentIndex]} )
         setCurrentDish(current)
+        setCardsLeft(prev => prev - 1)
 
         setAlreadySaved(false)
         setModalActive(
@@ -95,8 +101,11 @@ export default function Main() {
         const response = await fetch(url)
         const result = await response.json()
 
-        setDishes(result)
+        const pack = result.slice(slicePoints.start, slicePoints.end)
+
+        setDishes(pack)
         setAllDishes(result)
+        setCardsLeft(pack.length)
         setTimeout(() => {
             setLoading(false)
         }, 1000)
@@ -208,12 +217,29 @@ export default function Main() {
     }, [filters.healthy, filters.vegetarian, cuisine])
 
     useEffect(() => {
-        fetchRecipes()
-    }, [])
+        console.log(cardsLeft)
+
+        if (cardsLeft === 0) {
+            setLoading(true)
+            setTimeout(() => {
+                setSlicePoints(prev => {
+                    const newSlicePoints = {
+                        start: prev.start + 15, 
+                        end: prev.end + 15
+                    }
+                    const pack = [...allDishes].slice(newSlicePoints.start, newSlicePoints.end)
+                    console.log(pack)
+                    setCardsLeft(pack.length)
+                    return newSlicePoints
+                }) 
+                setLoading(false)
+            }, 500)
+        }
+    }, [cardsLeft])
 
     useEffect(() => {
-        console.log(allDishes)
-    }, [allDishes])
+        fetchRecipes()
+    }, [])
 
     useEffect(() => {
         setCurrentIndex(dishes.length - 1)
