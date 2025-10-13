@@ -228,7 +228,7 @@ export default function Main() {
                         end: prev.end + 15
                     }
                     const pack = [...allDishes].slice(newSlicePoints.start, newSlicePoints.end)
-                    console.log(pack)
+                    setDishes(pack)
                     setCardsLeft(pack.length)
                     return newSlicePoints
                 }) 
