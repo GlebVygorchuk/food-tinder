@@ -586,6 +586,11 @@
   font-size: 30px;
   font-weight: 600;
 }
+@media (max-width: 480px) {
+  .recipe-modal__title {
+    font-size: 27.5px;
+  }
+}
 .recipe-modal__ingredients {
   list-style-type: "- ";
   margin: 0;
@@ -637,6 +642,32 @@
 }
 #deleteRecipe svg {
   fill: rgb(255, 69, 28);
+}
+
+#wipe {
+  transition: 0.3s;
+}
+#wipe:hover {
+  background-color: rgb(255, 69, 28);
+}
+@media (max-width: 770px) {
+  #wipe:hover {
+    background-color: var(--color-dark);
+  }
+  #wipe:hover svg {
+    fill: rgb(255, 69, 28);
+  }
+}
+#wipe:active {
+  background-color: rgb(255, 69, 28);
+}
+#wipe:active svg {
+  fill: white;
+}
+@media (max-width: 770px) {
+  #wipe {
+    transition: 0.1s;
+  }
 }
 
 #swipeRight {
@@ -806,5 +837,18 @@
 @media (max-width: 480px) {
   #cuisine-select, #healthy-filter, #vegetarian-filter {
     display: none;
+  }
+}
+
+#addToFavoriteModal {
+  width: 25px;
+  height: 25px;
+  margin-left: 0.33px;
+  margin-top: -1.5px;
+}
+@media (max-width: 770px) {
+  #addToFavoriteModal {
+    width: 30px;
+    height: 30px;
   }
 }/*# sourceMappingURL=Main.css.map */

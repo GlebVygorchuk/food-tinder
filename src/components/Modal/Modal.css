@@ -29,6 +29,19 @@
   transform: scale(0.9, 0.9);
   overflow: auto;
 }
+@media (max-width: 770px) {
+  .modal {
+    width: 400px;
+    height: 500px;
+    border-radius: 10px;
+  }
+}
+@media (max-width: 480px) {
+  .modal {
+    width: 350px;
+    font-size: 22.5px;
+  }
+}
 .modal__close-button {
   background: transparent;
   position: relative;

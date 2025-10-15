@@ -592,7 +592,11 @@
         align-items: center;
         column-gap: 15px;
         font-size: 30px;
-        font-weight: 600;    
+        font-weight: 600; 
+        
+        @include mobile-small {
+            font-size: 27.5px;
+        }
     }
 
     &__ingredients {
@@ -650,6 +654,32 @@
 
     svg {
         fill: rgb(255, 69, 28);
+    }
+}
+
+#wipe {
+    transition: 0.3s;
+    &:hover {
+        background-color: rgb(255, 69, 28);
+
+        @include mobile {
+            background-color: var(--color-dark);
+            svg {
+                fill: rgb(255, 69, 28);;
+            }
+        }
+    }
+
+    &:active {
+        background-color: rgb(255, 69, 28);
+    }
+
+    &:active svg {
+        fill: white;
+    }
+
+    @include mobile {
+        transition: 0.1s;
     }
 }
 
@@ -806,5 +836,17 @@
 #cuisine-select, #healthy-filter, #vegetarian-filter {
     @include mobile-small {
         display: none;
+    }
+}
+
+#addToFavoriteModal {
+    width: 25px;
+    height: 25px;
+    margin-left: 0.33px;
+    margin-top: -1.5px;
+
+    @include mobile {
+        width: 30px;
+        height: 30px;
     }
 }

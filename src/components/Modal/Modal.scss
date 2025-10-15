@@ -1,3 +1,5 @@
+@import '../../styles/mixins.scss';
+
 .backdrop {
     top: 0;
     position: fixed;
@@ -28,6 +30,17 @@
     font-size: 25px;
     transform: scale(0.9, 0.9);
     overflow: auto;
+
+    @include mobile {
+        width: 400px;
+        height: 500px;
+        border-radius: 10px;
+    }
+
+    @include mobile-small {
+        width: 350px;
+        font-size: 22.5px;
+    }
 
     &__close-button {
         background: transparent;
