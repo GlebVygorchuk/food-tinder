@@ -47,4 +47,10 @@ $mobile-xs: 400px;
     @media(max-width: $mobile-xs) {
         @content
     }
+};
+
+@mixin mobile-web {
+    @media(max-height: 775px) and (max-width: $mobile-small) {
+        @content
+    }
 }

@@ -18,6 +18,10 @@ body {
     font-weight: 500;
     background: var(--color-background);
     margin: 0;
+
+    @include mobile-small {
+        padding-bottom: 60px;
+    }
 }
 
 .Toastify__toast {

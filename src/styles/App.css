@@ -396,6 +396,7 @@
   padding-inline: 20px;
   height: 50px;
   background-color: var(--color-extra);
+  border: 1px solid var(--color-extra);
 }
 .main__header__leave {
   transition: 0.2s;
@@ -421,9 +422,21 @@
 .main__header__about-us {
   transition: 0.2s;
   cursor: pointer;
+  color: var(--color-dark-extra);
 }
 .main__header__about-us:hover {
   color: var(--color-hover);
+}
+@media (max-width: 480px) {
+  .main__header__about-us {
+    font-size: 17.5px;
+    margin-left: -5px;
+  }
+}
+@media (max-width: 480px) {
+  .main__header {
+    height: 60px;
+  }
 }
 .main__main {
   display: flex;
@@ -577,7 +590,7 @@
 }
 @media (max-width: 770px) {
   .main__info__favorite__title {
-    font-weight: 400;
+    font-weight: 600;
     left: 20px;
   }
 }
@@ -661,8 +674,8 @@
   position: absolute;
   background-color: black;
   border-radius: 5px;
-  z-index: 5;
-  transform: translateY(22%) translateX(-5%);
+  z-index: 11;
+  left: -10px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.451);
 }
 .main__filters__cuisine__button {
@@ -683,14 +696,16 @@
   color: white;
   background-color: var(--color-hover);
 }
-@media (max-width: 480px) {
-  .main__filters__cuisine {
-    transform: translateY(30%);
-  }
-}
 @media (max-width: 770px) {
   .main__filters__cuisine {
-    transform: translateY(35%);
+    transform: translateY(-20%);
+  }
+}
+@media (max-width: 480px) {
+  .main__filters__cuisine {
+    transform: translateY(50%);
+    left: 20px;
+    top: -400px;
   }
 }
 .main__filters__mobile {
@@ -700,14 +715,23 @@
   row-gap: 5px;
   z-index: 4;
   position: absolute;
-  top: 55px;
+  bottom: 55px;
   padding: 5px;
   border-radius: var(--border-radius);
   box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.083);
-  transform: translateY(-10px);
+  transform: translateY(10px);
   opacity: 0;
   transition: 0.2s;
   pointer-events: none;
+}
+@media (max-width: 480px) {
+  .main__filters {
+    position: fixed;
+    z-index: 10;
+    bottom: 0;
+    width: 100%;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.067);
+  }
 }
 .main__cards-container {
   position: relative;
@@ -720,7 +744,7 @@
 }
 @media (max-width: 480px) {
   .main__cards-container {
-    height: 650px;
+    height: 700px;
   }
 }
 .main__cards {
@@ -761,23 +785,35 @@
   color: var(--color-text);
   background-color: var(--color-dark);
   cursor: grab;
+  z-index: 2;
 }
 @media (max-width: 480px) {
   .main__card {
-    width: 325px;
-    height: 475px;
-    border-radius: 10px;
+    width: 340px;
+    height: 560px;
+    border-radius: 20px;
+    margin-top: 20px;
+  }
+}
+@media (max-height: 775px) {
+  .main__card {
+    height: 520px;
   }
 }
 .main__card__image {
   width: 100%;
   height: 100%;
-  border-radius: 10px;
+  border-radius: var(--border-radius);
   background-color: black;
   pointer-events: none;
   -o-object-fit: cover;
      object-fit: cover;
   filter: brightness(0.5);
+}
+@media (max-width: 480px) {
+  .main__card__image {
+    border-radius: 20px;
+  }
 }
 .main__card h3 {
   font-size: 35px;
@@ -790,7 +826,7 @@
 }
 @media (max-width: 480px) {
   .main__card h3 {
-    font-size: 40px;
+    font-size: 45px;
   }
 }
 .main__swipe-buttons {
@@ -801,7 +837,12 @@
 }
 @media (max-width: 480px) {
   .main__swipe-buttons {
-    margin-top: 525px;
+    margin-top: 600px;
+  }
+}
+@media (max-height: 775px) {
+  .main__swipe-buttons {
+    margin-top: 555px;
   }
 }
 .main__swipe-button {
@@ -989,13 +1030,13 @@
 }
 
 .show-cuisine {
-  transform: translateY(26%) translateX(-5%);
+  transform: translateY(26%);
   opacity: 1;
   pointer-events: all;
 }
-@media (max-width: 480px) {
+@media (max-width: 770px) {
   .show-cuisine {
-    transform: translateY(30%);
+    transform: translateY(25%);
   }
 }
 @media (max-width: 480px) {
@@ -1246,6 +1287,11 @@ body {
   font-weight: 500;
   background: var(--color-background);
   margin: 0;
+}
+@media (max-width: 480px) {
+  body {
+    padding-bottom: 60px;
+  }
 }
 
 .Toastify__toast {
