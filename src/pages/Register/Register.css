@@ -120,6 +120,14 @@
   background-color: var(--color-hover);
 }
 @media (max-width: 770px) {
+  .form__button:hover {
+    background-color: black;
+  }
+}
+.form__button:active {
+  background-color: var(--color-hover);
+}
+@media (max-width: 770px) {
   .form__button {
     width: 70%;
   }

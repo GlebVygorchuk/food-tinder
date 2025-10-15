@@ -282,6 +282,11 @@
 .main__filters__button:hover {
   color: var(--color-hover);
 }
+@media (max-width: 770px) {
+  .main__filters__button:hover {
+    color: var(--color-dark-extra);
+  }
+}
 .main__filters__cuisine {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -412,7 +417,7 @@
     margin-top: 20px;
   }
 }
-@media (max-height: 775px) {
+@media (max-height: 775px) and (max-width: 480px) {
   .main__card {
     height: 520px;
   }
@@ -457,7 +462,7 @@
     margin-top: 600px;
   }
 }
-@media (max-height: 775px) {
+@media (max-height: 775px) and (max-width: 480px) {
   .main__swipe-buttons {
     margin-top: 555px;
   }
@@ -485,11 +490,40 @@
 .main__swipe-button:hover {
   background-color: var(--color-hover);
 }
+@media (max-width: 770px) {
+  .main__swipe-button:hover {
+    background-color: var(--color-dark);
+  }
+}
 .main__swipe-button:hover svg {
   fill: white;
 }
+@media (max-width: 770px) {
+  .main__swipe-button:hover svg {
+    fill: var(--color-hover);
+  }
+}
 .main__swipe-button:hover .cross-line {
   background-color: white;
+}
+@media (max-width: 770px) {
+  .main__swipe-button:hover .cross-line {
+    background-color: var(--color-hover);
+  }
+}
+.main__swipe-button:active {
+  background-color: var(--color-hover);
+}
+.main__swipe-button:active svg {
+  fill: white;
+}
+.main__swipe-button:active .cross-line {
+  background-color: white;
+}
+@media (max-width: 770px) {
+  .main__swipe-button {
+    transition: 0.1s;
+  }
 }
 
 .unauthorized {

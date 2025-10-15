@@ -130,6 +130,14 @@
 
             &:hover {
                 background-color: var(--color-hover);
+
+                @include mobile {
+                    background-color: black;
+                }
+            }
+
+            &:active {
+                background-color: var(--color-hover);
             }
 
             @include mobile {
