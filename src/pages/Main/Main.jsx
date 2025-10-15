@@ -331,7 +331,7 @@ export default function Main() {
                     </button>
 
                     <button onClick={() => setMobileFilters(prev => !prev)} id="filters-mobile" className="main__filters__button">
-                        Фильтры <span style={mobileFilters ? {transform: 'rotate(270deg)'} : null} className="main__filters__button__arrow">&lt;</span>
+                        Фильтры <span style={mobileFilters ? {transform: 'rotate(90deg)'} : {transform: 'rotate(270deg)'}} className="main__filters__button__arrow">&lt;</span>
                     </button>
 
                     <a href="#information" id="saved" className="main__filters__button">Сохранённые</a>
@@ -354,7 +354,7 @@ export default function Main() {
                     style={filters.showCuisine ? {color: '#244cff'} : null}
                     onClick={() => setFilters(prev => ({...prev, showCuisine: !prev.showCuisine}))} 
                     className="main__filters__button">
-                        {cuisine} <span style={filters.showCuisine ? {transform: 'rotate(270deg)'} : null} className="main__filters__button__arrow">&lt;</span>
+                        {cuisine} <span style={filters.showCuisine ? {transform: 'rotate(90deg)'} :  {transform: 'rotate(270deg)'}} className="main__filters__button__arrow">&lt;</span>
                     </button>
 
                     <button 

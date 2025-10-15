@@ -15,6 +15,7 @@
         padding-inline: 20px;
         height: 50px;
         background-color: var(--color-extra);
+        border: 1px solid var(--color-extra);
 
         &__leave {
             transition: 0.2s;
@@ -47,6 +48,16 @@
             &:hover {
                 color: var(--color-hover);
             }
+
+            @include mobile-small {
+                font-size: 17.5px;
+                margin-left: -5px;
+                color: var(--color-dark-extra);
+            }
+        }
+
+        @include mobile-small {
+            height: 60px;
         }
     }
 
@@ -209,7 +220,7 @@
                 }
 
                 @include mobile {
-                    font-weight: 400;
+                    font-weight: 600;
                     left: 20px;
                 }
             }
@@ -293,9 +304,8 @@
             position: absolute;
             background-color: black;
             border-radius: 5px;
-            z-index: 5;
+            z-index: 11;
             left: -10px;
-            transform: translateY(22%);
             box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.451);
 
             &__button {
@@ -317,13 +327,14 @@
                 }
             }
 
-            @include mobile-small {
-                transform: translateY(0);
-                left: 20px;
+            @include mobile {
+                transform: translateY(-20%);
             }
 
-            @include mobile {
-                transform: translateY(20%)
+            @include mobile-small {
+                transform: translateY(50%);
+                left: 20px;
+                top: -400px;
             }
         }
 
@@ -334,14 +345,22 @@
             row-gap: 5px;
             z-index: 4;
             position: absolute;
-            top: 55px;
+            bottom: 55px;
             padding: 5px;
             border-radius: var(--border-radius);
             box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.083);
-            transform: translateY(-10px);
+            transform: translateY(10px);
             opacity: 0;
             transition: 0.2s;
             pointer-events: none;
+        }
+
+        @include mobile-small {
+            position: fixed;
+            z-index: 10;
+            bottom: 0;
+            width: 100%;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.067);
         }
     }
 
@@ -401,6 +420,7 @@
             width: 325px;
             height: 475px;
             border-radius: 10px;
+            margin-top: 20px;
         }
 
         &__image {
@@ -434,7 +454,7 @@
         margin-top: 400px;
 
         @include mobile-small {
-            margin-top: 525px;
+            margin-top: 515px;
         }
     }
 
