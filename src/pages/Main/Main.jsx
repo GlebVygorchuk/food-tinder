@@ -39,7 +39,7 @@ export default function Main() {
     const [cardsLeft, setCardsLeft] = useState('')
     const [slicePoints, setSlicePoints] = useState({
         start: 0,
-        end: 15
+        end: 7
     })
     const { modalActive, setModalActive } = useContext(AppContext)
 
@@ -224,8 +224,8 @@ export default function Main() {
             setTimeout(() => {
                 setSlicePoints(prev => {
                     const newSlicePoints = {
-                        start: prev.start + 15, 
-                        end: prev.end + 15
+                        start: prev.start + 7, 
+                        end: prev.end + 7
                     }
                     const pack = [...allDishes].slice(newSlicePoints.start, newSlicePoints.end)
                     setDishes(pack)
