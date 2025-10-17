@@ -36,6 +36,7 @@ export default function Main() {
     })
     const [mobileFilters, setMobileFilters] = useState(false)
     const [cuisine, setCuisine] = useState('Кухня')
+    const [currentArray, setCurrentArray] = useState([])
     const [cardsLeft, setCardsLeft] = useState('')
     const [slicePoints, setSlicePoints] = useState({
         start: 0,
@@ -105,6 +106,7 @@ export default function Main() {
 
         setDishes(pack)
         setAllDishes(result)
+        setCurrentArray(result)
         setCardsLeft(pack.length)
         setTimeout(() => {
             setLoading(false)
@@ -210,6 +212,7 @@ export default function Main() {
         })
 
         setDishes(filtered)
+        setCurrentArray(filtered)
         setLoading(true)
         setTimeout(() => {
             setLoading(false)
@@ -217,8 +220,6 @@ export default function Main() {
     }, [filters.healthy, filters.vegetarian, cuisine])
 
     useEffect(() => {
-        console.log(cardsLeft)
-
         if (cardsLeft === 0) {
             setLoading(true)
             setTimeout(() => {
@@ -227,7 +228,7 @@ export default function Main() {
                         start: prev.start + 7, 
                         end: prev.end + 7
                     }
-                    const pack = [...allDishes].slice(newSlicePoints.start, newSlicePoints.end)
+                    const pack = [...currentArray].slice(newSlicePoints.start, newSlicePoints.end)
                     setDishes(pack)
                     setCardsLeft(pack.length)
                     return newSlicePoints
@@ -240,6 +241,10 @@ export default function Main() {
     useEffect(() => {
         fetchRecipes()
     }, [])
+
+    useEffect(() => {
+        console.log(currentArray)
+    }, [currentArray])
 
     useEffect(() => {
         setCurrentIndex(dishes.length - 1)
