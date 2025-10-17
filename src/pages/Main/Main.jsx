@@ -192,31 +192,15 @@ export default function Main() {
         const copy = [...allDishes]
 
         const filtered = copy.filter(item => {
-            if (cuisine !== 'Кухня' && !filters.healthy && !filters.vegetarian) {
-                return item.cuisine === cuisine
-            } else if (cuisine !== 'Кухня' && filters.healthy && !filters.vegetarian) {
-                return item.cuisine === cuisine && item.healthy
-            } else if (cuisine !== 'Кухня' && !filters.healthy && filters.vegetarian) {
-                return item.cuisine === cuisine && item.vegetarian
-            } else if (cuisine !== 'Кухня' && filters.healthy && filters.vegetarian) {
-                return item.cuisine === cuisine && item.healthy && item.vegetarian
-            } else if (cuisine === 'Кухня' && !filters.healthy && filters.vegetarian) {
-                return item.vegetarian
-            } else if (cuisine === 'Кухня' && filters.healthy && !filters.vegetarian) {
-                return item.healthy
-            } else if (cuisine === 'Кухня' && filters.healthy && filters.vegetarian) {
-                return item.healthy && item.vegetarian
-            } else {
-                return copy
-            }
+            const matchCuisine = cuisine === 'Кухня' || item.cuisine === cuisine
+            const matchHealthy = !filters.healthy || item.healthy
+            const matchVegetarian = !filters.vegetarian || item.vegetarian
+
+            return matchCuisine && matchHealthy && matchVegetarian
         })
 
         setDishes(filtered)
         setCurrentArray(filtered)
-        setLoading(true)
-        setTimeout(() => {
-            setLoading(false)
-        }, 750)
     }, [filters.healthy, filters.vegetarian, cuisine])
 
     useEffect(() => {
@@ -228,6 +212,7 @@ export default function Main() {
                         start: prev.start + 7, 
                         end: prev.end + 7
                     }
+                    console.log(currentArray)
                     const pack = [...currentArray].slice(newSlicePoints.start, newSlicePoints.end)
                     setDishes(pack)
                     setCardsLeft(pack.length)
