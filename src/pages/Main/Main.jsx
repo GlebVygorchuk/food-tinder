@@ -1,7 +1,7 @@
 import { getAuth, onAuthStateChanged, signOut } from "firebase/auth"
 import { collection, addDoc, onSnapshot, doc, deleteDoc, getDocs, query, where } from "firebase/firestore"
 import { useNavigate } from "react-router-dom"
-import React, { useEffect, useState, useRef, useContext } from "react"
+import React, { useEffect, useState, useRef, useContext, useMemo } from "react"
 import TinderCard from 'react-tinder-card'
 import Loader from "../../components/Loader"
 import Modal from "../../components/Modal/Modal"
@@ -51,7 +51,7 @@ export default function Main() {
     const cardRefs = useRef([])
     const favoritesRef = useRef([])
 
-    cardRefs.current = example.map(() => React.createRef())
+    //cardRefs.current = example.map(() => React.createRef())
 
     function handleSwipe(direction) {
         setAlreadySaved(false)
@@ -69,6 +69,7 @@ export default function Main() {
             })) : null
         }
 
+        setCardsLeft(prev => prev - 1)
         setCurrentIndex(prev => prev - 1)
     }
 
@@ -80,6 +81,7 @@ export default function Main() {
     }
 
     function swipe(direction, index, favorites) {
+        console.log(cardRefs)
         if (cardRefs.current[index] && cardRefs.current[index].current) {
            cardRefs.current[index].current.swipe(direction)
         }
@@ -189,6 +191,16 @@ export default function Main() {
     }
 
     useEffect(() => {
+        cardRefs.current = dishes.map((_, index) => {
+            return cardRefs.current[index] || React.createRef()
+        })
+    }, [dishes])
+
+    useEffect(() => {
+        console.log(cardRefs.current)
+    }, [cardRefs])
+
+    useEffect(() => {
         const copy = [...allDishes]
 
         const filtered = copy.filter(item => {
@@ -226,10 +238,6 @@ export default function Main() {
     useEffect(() => {
         fetchRecipes()
     }, [])
-
-    useEffect(() => {
-        console.log(currentArray)
-    }, [currentArray])
 
     useEffect(() => {
         setCurrentIndex(dishes.length - 1)
@@ -274,21 +282,6 @@ export default function Main() {
     useEffect(() => {
         !mobileFilters ? setFilters(prev => ({...prev, showCuisine: false})) : null
     }, [mobileFilters])
-
-    const CardsList = React.memo(({ dishes }) => {
-        return dishes.map((item, index) => (
-            <TinderCard
-            preventSwipe={['up', 'down']}
-            key={item.id} 
-            className="main__card"
-            onSwipe={handleSwipe}
-            onCardLeftScreen={() => handleLeftScreen(index)}
-            ref={cardRefs.current[index]}>
-                <img loading="lazy" src={item.image} className="main__card__image"></img>
-                <h3>{item.title}</h3>
-            </TinderCard>
-        ))
-    })
 
     return (
         <>
@@ -385,7 +378,18 @@ export default function Main() {
                     <svg id="arrowRight" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M32 15H3.41l8.29-8.29-1.41-1.42-10 10a1 1 0 0 0 0 1.41l10 10 1.41-1.41L3.41 17H32z"/></svg>
                 </div>
                 <div className="main__cards">
-                    {!loading ? <CardsList dishes={dishes}/> : <Loader />}
+                    {!loading ? dishes.map((item, index) => (
+            <TinderCard
+            preventSwipe={['up', 'down']}
+            key={item.id} 
+            className="main__card"
+            onSwipe={handleSwipe}
+            onCardLeftScreen={() => handleLeftScreen(index)}
+            ref={cardRefs.current[index]}>
+                <img loading="lazy" src={item.image} className="main__card__image"></img>
+                <h3>{item.title}</h3>
+            </TinderCard>
+        )) : <Loader />}
                     <div className="main__swipe-buttons">
                         <button style={{position: 'relative'}} onClick={() => swipe('left', currentIndex, false)} className="main__swipe-button">
                             <span id="cross" style={{transform: 'rotate(45deg)'}} className="cross-line"></span><span style={{transform: 'rotate(-45deg)'}} className="cross-line"></span>
