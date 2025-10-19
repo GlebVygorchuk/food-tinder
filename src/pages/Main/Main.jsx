@@ -275,6 +275,21 @@ export default function Main() {
         !mobileFilters ? setFilters(prev => ({...prev, showCuisine: false})) : null
     }, [mobileFilters])
 
+    const CardsList = React.memo(({ dishes }) => {
+        return dishes.map((item, index) => (
+            <TinderCard
+            preventSwipe={['up', 'down']}
+            key={item.id} 
+            className="main__card"
+            onSwipe={handleSwipe}
+            onCardLeftScreen={() => handleLeftScreen(index)}
+            ref={cardRefs.current[index]}>
+                <img loading="lazy" src={item.image} className="main__card__image"></img>
+                <h3>{item.title}</h3>
+            </TinderCard>
+        ))
+    })
+
     return (
         <>
         <section className="main">
@@ -370,18 +385,7 @@ export default function Main() {
                     <svg id="arrowRight" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M32 15H3.41l8.29-8.29-1.41-1.42-10 10a1 1 0 0 0 0 1.41l10 10 1.41-1.41L3.41 17H32z"/></svg>
                 </div>
                 <div className="main__cards">
-                    {!loading ? dishes.map((item, index) => (
-                        <TinderCard
-                        preventSwipe={['up', 'down']}
-                        key={item.id} 
-                        className="main__card"
-                        onSwipe={handleSwipe}
-                        onCardLeftScreen={() => handleLeftScreen(index)}
-                        ref={cardRefs.current[index]}>
-                            <img loading="lazy" src={item.image} className="main__card__image"></img>
-                            <h3>{item.title}</h3>
-                        </TinderCard>
-                    )) : <Loader />}
+                    {!loading ? <CardsList dishes={dishes}/> : <Loader />}
                     <div className="main__swipe-buttons">
                         <button style={{position: 'relative'}} onClick={() => swipe('left', currentIndex, false)} className="main__swipe-button">
                             <span id="cross" style={{transform: 'rotate(45deg)'}} className="cross-line"></span><span style={{transform: 'rotate(-45deg)'}} className="cross-line"></span>
