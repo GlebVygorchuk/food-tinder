@@ -5,6 +5,11 @@
   animation: appear 0.3s forwards;
   padding-inline: 60px;
 }
+@media (max-width: 770px) {
+  .about {
+    padding-inline: 20px;
+  }
+}
 .about__title {
   align-self: flex-start;
   padding-left: 30px;
@@ -12,6 +17,11 @@
   font-size: 60px;
   font-weight: 500;
   margin: 0;
+}
+@media (max-width: 770px) {
+  .about__title {
+    padding-left: 10px;
+  }
 }
 .about__info {
   margin-top: 30px;
@@ -21,6 +31,12 @@
   -moz-column-gap: 20px;
        column-gap: 20px;
   padding: 0;
+}
+@media (max-width: 770px) {
+  .about__info {
+    flex-direction: column;
+    row-gap: 20px;
+  }
 }
 .about__list {
   margin-top: 60px;
@@ -52,4 +68,13 @@
 }
 .about__block p {
   margin: 0;
+}
+
+#mainInfo {
+  row-gap: 15px;
+}
+@media (max-width: 770px) {
+  #mainInfo {
+    font-size: 25px;
+  }
 }/*# sourceMappingURL=AboutProject.css.map */

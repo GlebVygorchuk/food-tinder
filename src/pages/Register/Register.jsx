@@ -131,8 +131,6 @@ export default function Register() {
         return () => clearInterval(interval)
     }, [])
 
-    // Костыль, переделать через onAuthStateChanged !!!
-
     return (
         <section className="register">
             <div className="form__container">

@@ -97,18 +97,20 @@ export default function Main() {
         setLoading(true)
         const url = `https://68d8fc2490a75154f0d93941.mockapi.io/recipes`
 
-        const response = await fetch(url)
-        const result = await response.json()
+        try {
+            const response = await fetch(url)
+            const result = await response.json()
 
-        const pack = result.slice(slicePoints.start, slicePoints.end)
+            const pack = result.slice(slicePoints.start, slicePoints.end)
 
-        setDishes(pack)
-        setAllDishes(result)
-        setCurrentArray(result)
-        setCardsLeft(pack.length)
-        setTimeout(() => {
+            setDishes(pack)
+            setAllDishes(result)
+            setCurrentArray(result)
+            setCardsLeft(pack.length)
             setLoading(false)
-        }, 1000)
+        } catch (error) {
+            console.log(error)
+        }
     }
 
     const addToFavorites = async (e, inModal) => {
@@ -202,7 +204,7 @@ export default function Main() {
     }, [filters.healthy, filters.vegetarian, cuisine])
 
     useEffect(() => {
-        if (cardsLeft <= 0) {
+        if (cardsLeft === 0) {
             setLoading(true)
             setTimeout(() => {
                 setSlicePoints(prev => {
@@ -210,7 +212,6 @@ export default function Main() {
                         start: prev.start + 7, 
                         end: prev.end + 7
                     }
-                    console.log(currentArray)
                     const pack = [...currentArray].slice(newSlicePoints.start, newSlicePoints.end)
                     setDishes(pack)
                     setCardsLeft(pack.length)
@@ -232,6 +233,10 @@ export default function Main() {
     useEffect(() => {
         setSelectedDish(dishes[currentIndex])
     }, [currentIndex])
+
+    useEffect(() => {
+        console.log(currentArray)
+    }, [currentArray])
 
     useEffect(() => {
         const unsub = onAuthStateChanged(auth, user => {
@@ -264,6 +269,11 @@ export default function Main() {
     useEffect(() => {
         favoritesRef.current = favorites
     }, [favorites]) 
+
+    useEffect(() => {
+        console.log(dishes)
+        console.log(slicePoints)
+    }, [dishes])
 
     useEffect(() => {
         !mobileFilters ? setFilters(prev => ({...prev, showCuisine: false})) : null

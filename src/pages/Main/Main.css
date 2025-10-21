@@ -247,7 +247,6 @@
   border-radius: var(--border-radius);
   padding-inline: 15px;
   transition: 0.2s;
-  border: 2px solid transparent;
 }
 @media (max-width: 1080px) {
   .main__filters__button {
@@ -278,14 +277,6 @@
   transform: rotate(90deg);
   margin-left: 5px;
   transition: 0.3s;
-}
-.main__filters__button:hover {
-  color: var(--color-hover);
-}
-@media (max-width: 770px) {
-  .main__filters__button:hover {
-    color: var(--color-dark-extra);
-  }
 }
 .main__filters__cuisine {
   display: grid;
@@ -707,8 +698,8 @@
 }
 
 .active {
-  color: var(--color-hover);
-  border: 2px solid var(--color-hover);
+  color: white;
+  background-color: var(--color-hover);
 }
 
 .show-cuisine {

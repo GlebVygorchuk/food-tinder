@@ -261,7 +261,6 @@
             border-radius: var(--border-radius);
             padding-inline: 15px;
             transition: 0.2s;
-            border: 2px solid transparent;
 
             @include tablet {
                 font-size: 17.5px;
@@ -288,14 +287,6 @@
                 transform: rotate(90deg);
                 margin-left: 5px;
                 transition: 0.3s;
-            }
-
-            &:hover {
-                color: var(--color-hover);  
-                
-                @include mobile {
-                    color: var(--color-dark-extra);
-                }
             }
         }
 
@@ -716,8 +707,8 @@
 }
 
 .active {
-    color: var(--color-hover);
-    border: 2px solid var(--color-hover);
+    color: white;
+    background-color: var(--color-hover);
 }
 
 .show-cuisine {

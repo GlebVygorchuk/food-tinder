@@ -3,7 +3,7 @@ export default function AboutProject() {
         <section className="about">
             <h1 className="about__title">О проекте</h1>
             <ul className="about__info">
-                <li className="about__block"> 
+                <li id="mainInfo" className="about__block"> 
                     <p><span>foodHunter</span>- "тиндер-подобное" приложение для поиска аппетитных блюд и рецептов!</p>
                     <p><span>Возможности:</span> Просмотр рецептов, добавление в избранное, филтрация по типам кухни, вегетарианской и здоровой пище</p> 
                     <p><span>Стэк:</span> React, SCSS, Vite, Vercel, Firebase, MockAPI, react-tinder-cards, react-toastify</p>
