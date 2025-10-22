@@ -269,7 +269,8 @@
   .main__filters__button {
     font-size: 22px;
     text-align: left;
-    padding-inline: 10px;
+    padding-inline: 12.5px;
+    padding-block: 7.5px;
   }
 }
 .main__filters__button__arrow {
@@ -396,7 +397,7 @@
      -moz-user-select: none;
           user-select: none;
   color: var(--color-text);
-  background-color: var(--color-dark);
+  background-color: var(--color-dark-extra);
   cursor: grab;
   z-index: 2;
 }
@@ -714,7 +715,7 @@
 }
 @media (max-width: 480px) {
   .show-cuisine {
-    transform: translateY(45%);
+    transform: translateY(38%);
   }
 }
 
@@ -842,4 +843,21 @@
     width: 30px;
     height: 30px;
   }
+}
+
+#add, #deleteRecipe {
+  background-color: var(--color-extra);
+  position: absolute;
+  left: -50px;
+  top: 5px;
+}
+@media (max-width: 770px) {
+  #add, #deleteRecipe {
+    bottom: -60px;
+    right: 5px;
+  }
+}
+
+#add:hover {
+  background-color: var(--color-hover);
 }/*# sourceMappingURL=Main.css.map */

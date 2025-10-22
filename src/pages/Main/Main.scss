@@ -279,7 +279,8 @@
             @include mobile-small {
                 font-size: 22px;
                 text-align: left;
-                padding-inline: 10px;
+                padding-inline: 12.5px;
+                padding-block: 7.5px;
             }
 
             &__arrow {
@@ -407,7 +408,7 @@
         margin-top: 30px;
         user-select: none;
         color: var(--color-text);
-        background-color: var(--color-dark);
+        background-color: var(--color-dark-extra);
         cursor: grab;
         z-index: 2;
 
@@ -721,7 +722,7 @@
     }
 
     @include mobile-small {
-        transform: translateY(45%);
+        transform: translateY(38%);
     }
 }
 
@@ -839,5 +840,23 @@
     @include mobile {
         width: 30px;
         height: 30px;
+    }
+}
+
+#add, #deleteRecipe {
+    background-color: var(--color-extra);
+    position: absolute;
+    left: -50px;
+    top: 5px;
+
+    @include mobile {
+        bottom: -60px;
+        right: 5px;
+    }
+}
+
+#add {
+    &:hover {
+        background-color: var(--color-hover);
     }
 }

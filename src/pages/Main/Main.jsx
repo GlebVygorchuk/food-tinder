@@ -7,8 +7,8 @@ import Loader from "../../components/Loader"
 import Modal from "../../components/Modal/Modal"
 import { AppContext } from "../../components/AppContext"
 import { toast } from "react-toastify"
-import { example } from "../../example"
 import { database } from "../../main"
+import { recipes } from "../../example"
 
 export default function Main() {
     const [userdata, setUserdata] = useState({
@@ -95,17 +95,19 @@ export default function Main() {
 
     async function fetchRecipes() {
         setLoading(true)
-        const url = `https://68d8fc2490a75154f0d93941.mockapi.io/recipes`
+
+        // const url = `https://68d8fc2490a75154f0d93941.mockapi.io/recipes`
+        // Здесь должен быть запрос на MockAPI, но он почему то не работает
 
         try {
-            const response = await fetch(url)
-            const result = await response.json()
+            // const response = await fetch(url)
+            // const result = await response.json()
 
-            const pack = result.slice(slicePoints.start, slicePoints.end)
+            const pack = recipes.slice(slicePoints.start, slicePoints.end)
 
             setDishes(pack)
-            setAllDishes(result)
-            setCurrentArray(result)
+            setAllDishes(recipes)
+            setCurrentArray(recipes)
             setCardsLeft(pack.length)
             setLoading(false)
         } catch (error) {
@@ -178,7 +180,6 @@ export default function Main() {
             ...prev, 
             showCuisine: false
         }))
-        filterByCuisine(cuisine)
     }
 
     function leave() {
@@ -292,7 +293,7 @@ export default function Main() {
             onSwipe={handleSwipe}
             onCardLeftScreen={() => handleLeftScreen(index)}
             ref={cardRefs.current[index]}>
-                <img loading="lazy" src={item.image} className="main__card__image"></img>
+                {/* <img loading="lazy" src={item.image} className="main__card__image"></img> */}
                 <h3>{item.title}</h3>
             </TinderCard>
         ))
