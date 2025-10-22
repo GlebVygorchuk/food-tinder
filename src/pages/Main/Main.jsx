@@ -110,6 +110,12 @@ export default function Main() {
             setCurrentArray(recipes)
             setCardsLeft(pack.length)
             setLoading(false)
+            setRecipe(prev => ({
+                ...prev, 
+                title: recipes[0].title,
+                ingredients: recipes[0].ingredients,
+                description: recipes[0].recipe
+            }))
         } catch (error) {
             console.log(error)
         }
@@ -236,10 +242,6 @@ export default function Main() {
     }, [currentIndex])
 
     useEffect(() => {
-        console.log(currentArray)
-    }, [currentArray])
-
-    useEffect(() => {
         const unsub = onAuthStateChanged(auth, user => {
             if (user) {
                 setUserdata({
@@ -271,10 +273,9 @@ export default function Main() {
         favoritesRef.current = favorites
     }, [favorites]) 
 
-    useEffect(() => {
-        console.log(dishes)
-        console.log(slicePoints)
-    }, [dishes])
+    useEffect(() => console.log(recipe), [recipe])
+
+    useEffect(() => console.log(dishes[currentIndex]), [dishes, currentIndex])
 
     useEffect(() => {
         !mobileFilters ? setFilters(prev => ({...prev, showCuisine: false})) : null
@@ -422,7 +423,7 @@ export default function Main() {
                     {favorites.map((item, index) => 
                     <div id={item.id} style={{backgroundImage: `url(${item.data.image})`}} key={item.data.id} onClick={() => showSavedRecipe(index)} className="main__info__favorite">
                         <p className="main__info__favorite__title">{item.data.title}</p>
-                        <img className="main__info__favorite__image" src={item.data.image} alt="" />
+                        {/* <img className="main__info__favorite__image" src={item.data.image} alt="" /> */}
                     </div>
                     )}
                 </div> : 
@@ -435,12 +436,11 @@ export default function Main() {
             </aside>
             </main>
         </section>
-        <Modal>
+        <Modal button={!alreadySaved ? <button onClick={(e) => addToFavorites(e, true)} title="Добавить в избранное" id="add" className="main__swipe-button">
+                    <svg id="addToFavoriteModal" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25 25"><path d="m18.25 15.52 1.36 7.92-7.11-3.74-7.11 3.74 1.36-7.92L1 9.92l7.95-1.16 3.55-7.2 3.55 7.2L24 9.92z"/></svg>
+                </button> : <button id="deleteRecipe" onClick={() => deleteRecipe(recipe.index)} className="main__swipe-button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M22 5a1 1 0 0 1-1 1H3a1 1 0 0 1 0-2h5V3a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v1h5a1 1 0 0 1 1 1zM4.934 21.071 4 8h16l-.934 13.071a1 1 0 0 1-1 .929H5.931a1 1 0 0 1-.997-.929zM15 18a1 1 0 0 0 2 0v-6a1 1 0 0 0-2 0zm-4 0a1 1 0 0 0 2 0v-6a1 1 0 0 0-2 0zm-4 0a1 1 0 0 0 2 0v-6a1 1 0 0 0-2 0z"/></svg></button>}>
             <div className="recipe-modal">
                 <div className="recipe-modal__title">{recipe.title}                 
-                    {!alreadySaved ? <button onClick={(e) => addToFavorites(e, true)} title="Добавить в избранное" id="add" className="main__swipe-button">
-                    <svg id="addToFavoriteModal" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25 25"><path d="m18.25 15.52 1.36 7.92-7.11-3.74-7.11 3.74 1.36-7.92L1 9.92l7.95-1.16 3.55-7.2 3.55 7.2L24 9.92z"/></svg>
-                </button> : <button id="deleteRecipe" onClick={() => deleteRecipe(recipe.index)} className="main__swipe-button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M22 5a1 1 0 0 1-1 1H3a1 1 0 0 1 0-2h5V3a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v1h5a1 1 0 0 1 1 1zM4.934 21.071 4 8h16l-.934 13.071a1 1 0 0 1-1 .929H5.931a1 1 0 0 1-.997-.929zM15 18a1 1 0 0 0 2 0v-6a1 1 0 0 0-2 0zm-4 0a1 1 0 0 0 2 0v-6a1 1 0 0 0-2 0zm-4 0a1 1 0 0 0 2 0v-6a1 1 0 0 0-2 0z"/></svg></button>}
                 </div>
                 <ul className="recipe-modal__ingredients">
                     {recipe.ingredients && recipe.ingredients.map(item => <li>{item}</li>)}

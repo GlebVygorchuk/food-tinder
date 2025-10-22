@@ -14,6 +14,7 @@
     transition: 0.3s;
     border: transparent;
     z-index: 9999;
+    overflow: visible;
 }
 
 .modal {
@@ -29,6 +30,7 @@
     color: var(--color-text);
     font-size: 25px;
     transform: scale(0.9, 0.9);
+    overflow: scroll;
 
     @include mobile {
         width: 400px;
@@ -53,6 +55,27 @@
             background-color: var(--color-text);
             border-radius: var(--border-radius);
         }
+    }
+}
+
+.modal-wrapper {
+    position: relative;
+}
+
+#add, #deleteRecipe {
+    background-color: var(--color-extra);
+    position: absolute;
+    border-radius: 7.5px;
+    left: -47.5px;
+    top: 5px;
+
+    @include mobile {
+        top: 505px;
+        left: 355px;
+    }
+
+    @include mobile {
+        left: 295px;
     }
 }
 

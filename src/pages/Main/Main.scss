@@ -170,6 +170,7 @@
             transition: 0.3s;
             cursor: pointer;
             animation: slide 0.3s forwards;
+            background-color: var(--color-dark-extra);
 
             @include tablet {
                 font-size: 20px;
@@ -840,18 +841,6 @@
     @include mobile {
         width: 30px;
         height: 30px;
-    }
-}
-
-#add, #deleteRecipe {
-    background-color: var(--color-extra);
-    position: absolute;
-    left: -50px;
-    top: 5px;
-
-    @include mobile {
-        bottom: -60px;
-        right: 5px;
     }
 }
 

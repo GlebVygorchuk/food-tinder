@@ -12,6 +12,7 @@
   transition: 0.3s;
   border: transparent;
   z-index: 9999;
+  overflow: visible;
 }
 
 .modal {
@@ -27,6 +28,7 @@
   color: var(--color-text);
   font-size: 25px;
   transform: scale(0.9, 0.9);
+  overflow: scroll;
 }
 @media (max-width: 770px) {
   .modal {
@@ -52,6 +54,29 @@
   height: 3px;
   background-color: var(--color-text);
   border-radius: var(--border-radius);
+}
+
+.modal-wrapper {
+  position: relative;
+}
+
+#add, #deleteRecipe {
+  background-color: var(--color-extra);
+  position: absolute;
+  border-radius: 7.5px;
+  left: -47.5px;
+  top: 5px;
+}
+@media (max-width: 770px) {
+  #add, #deleteRecipe {
+    top: 505px;
+    left: 355px;
+  }
+}
+@media (max-width: 770px) {
+  #add, #deleteRecipe {
+    left: 295px;
+  }
 }
 
 .button-wrapper {

@@ -1,11 +1,13 @@
 import { useContext } from "react"
 import { AppContext } from "../AppContext"
 
-export default function Modal({ children }) {
+export default function Modal({ children, button }) {
     const { modalActive, setModalActive, closeModal, currentIndex, setCurrentIndex } = useContext(AppContext)
 
     return (
         <div onClick={() => setModalActive(false)} className={`backdrop ${modalActive ? 'active' : ''}`}>
+            <div className="modal-wrapper">
+            {button}
             <div className={`modal ${modalActive ? 'active' : ''}`}>
                 {children}
                 <div className="button-wrapper">
@@ -13,6 +15,7 @@ export default function Modal({ children }) {
                         <span id="line-1"></span><span id="line-2"></span>
                     </button>
                 </div>
+            </div>
             </div>
         </div>
     )
