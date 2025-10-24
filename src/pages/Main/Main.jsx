@@ -197,6 +197,10 @@ export default function Main() {
         })
     }
 
+    function updateCards() {
+        
+    }
+
     useEffect(() => {
         const copy = [...allDishes]
 
@@ -229,6 +233,32 @@ export default function Main() {
                 setLoading(false)
             }, 500)
         }
+    }, [cardsLeft, currentArray])
+
+    useEffect(() => {
+        setSlicePoints(() => {
+            const newSlicePoints = {
+                start: 0, 
+                end: 7
+            }
+            const pack = [...currentArray].slice(newSlicePoints.start, newSlicePoints.end)
+            setDishes(pack)
+            setCardsLeft(pack.length)
+            return newSlicePoints
+        }) 
+    }, [currentArray])
+    
+    useEffect(() => {
+        console.log(currentArray)
+        console.log(dishes)
+    }, [currentArray])
+
+    useEffect(() => {
+        console.log(slicePoints)
+    }, [slicePoints])
+
+    useEffect(() => {
+        console.log(cardsLeft)
     }, [cardsLeft])
 
     useEffect(() => {
