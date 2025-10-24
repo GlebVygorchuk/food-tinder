@@ -323,6 +323,8 @@ export default function Main() {
             <TinderCard
             preventSwipe={['up', 'down']}
             key={item.id} 
+            swipeRequirementType="position"
+            swipeThreshold={50}
             className="main__card"
             onSwipe={handleSwipe}
             onCardLeftScreen={() => handleLeftScreen(index)}
