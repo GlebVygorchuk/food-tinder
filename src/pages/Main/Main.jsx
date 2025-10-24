@@ -1,7 +1,7 @@
 import { getAuth, onAuthStateChanged, signOut } from "firebase/auth"
 import { collection, addDoc, onSnapshot, doc, deleteDoc, getDocs, query, where } from "firebase/firestore"
 import { useNavigate } from "react-router-dom"
-import React, { useEffect, useState, useRef, useContext, useMemo } from "react"
+import React, { useEffect, useState, useRef, useContext, useMemo, useCallback } from "react"
 import TinderCard from 'react-tinder-card'
 import Loader from "../../components/Loader"
 import Modal from "../../components/Modal/Modal"
@@ -50,8 +50,9 @@ export default function Main() {
     const navigate = useNavigate() 
     const cardRefs = useRef([])
     const favoritesRef = useRef([])
+    const indexRef = useRef(null)
 
-    function handleSwipe(direction) {
+    const handleSwipe = useCallback((direction) => {
         setAlreadySaved(false)
         const current = ( {...dishes[currentIndex]} )
 
@@ -59,17 +60,18 @@ export default function Main() {
             setModalActive(true)
             setCurrentDish(current)
             setSelectedDish(current)
-            dishes[currentIndex] ? setRecipe(prev => ({
+            const index = indexRef.current
+            dishes[index] ? setRecipe(prev => ({
                 ...prev,
-                title: dishes[currentIndex].title,
-                description: dishes[currentIndex].recipe,
-                ingredients: dishes[currentIndex].ingredients
+                title: dishes[index].title,
+                description: dishes[index].recipe,
+                ingredients: dishes[index].ingredients
             })) : null
         }
 
         setCardsLeft(prev => prev - 1)
         setCurrentIndex(prev => prev - 1)
-    }
+    }, [currentIndex, dishes])
 
     function handleLeftScreen(id) {
         // const copy = [...dishes]
@@ -112,9 +114,9 @@ export default function Main() {
             setLoading(false)
             setRecipe(prev => ({
                 ...prev, 
-                title: recipes[0].title,
-                ingredients: recipes[0].ingredients,
-                description: recipes[0].recipe
+                title: pack[pack.length - 1].title,
+                ingredients: pack[pack.length - 1].ingredients,
+                description: pack[pack.length - 1].recipe
             }))
         } catch (error) {
             console.log(error)
@@ -235,6 +237,7 @@ export default function Main() {
 
     useEffect(() => {
         setCurrentIndex(dishes.length - 1)
+        console.log(`Called! State set to ${dishes.length - 1}`)
     }, [dishes])
 
     useEffect(() => {
@@ -273,9 +276,9 @@ export default function Main() {
         favoritesRef.current = favorites
     }, [favorites]) 
 
-    useEffect(() => console.log(recipe), [recipe])
-
-    useEffect(() => console.log(dishes[currentIndex]), [dishes, currentIndex])
+    useEffect(() => {
+        indexRef.current = currentIndex
+    }, [currentIndex])
 
     useEffect(() => {
         !mobileFilters ? setFilters(prev => ({...prev, showCuisine: false})) : null
