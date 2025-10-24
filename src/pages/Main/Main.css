@@ -339,6 +339,9 @@
   transition: 0.2s;
   pointer-events: none;
 }
+.main__filters__mobile button {
+  pointer-events: none;
+}
 @media (max-width: 480px) {
   .main__filters {
     position: fixed;
@@ -723,6 +726,9 @@
 .show-mobile-filters {
   opacity: 1;
   transform: translateY(0);
+  pointer-events: all;
+}
+.show-mobile-filters button {
   pointer-events: all;
 }
 

@@ -71,11 +71,11 @@
 
     @include mobile {
         top: 505px;
-        left: 355px;
+        left: 0;
     }
 
-    @include mobile {
-        left: 295px;
+    @include mobile-small {
+        left: 0;
     }
 }
 

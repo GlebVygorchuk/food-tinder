@@ -350,6 +350,10 @@
             opacity: 0;
             transition: 0.2s;
             pointer-events: none;
+
+            button {
+                pointer-events: none;
+            }
         }
 
         @include mobile-small {
@@ -731,6 +735,10 @@
     opacity: 1;
     transform: translateY(0);
     pointer-events: all;
+
+    button {
+        pointer-events: all;
+    }
 }
 
 #dot-1 {

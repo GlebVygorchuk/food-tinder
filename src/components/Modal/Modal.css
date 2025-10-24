@@ -70,12 +70,12 @@
 @media (max-width: 770px) {
   #add, #deleteRecipe {
     top: 505px;
-    left: 355px;
+    left: 0;
   }
 }
-@media (max-width: 770px) {
+@media (max-width: 480px) {
   #add, #deleteRecipe {
-    left: 295px;
+    left: 0;
   }
 }
 
