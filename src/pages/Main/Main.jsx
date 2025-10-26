@@ -132,7 +132,9 @@ export default function Main() {
             const docsRef = collection(database, 'users', userIdRef.current, 'favorites')
             
             const favorite = dishes[index]
-            console.log(favorite)
+            if (inModal) {
+                console.log(dishes)
+            }
 
             if (!auth.currentUser) {
                 toast.warn('Войдите в аккаунт чтобы добавлять рецепты в избранное!')
@@ -144,8 +146,7 @@ export default function Main() {
             !inModal ? swipe('right', index, true) : null
             !hasDublicate ? await addDoc(docsRef, favorite).then(() => 
                 toast.success('Сохранено!')) : 
-                toast.warn('Рецепт уже добавлен :)'
-            ) 
+                toast.warn('Рецепт уже добавлен :)') 
         }
         catch (error) {
             console.log(error)
@@ -360,22 +361,12 @@ export default function Main() {
                             catch (error) {
                                 console.log(error)
                             }
-                        }} 
-                        onTouchEnd={(e) => {
-                            e.stopPropagation()
-                            e.preventDefault()
-                            swipe('right', index, false)
                         }}
                         title="Добавить в избранное" className="option">
                             <svg id="star" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25 25"><path d="m18.25 15.52 1.36 7.92-7.11-3.74-7.11 3.74 1.36-7.92L1 9.92l7.95-1.16 3.55-7.2 3.55 7.2L24 9.92z"/></svg>
                         </button>
                         <button 
-                        onClick={() => swipe('right', index, false)} className="option"
-                        onTouchEnd={(e) => {
-                            e.stopPropagation()
-                            e.preventDefault()
-                            swipe('right', index, false)
-                        }}>
+                        onClick={() => swipe('right', index, false)} className="option">
                             <svg id="like" style={{marginTop: '1px'}} width='30' height='30' fill="#ca0043ff" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.808 11.079C19.829 16.132 12 20.5 12 20.5s-7.829-4.368-8.808-9.421C2.227 6.1 5.066 3.5 8 3.5a4.444 4.444 0 0 1 4 2 4.444 4.444 0 0 1 4-2c2.934 0 5.773 2.6 4.808 7.579z"/></svg>
                         </button>
                     </div>
@@ -509,7 +500,7 @@ export default function Main() {
             </aside>
             </main>
         </section>
-        <Modal button={!alreadySaved ? <button onClick={() => addToFavorites(true)} title="Добавить в избранное" id="add" className="main__swipe-button">
+        <Modal button={!alreadySaved ? <button onClick={() => addToFavorites(currentIndex + 1, true)} title="Добавить в избранное" id="add" className="main__swipe-button">
                     <svg id="addToFavoriteModal" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25 25"><path d="m18.25 15.52 1.36 7.92-7.11-3.74-7.11 3.74 1.36-7.92L1 9.92l7.95-1.16 3.55-7.2 3.55 7.2L24 9.92z"/></svg>
                 </button> : <button id="deleteRecipe" onClick={() => deleteRecipe(recipe.index)} className="main__swipe-button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M22 5a1 1 0 0 1-1 1H3a1 1 0 0 1 0-2h5V3a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v1h5a1 1 0 0 1 1 1zM4.934 21.071 4 8h16l-.934 13.071a1 1 0 0 1-1 .929H5.931a1 1 0 0 1-.997-.929zM15 18a1 1 0 0 0 2 0v-6a1 1 0 0 0-2 0zm-4 0a1 1 0 0 0 2 0v-6a1 1 0 0 0-2 0zm-4 0a1 1 0 0 0 2 0v-6a1 1 0 0 0-2 0z"/></svg></button>}>
             <div className="recipe-modal">
