@@ -37,7 +37,7 @@ export default function Main() {
     const [mobileFilters, setMobileFilters] = useState(false)
     const [cuisine, setCuisine] = useState('Кухня')
     const [currentArray, setCurrentArray] = useState([])
-    const [cardsLeft, setCardsLeft] = useState('')
+    const [cardsLeft, setCardsLeft] = useState(7)
     const [slicePoints, setSlicePoints] = useState({
         start: 0,
         end: 7
@@ -48,9 +48,11 @@ export default function Main() {
     const userID = auth.currentUser ? auth.currentUser.uid : null
 
     const navigate = useNavigate() 
+
     const cardRefs = useRef([])
     const favoritesRef = useRef([])
     const indexRef = useRef(null)
+    const userIdRef = useRef(null)
 
     const handleSwipe = useCallback((direction) => {
         setAlreadySaved(false)
@@ -85,8 +87,10 @@ export default function Main() {
            cardRefs.current[index].current.swipe(direction)
         }
 
-        const current = ( {...dishes[currentIndex]} )
-        setCurrentDish(current)
+        setCurrentDish(() => {
+            const current = ( {...dishes[index]} )
+            return current
+        })
 
         setAlreadySaved(false)
         setModalActive(
@@ -110,7 +114,6 @@ export default function Main() {
             setDishes(pack)
             setAllDishes(recipes)
             setCurrentArray(recipes)
-            setCardsLeft(pack.length)
             setLoading(false)
             setRecipe(prev => ({
                 ...prev, 
@@ -123,28 +126,34 @@ export default function Main() {
         }
     }
 
-    const addToFavorites = async (e, inModal) => {
-        setModalActive(false)
-        e.stopPropagation()
-        const docsRef = collection(database, 'users', userID, 'favorites')
-        const favorite = inModal ? currentDish : selectedDish
-
-        if (!auth.currentUser) {
-            toast.warn('Войдите в аккаунт чтобы добавлять рецепты в избранное!')
-            return
-        }
-
-        const hasDublicate = favoritesRef.current.some(fav => fav.data.id === favorite.id)
-
-        !inModal ? swipe('right', currentIndex, true) : null
-
+    const addToFavorites = useCallback(async (index, inModal) => {
         try {
-            !hasDublicate ? await addDoc(docsRef, favorite).then(() => toast.success('Сохранено!')) : toast.warn('Рецепт уже добавлен :)') 
-        } 
-        catch(err) {
-            console.error(err)
+            console.log(userIdRef.current)
+            const docsRef = collection(database, 'users', userIdRef.current, 'favorites')
+            
+            const favorite = dishes[index]
+            console.log(favorite)
+
+            if (!auth.currentUser) {
+                toast.warn('Войдите в аккаунт чтобы добавлять рецепты в избранное!')
+                return
+            }
+
+            const hasDublicate = favoritesRef.current.some(fav => fav.data.id === favorite.id)
+
+            !inModal ? swipe('right', index, true) : null
+            !hasDublicate ? await addDoc(docsRef, favorite).then(() => 
+                toast.success('Сохранено!')) : 
+                toast.warn('Рецепт уже добавлен :)'
+            ) 
         }
-    }
+        catch (error) {
+            console.log(error)
+        }
+        finally {
+            setModalActive(false)
+        }
+    }, [dishes]) 
 
     function showSavedRecipe(id) {
         setRecipe({
@@ -197,9 +206,14 @@ export default function Main() {
         })
     }
 
-    function updateCards() {
-        
-    }
+    useEffect(() => {
+        console.log('ID loaded!')
+        userIdRef.current = userID
+    }, [userID])
+
+    useEffect(() => {
+        console.log(dishes)
+    }, [dishes])
 
     useEffect(() => {
         const copy = [...allDishes]
@@ -235,6 +249,8 @@ export default function Main() {
         }
     }, [cardsLeft, currentArray])
 
+    useEffect(() => console.log(cardsLeft), [cardsLeft])
+
     useEffect(() => {
         setSlicePoints(() => {
             const newSlicePoints = {
@@ -243,7 +259,7 @@ export default function Main() {
             }
             const pack = [...currentArray].slice(newSlicePoints.start, newSlicePoints.end)
             setDishes(pack)
-            setCardsLeft(pack.length)
+            setCardsLeft(7)
             return newSlicePoints
         }) 
     }, [currentArray])
@@ -258,16 +274,11 @@ export default function Main() {
     }, [slicePoints])
 
     useEffect(() => {
-        console.log(cardsLeft)
-    }, [cardsLeft])
-
-    useEffect(() => {
         fetchRecipes()
     }, [])
 
     useEffect(() => {
         setCurrentIndex(dishes.length - 1)
-        console.log(`Called! State set to ${dishes.length - 1}`)
     }, [dishes])
 
     useEffect(() => {
@@ -331,6 +342,24 @@ export default function Main() {
             ref={cardRefs.current[index]}>
                 {/* <img loading="lazy" src={item.image} className="main__card__image"></img> */}
                 <h3>{item.title}</h3>
+                    <div className="main__swipe-buttons">
+                        <button style={{position: 'relative'}} onClick={() => swipe('left', index, false)} className="option">
+                            <span id="cross" style={{transform: 'rotate(45deg)'}} className="cross-line"></span><span style={{transform: 'rotate(-45deg)'}} className="cross-line"></span>
+                        </button>
+                        <button onClick={() => {
+                            try {
+                                addToFavorites(index, false)
+                            }
+                            catch (error) {
+                                console.log(error)
+                            }
+                        }} title="Добавить в избранное" className="option">
+                            <svg id="star" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25 25"><path d="m18.25 15.52 1.36 7.92-7.11-3.74-7.11 3.74 1.36-7.92L1 9.92l7.95-1.16 3.55-7.2 3.55 7.2L24 9.92z"/></svg>
+                        </button>
+                        <button onClick={() => swipe('right', index, false)} className="option">
+                            <svg id="like" style={{marginTop: '1px'}} width='30' height='30' fill="#ca0043ff" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.808 11.079C19.829 16.132 12 20.5 12 20.5s-7.829-4.368-8.808-9.421C2.227 6.1 5.066 3.5 8 3.5a4.444 4.444 0 0 1 4 2 4.444 4.444 0 0 1 4-2c2.934 0 5.773 2.6 4.808 7.579z"/></svg>
+                        </button>
+                    </div>
             </TinderCard>
         ))
     }, [dishes])
@@ -431,17 +460,7 @@ export default function Main() {
                 </div>
                 <div className="main__cards">
                     {!loading ? memoizedCards : <Loader />}
-                    <div className="main__swipe-buttons">
-                        <button style={{position: 'relative'}} onClick={() => swipe('left', currentIndex, false)} className="main__swipe-button">
-                            <span id="cross" style={{transform: 'rotate(45deg)'}} className="cross-line"></span><span style={{transform: 'rotate(-45deg)'}} className="cross-line"></span>
-                        </button>
-                        <button onClick={(e) => addToFavorites(e, false)} title="Добавить в избранное" className="main__swipe-button">
-                            <svg id="star" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25 25"><path d="m18.25 15.52 1.36 7.92-7.11-3.74-7.11 3.74 1.36-7.92L1 9.92l7.95-1.16 3.55-7.2 3.55 7.2L24 9.92z"/></svg>
-                        </button>
-                        <button onClick={() => swipe('right', currentIndex, false)} className="main__swipe-button">
-                            <svg id="like" style={{marginTop: '1px'}} width='30' height='30' fill="#ca0043ff" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.808 11.079C19.829 16.132 12 20.5 12 20.5s-7.829-4.368-8.808-9.421C2.227 6.1 5.066 3.5 8 3.5a4.444 4.444 0 0 1 4 2 4.444 4.444 0 0 1 4-2c2.934 0 5.773 2.6 4.808 7.579z"/></svg>
-                        </button>
-                    </div>
+
                 </div>
             </div>
             </div>
@@ -471,7 +490,7 @@ export default function Main() {
             </aside>
             </main>
         </section>
-        <Modal button={!alreadySaved ? <button onClick={(e) => addToFavorites(e, true)} title="Добавить в избранное" id="add" className="main__swipe-button">
+        <Modal button={!alreadySaved ? <button onClick={() => addToFavorites(true)} title="Добавить в избранное" id="add" className="main__swipe-button">
                     <svg id="addToFavoriteModal" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25 25"><path d="m18.25 15.52 1.36 7.92-7.11-3.74-7.11 3.74 1.36-7.92L1 9.92l7.95-1.16 3.55-7.2 3.55 7.2L24 9.92z"/></svg>
                 </button> : <button id="deleteRecipe" onClick={() => deleteRecipe(recipe.index)} className="main__swipe-button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M22 5a1 1 0 0 1-1 1H3a1 1 0 0 1 0-2h5V3a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v1h5a1 1 0 0 1 1 1zM4.934 21.071 4 8h16l-.934 13.071a1 1 0 0 1-1 .929H5.931a1 1 0 0 1-.997-.929zM15 18a1 1 0 0 0 2 0v-6a1 1 0 0 0-2 0zm-4 0a1 1 0 0 0 2 0v-6a1 1 0 0 0-2 0zm-4 0a1 1 0 0 0 2 0v-6a1 1 0 0 0-2 0z"/></svg></button>}>
             <div className="recipe-modal">
