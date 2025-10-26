@@ -343,7 +343,14 @@ export default function Main() {
                 {/* <img loading="lazy" src={item.image} className="main__card__image"></img> */}
                 <h3>{item.title}</h3>
                     <div className="main__swipe-buttons">
-                        <button style={{position: 'relative'}} onClick={() => swipe('left', index, false)} className="option">
+                        <button
+                        style={{position: 'relative'}} 
+                        onClick={() => swipe('left', index, false)} className="option"
+                        onTouchEnd={(e) => {
+                            e.stopPropagation()
+                            e.preventDefault()
+                            swipe('left', index, false)
+                        }}>
                             <span id="cross" style={{transform: 'rotate(45deg)'}} className="cross-line"></span><span style={{transform: 'rotate(-45deg)'}} className="cross-line"></span>
                         </button>
                         <button onClick={() => {
@@ -353,10 +360,22 @@ export default function Main() {
                             catch (error) {
                                 console.log(error)
                             }
-                        }} title="Добавить в избранное" className="option">
+                        }} 
+                        onTouchEnd={(e) => {
+                            e.stopPropagation()
+                            e.preventDefault()
+                            swipe('right', index, false)
+                        }}
+                        title="Добавить в избранное" className="option">
                             <svg id="star" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25 25"><path d="m18.25 15.52 1.36 7.92-7.11-3.74-7.11 3.74 1.36-7.92L1 9.92l7.95-1.16 3.55-7.2 3.55 7.2L24 9.92z"/></svg>
                         </button>
-                        <button onClick={() => swipe('right', index, false)} className="option">
+                        <button 
+                        onClick={() => swipe('right', index, false)} className="option"
+                        onTouchEnd={(e) => {
+                            e.stopPropagation()
+                            e.preventDefault()
+                            swipe('right', index, false)
+                        }}>
                             <svg id="like" style={{marginTop: '1px'}} width='30' height='30' fill="#ca0043ff" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.808 11.079C19.829 16.132 12 20.5 12 20.5s-7.829-4.368-8.808-9.421C2.227 6.1 5.066 3.5 8 3.5a4.444 4.444 0 0 1 4 2 4.444 4.444 0 0 1 4-2c2.934 0 5.773 2.6 4.808 7.579z"/></svg>
                         </button>
                     </div>
