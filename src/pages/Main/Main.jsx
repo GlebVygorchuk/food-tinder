@@ -109,6 +109,7 @@ export default function Main() {
             // const response = await fetch(url)
             // const result = await response.json()
 
+            console.log(recipes)
             const pack = recipes.slice(slicePoints.start, slicePoints.end)
 
             setDishes(pack)
@@ -228,9 +229,9 @@ export default function Main() {
             return matchCuisine && matchHealthy && matchVegetarian
         })
 
+        setDishes(filtered)
+        setCurrentArray(filtered)
         setTimeout(() => {
-            setDishes(filtered)
-            setCurrentArray(filtered)
             setLoading(false)
         }, 500)
     }, [filters.healthy, filters.vegetarian, cuisine])
@@ -273,6 +274,10 @@ export default function Main() {
         console.log(currentArray)
         console.log(dishes)
     }, [currentArray])
+
+    useEffect(() => {
+        console.log(dishes)
+    }, [dishes])
 
     useEffect(() => {
         console.log(slicePoints)
