@@ -7,7 +7,7 @@ export const recipes = [
     cuisine: "Греческая",
     healthy: true,
     vegetarian: true,
-    image: "https://images.unsplash.com/photo-1540420773420-3366772f4999?w=400"
+    image: "https://art-lunch.ru/content/uploads/2018/07/Greek_salad.jpg"
   },
   {
     id: 2,
@@ -17,7 +17,7 @@ export const recipes = [
     cuisine: "Итальянская",
     healthy: false,
     vegetarian: false,
-    image: "https://images.unsplash.com/photo-1621996346565-e3dbc353d2e5?w=400"
+    image: "https://static.tildacdn.com/tild6164-6239-4561-a130-376437623033/_4.png"
   },
   {
     id: 3,
@@ -27,7 +27,7 @@ export const recipes = [
     cuisine: "Русская",
     healthy: true,
     vegetarian: false,
-    image: "https://images.unsplash.com/photo-1547592166-23ac45744acd?w=400"
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTFBpjC2BtVdmIZyaAHJ3_KZU_x2boapqylbg&s"
   },
   {
     id: 4,
@@ -37,7 +37,7 @@ export const recipes = [
     cuisine: "Американская",
     healthy: true,
     vegetarian: true,
-    image: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=400"
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTzhiaMehv3vSe4WIhMJo3IuQYhPQOifHeskQ&s"
   },
   {
     id: 5,
@@ -47,7 +47,7 @@ export const recipes = [
     cuisine: "Японская",
     healthy: true,
     vegetarian: false,
-    image: "https://images.unsplash.com/photo-1579584425555-c3ce17fd4351?w=400"
+    image: "https://www.foodland.ru/upload/iblock/a82/a82c720dfe8ffb750dd545ee43b59e22.jpg"
   },
   {
     id: 6,
@@ -57,7 +57,7 @@ export const recipes = [
     cuisine: "Французская",
     healthy: true,
     vegetarian: true,
-    image: "https://images.unsplash.com/photo-1572453800999-e8d2d1589b7c?w=400"
+    image: "https://vkusnoff.com/img/recepty/1725/big.webp"
   },
   {
     id: 7,
@@ -67,7 +67,7 @@ export const recipes = [
     cuisine: "Русская",
     healthy: false,
     vegetarian: false,
-    image: "https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=400"
+    image: "https://ferma-m2.ru/images/shop/recipe_image/crop__2_6.jpg"
   },
   {
     id: 8,
@@ -77,7 +77,7 @@ export const recipes = [
     cuisine: "Ближневосточная",
     healthy: true,
     vegetarian: true,
-    image: "https://images.unsplash.com/photo-1596649299486-45c5c47db2e1?w=400"
+    image: "https://avatars.mds.yandex.net/get-vertis-journal/4471904/0b360cfe-fad5-4a1e-b580-427d24a3f23c.jpeg/1600x1600"
   },
   {
     id: 9,
@@ -87,7 +87,7 @@ export const recipes = [
     cuisine: "Мексиканская",
     healthy: false,
     vegetarian: false,
-    image: "https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?w=400"
+    image: "https://images.gastronom.ru/FrS81dyXZfcit7P7QzK001ZLwHsuFjSabfR1dnYsIwM/pr:recipe-cover-image/g:ce/rs:auto:0:0:0/L2Ntcy9hbGwtaW1hZ2VzLzYzZmUwNGJlLWIxNDctNDdkOC1iZDFmLWM1YTg3NjI0ZGJhYy5qcGc.webp"
   },
   {
     id: 10,
@@ -97,7 +97,7 @@ export const recipes = [
     cuisine: "Тайская",
     healthy: true,
     vegetarian: true,
-    image: "https://images.unsplash.com/photo-1559314809-0f155186aed0?w=400"
+    image: "https://grandkulinar.ru/uploads/posts/2020-04/1586181969_pad-taj.jpg"
   },
   {
     id: 11,
@@ -107,7 +107,7 @@ export const recipes = [
     cuisine: "Американская",
     healthy: false,
     vegetarian: false,
-    image: "https://images.unsplash.com/photo-1546793665-c74683f339c1?w=400"
+    image: "https://images.gastronom.ru/-UHzDgNx-m0MMa6OR0ilz2qP7MB0mKQeGceObc9jpck/pr:recipe-cover-image/g:ce/rs:auto:0:0:0/L2Ntcy9hbGwtaW1hZ2VzLzVhNzFhZGY1LTM3MTYtNDlmMy04NDNlLTAwMTg4MGNiM2E0OS5qcGc.webp"
   },
   {
     id: 12,
@@ -117,7 +117,7 @@ export const recipes = [
     cuisine: "Итальянская",
     healthy: false,
     vegetarian: false,
-    image: "https://images.unsplash.com/photo-1574894709920-11b28e7367e3?w=400"
+    image: "https://club.mysamson.ru/upload/resize_cache/webp/iblock/fe6/7q22t3d6tlnxzjihv77g8j6px7jookja.webp"
   },
   {
     id: 13,
@@ -127,7 +127,7 @@ export const recipes = [
     cuisine: "Мексиканская",
     healthy: true,
     vegetarian: true,
-    image: "https://images.unsplash.com/photo-1534308983496-4fabb1a015ee?w=400"
+    image: "https://images.gastronom.ru/94IRDhNtiU8yNxO4kUxIEqqCnsEi_rSj9XDcer8Au1A/pr:recipe-cover-image/g:ce/rs:auto:0:0:0/L2Ntcy9hbGwtaW1hZ2VzL2NiYjIxNzhiLWFkZmItNDU1Zi1hMzgyLTczYzcxMzU5MjhhOS5qcGc.webp"
   },
   {
     id: 14,
@@ -137,7 +137,7 @@ export const recipes = [
     cuisine: "Узбекская",
     healthy: false,
     vegetarian: false,
-    image: "https://images.unsplash.com/photo-1569718212165-3c0d1e276163?w=400"
+    image: "https://pandaland.kz/uploads/FILES/6bd/6bd8aece6662488b203617d00450cc27.jpg"
   },
   {
     id: 15,
@@ -147,7 +147,7 @@ export const recipes = [
     cuisine: "Корейская",
     healthy: true,
     vegetarian: true,
-    image: "https://images.unsplash.com/photo-1584277214853-35eef16b51b0?w=400"
+    image: "https://korfood.ru/upload/iblock/4a0/z5d19idqctzxu3d266pt09vn4bfrrbqi/gotovim_kimchi_po_koreyski.jpg"
   },
   {
     id: 16,
@@ -157,7 +157,7 @@ export const recipes = [
     cuisine: "Швейцарская",
     healthy: false,
     vegetarian: true,
-    image: "https://images.unsplash.com/photo-1551782453-80e5338fbbd2?w=400"
+    image: "https://www.edim.tv/img/large/fondue.jpg"
   },
   {
     id: 17,
@@ -167,7 +167,7 @@ export const recipes = [
     cuisine: "Средиземноморская",
     healthy: true,
     vegetarian: false,
-    image: "https://images.unsplash.com/photo-1467003909585-2f8a72700288?w=400"
+    image: "https://s1.eda.ru/StaticContent/Photos/Upscaled/130508123453/130519014946/p_O.jpg"
   },
   {
     id: 18,
@@ -177,7 +177,7 @@ export const recipes = [
     cuisine: "Американская",
     healthy: false,
     vegetarian: true,
-    image: "https://images.unsplash.com/photo-1524351199678-941a58a3df50?w=400"
+    image: "https://annatomilchik.ru/wp-content/uploads/2021/07/chizkejk-nyu-jork.jpg"
   },
   {
     id: 19,
@@ -187,7 +187,7 @@ export const recipes = [
     cuisine: "Кубинская",
     healthy: true,
     vegetarian: true,
-    image: "https://images.unsplash.com/photo-1544145945-f90425340c7e?w=400"
+    image: "https://vkusvill.ru/upload/resize/725268/mokhito-bezalkogolnyy_588x409x90_c.webp"
   },
   {
     id: 20,
@@ -197,7 +197,7 @@ export const recipes = [
     cuisine: "Ближневосточная",
     healthy: false,
     vegetarian: false,
-    image: "https://images.unsplash.com/photo-1565299507177-b0ac66763828?w=400"
+    image: "https://menunedeli.ru/wp-content/uploads/2023/06/EC9FB218-15C0-4798-9924-CA4E09DB5BFE-933x700.jpeg"
   },
   {
     id: 21,
@@ -207,7 +207,7 @@ export const recipes = [
     cuisine: "Русская",
     healthy: true,
     vegetarian: false,
-    image: "https://images.unsplash.com/photo-1544025162-d76694265947?w=400"
+    image: "https://s1.eda.ru/StaticContent/Photos/Upscaled/120131085552/171206075835/p_O.jpg"
   },
   {
     id: 22,
@@ -217,7 +217,7 @@ export const recipes = [
     cuisine: "Итальянская",
     healthy: false,
     vegetarian: true,
-    image: "https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?w=400"
+    image: "https://n1s1.hsmedia.ru/35/62/54/356254ee6ce12cd983fc02177405e640/1920x1152_0xqzENJ7bD_7389050790121346573.jpg"
   },
   {
     id: 23,
@@ -227,7 +227,7 @@ export const recipes = [
     cuisine: "Греческая",
     healthy: true,
     vegetarian: false,
-    image: "https://images.unsplash.com/photo-1598214886806-c87b84b7078b?w=400"
+    image: "https://images.gastronom.ru/9HjJ6T5IC0WwvMFXlax9289qLgOZD6ytGkF71pURzr8/pr:recipe-preview-image/g:ce/rs:auto:0:0:0/L2Ntcy9hbGwtaW1hZ2VzL2NjOWUxMTI1LTI4NzQtNDI1OS1iNjEyLTdkN2E2YjBhNmU0NS5qcGc"
   },
   {
     id: 24,
@@ -237,7 +237,7 @@ export const recipes = [
     cuisine: "Американская",
     healthy: false,
     vegetarian: false,
-    image: "https://images.unsplash.com/photo-1550317138-10000687a9ef?w=400"
+    image: "https://img.iamcook.ru/2022/upl/recipes/zen/u-653596122b38c143df7260e9da85ce84.jpg"
   },
   {
     id: 25,
@@ -247,7 +247,7 @@ export const recipes = [
     cuisine: "Восточно-азиатская",
     healthy: true,
     vegetarian: false,
-    image: "https://images.unsplash.com/photo-1569718212165-3a285ad0a9e2?w=400"
+    image: "https://static.insales-cdn.com/images/articles/1/1729/6629057/delicious-ramen-on-dark-surface.jpg"
   },
   {
     id: 26,
@@ -257,7 +257,7 @@ export const recipes = [
     cuisine: "Французская",
     healthy: false,
     vegetarian: false,
-    image: "https://images.unsplash.com/photo-1481070555726-e2fe8357725c?w=400"
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSEdFDZPbf9XxGnTIRQ4SMTEa8YUPOGch_6lw&s"
   },
   {
     id: 27,
@@ -267,7 +267,7 @@ export const recipes = [
     cuisine: "Ближневосточная",
     healthy: true,
     vegetarian: true,
-    image: "https://images.unsplash.com/photo-1590412200988-a4363c359ef5?w=400"
+    image: "https://s1.eda.ru/StaticContent/Photos/Upscaled/120131082509/150830163929/p_O.jpg"
   },
   {
     id: 28,
@@ -277,7 +277,7 @@ export const recipes = [
     cuisine: "Мексиканская",
     healthy: false,
     vegetarian: false,
-    image: "https://images.unsplash.com/photo-1565299588853-8e81393e2b79?w=400"
+    image: "https://e52e3ee2-628b-49a9-9e26-e5a61fd72b20.selcdn.net/upload/resize_cache/iblock/817/1920_1080_1/%D0%AD%D0%BD%D1%87%D0%B8%D0%BB%D0%B0%D0%B4%D0%B0%D1%81%20%D1%81%20%D0%B3%D0%BE%D0%B2%D1%8F%D0%B4%D0%B8%D0%BD%D0%BE%D0%B9.jpg"
   },
   {
     id: 29,
@@ -287,7 +287,7 @@ export const recipes = [
     cuisine: "Русская",
     healthy: false,
     vegetarian: false,
-    image: "https://images.unsplash.com/photo-1572442388796-11668a67e53d?w=400"
+    image: "https://images.gastronom.ru/sI2Z_hS9qg62A_PIvSNDCqpsBvIKqOpRSYTVehfE9KA/pr:recipe-cover-image/g:ce/rs:auto:0:0:0/L2Ntcy9hbGwtaW1hZ2VzL2QxOTg4MmNjLTU1YjAtNDQ5ZS05Nzc3LTkzNDUzNGYxMzZkMi5qcGc.webp"
   },
   {
     id: 30,
@@ -297,7 +297,7 @@ export const recipes = [
     cuisine: "Итальянская",
     healthy: false,
     vegetarian: true,
-    image: "https://images.unsplash.com/photo-1563379091339-03246963d96c?w=400"
+    image: "https://bonfesto.by/wp-content/uploads/2023/01/a6289492880438825a1f3ac19ee0eab2.png"
   },
   {
     id: 31,
@@ -307,7 +307,7 @@ export const recipes = [
     cuisine: "Ближневосточная",
     healthy: true,
     vegetarian: false,
-    image: "https://images.unsplash.com/photo-1594046240348-ccdbdad447b5?w=400"
+    image: "https://arborio.ru/wordpress/wp-content/uploads/2023/01/meat-dolma-2.jpg"
   },
   {
     id: 32,
@@ -317,7 +317,7 @@ export const recipes = [
     cuisine: "Мексиканская",
     healthy: true,
     vegetarian: false,
-    image: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=400"
+    image: "https://vkusnoff.com/img/recepty/2122/big.webp"
   },
   {
     id: 33,
@@ -327,7 +327,7 @@ export const recipes = [
     cuisine: "Русская",
     healthy: true,
     vegetarian: false,
-    image: "https://images.unsplash.com/photo-1604503468506-8d616228a18e?w=400"
+    image: "https://svoya.ru/upload/iblock/ba8/ba8f2b10164098d2de5c3557c2e448f5.webp"
   },
   {
     id: 34,
@@ -337,7 +337,7 @@ export const recipes = [
     cuisine: "Итальянская",
     healthy: false,
     vegetarian: true,
-    image: "https://images.unsplash.com/photo-1570194065650-2c0b97cd4b3a?w=400"
+    image: "https://dikoed.ru/upload/iblock/74e/15598-klubnichnaya-panna-kotta.jpg"
   },
   {
     id: 35,
@@ -347,7 +347,7 @@ export const recipes = [
     cuisine: "Мексиканская",
     healthy: true,
     vegetarian: false,
-    image: "https://images.unsplash.com/photo-1565299588853-8e81393e2b79?w=400"
+    image: "https://kotanyi-ru.imgix.net/wp-content/uploads/2024/06/IMG_7883-web-min.jpg?auto=format,compress"
   },
   {
     id: 36,
@@ -357,7 +357,7 @@ export const recipes = [
     cuisine: "Ближневосточная",
     healthy: true,
     vegetarian: true,
-    image: "https://images.unsplash.com/photo-1594750015252-0f7d0c9c0a2f?w=400"
+    image: "https://lifehacker.ru/wp-content/uploads/2018/05/Humus_1526437239.jpg"
   },
   {
     id: 37,
@@ -367,7 +367,7 @@ export const recipes = [
     cuisine: "Русская",
     healthy: false,
     vegetarian: true,
-    image: "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=400"
+    image: "https://static.78.ru/images/uploads/1613420016818.jpg"
   },
   {
     id: 38,
@@ -377,7 +377,7 @@ export const recipes = [
     cuisine: "Американская",
     healthy: false,
     vegetarian: false,
-    image: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=400"
+    image: "https://www.photorecept.ru/wp-content/uploads/2021/04/gamburger-v-domashnih-uslovijah-ili-bulochka-s-mjasom-1300x856.jpg"
   },
   {
     id: 39,
@@ -387,7 +387,7 @@ export const recipes = [
     cuisine: "Восточно-азиатская",
     healthy: true,
     vegetarian: false,
-    image: "https://images.unsplash.com/photo-1588347818122-c6b08c4d1e38?w=400"
+    image: "https://porusski.me/wp-content/uploads/2020/09/IMG-5843.jpg"
   },
   {
     id: 40,
@@ -397,7 +397,7 @@ export const recipes = [
     cuisine: "Американская",
     healthy: false,
     vegetarian: false,
-    image: "https://images.unsplash.com/photo-1562967916-eb82221dfb92?w=400"
+    image: "https://polaris.company/upload/iblock/e17/%D0%9A%D1%83%D1%80%D0%B8%D0%BD%D1%8B%D0%B5%20%D0%BD%D0%B0%D0%B3%D0%B3%D0%B5%D1%82%D1%81%D1%8B.jpg"
   },
   {
     id: 41,
@@ -407,7 +407,7 @@ export const recipes = [
     cuisine: "Французская",
     healthy: true,
     vegetarian: false,
-    image: "https://images.unsplash.com/photo-1546793665-c74683f339c1?w=400"
+    image: "https://www.chefmarket.ru/blog/wp-content/uploads/2022/07/nicoise-salad-2000x1200.jpg"
   },
   {
     id: 42,
@@ -417,7 +417,7 @@ export const recipes = [
     cuisine: "Итальянская",
     healthy: true,
     vegetarian: true,
-    image: "https://images.unsplash.com/photo-1574071318508-1cdbab80d002?w=400"
+    image: "https://static.1000.menu/img/content-v2/ef/27/10853/picca-margarita-v-domashnix-usloviyax_1608783820_4_max.jpg"
   },
   {
     id: 43,
@@ -427,7 +427,7 @@ export const recipes = [
     cuisine: "Ближневосточная",
     healthy: true,
     vegetarian: false,
-    image: "https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=400"
+    image: "https://dikoed.ru/upload/iblock/3f1/48934-shurpa-iz-kosuli.jpg"
   },
   {
     id: 44,
@@ -437,7 +437,7 @@ export const recipes = [
     cuisine: "Мексиканская",
     healthy: false,
     vegetarian: false,
-    image: "https://images.unsplash.com/photo-1565299588853-8e81393e2b79?w=400"
+    image: "https://upload.wikimedia.org/wikipedia/commons/b/b5/01_Tacos_al_Pastor.jpg"
   },
   {
     id: 45,
@@ -447,7 +447,7 @@ export const recipes = [
     cuisine: "Русская",
     healthy: true,
     vegetarian: true,
-    image: "https://images.unsplash.com/photo-1586201375761-83865001e31c?w=400"
+    image: "https://onetable.ru/wp-content/uploads/2025/03/shag-8-17.jpg"
   },
   {
     id: 46,
@@ -457,7 +457,7 @@ export const recipes = [
     cuisine: "Испанская",
     healthy: true,
     vegetarian: true,
-    image: "https://images.unsplash.com/photo-1547592166-23ac45744acd?w=400"
+    image: "https://s1.eda.ru/StaticContent/Photos/Upscaled/110816122021/120213184954/p_O.jpg"
   },
   {
     id: 47,
@@ -467,7 +467,7 @@ export const recipes = [
     cuisine: "Восточно-азиатская",
     healthy: true,
     vegetarian: false,
-    image: "https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=400"
+    image: "https://cdnn21.img.ria.ru/images/07e9/02/0b/1998618646_5:0:1456:816_1920x1080_80_0_0_91f18a8738553d540a03b04f6b95d702.jpg"
   },
   {
     id: 48,
@@ -477,7 +477,7 @@ export const recipes = [
     cuisine: "Ближневосточная",
     healthy: false,
     vegetarian: true,
-    image: "https://images.unsplash.com/photo-1588315029754-2dd089d39a1a?w=400"
+    image: "https://chefrestoran.ru/wp-content/uploads/2021/05/baklava-1024x683.jpg"
   },
   {
     id: 49,
@@ -487,7 +487,7 @@ export const recipes = [
     cuisine: "Американская",
     healthy: false,
     vegetarian: false,
-    image: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=400"
+    image: "https://primebeef.ru/images/cms/thumbs/a5b0aeaa3fa7d6e58d75710c18673bd7ec6d5f6d/crockpot-philly-cheesesteaks-1_500_306_5_100.jpg"
   },
   {
     id: 50,
@@ -497,7 +497,7 @@ export const recipes = [
     cuisine: "Восточно-азиатская",
     healthy: true,
     vegetarian: false,
-    image: "https://images.unsplash.com/photo-1552465018-69a5d21f1c14?w=400"
+    image: "https://cdn1.ozonusercontent.com/s3/club-storage/images/article_image_1632x1000/281/e33a989a-53a7-4415-80b8-0841d16cf4de.jpeg"
   },
   {
     id: 51,
@@ -507,7 +507,7 @@ export const recipes = [
     cuisine: "Ближневосточная",
     healthy: true,
     vegetarian: false,
-    image: "https://images.unsplash.com/photo-1594046240348-ccdbdad447b5?w=400"
+    image: "https://eda.ru/images/RecipePhoto/390x390/kutaby-s-kuricey-i-ukropom_173774_photo_181202.jpg"
   },
   {
     id: 52,
@@ -517,7 +517,7 @@ export const recipes = [
     cuisine: "Другое",
     healthy: true,
     vegetarian: false,
-    image: "https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?w=400"
+    image: "https://img.iamcook.ru/old/upl/recipes/cat/u-e28b107bf6273b2360780f754149d9eb.jpg"
   },
   {
     id: 53,
@@ -527,7 +527,7 @@ export const recipes = [
     cuisine: "Американская",
     healthy: true,
     vegetarian: false,
-    image: "https://images.unsplash.com/photo-1546793665-c74683f339c1?w=400"
+    image: "https://img.iamcook.ru/old/upl/recipes/cat/u-a8308566e77ba051c5a4bc1f4d948918.jpg"
   },
   {
     id: 54,
@@ -537,7 +537,7 @@ export const recipes = [
     cuisine: "Восточно-азиатская",
     healthy: true,
     vegetarian: false,
-    image: "https://images.unsplash.com/photo-1563245372-f5a841c6f678?w=400"
+    image: "https://s1.eda.ru/StaticContent/Photos/Upscaled/8/0d/80d9a335e07146c5ae2aba5a0cdd0f00.jpg"
   },
   {
     id: 55,
@@ -547,7 +547,7 @@ export const recipes = [
     cuisine: "Русская",
     healthy: false,
     vegetarian: true,
-    image: "https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?w=400"
+    image: "https://vkusnoff.com/img/recepty/3970/big.webp"
   },
   {
     id: 56,
@@ -557,7 +557,7 @@ export const recipes = [
     cuisine: "Итальянская",
     healthy: true,
     vegetarian: true,
-    image: "https://images.unsplash.com/photo-1572695157366-7e9e9ea1a0a1?w=400"
+    image: "https://avatars.mds.yandex.net/get-vertis-journal/4220003/86608532-47db-4325-b441-54a67c186490.jpg/1600x1600"
   },
   {
     id: 57,
@@ -567,7 +567,7 @@ export const recipes = [
     cuisine: "Мексиканская",
     healthy: true,
     vegetarian: false,
-    image: "https://images.unsplash.com/photo-1565299588853-8e81393e2b79?w=400"
+    image: "https://zernograd.com/wp-content/uploads/2017/07/meksikanskijsoys-mole-poblano-s-kuricei.jpg"
   },
   {
     id: 58,
@@ -577,7 +577,7 @@ export const recipes = [
     cuisine: "Другое",
     healthy: false,
     vegetarian: true,
-    image: "https://images.unsplash.com/photo-1588315029754-2dd089d39a1a?w=400"
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRHkXnUAZzgF0RVtKo03odEM2sqiDKf2YdICg&s"
   },
   {
     id: 59,
@@ -587,7 +587,7 @@ export const recipes = [
     cuisine: "Французская",
     healthy: true,
     vegetarian: false,
-    image: "https://images.unsplash.com/photo-1594046240348-ccdbdad447b5?w=400"
+    image: "https://media.ovkuse.ru/images/recipes/0aabbfaf-bc87-43cc-9a40-bc8c7b8d6819/0aabbfaf-bc87-43cc-9a40-bc8c7b8d6819_420_420.webp"
   },
   {
     id: 60,
@@ -597,7 +597,7 @@ export const recipes = [
     cuisine: "Восточно-азиатская",
     healthy: true,
     vegetarian: false,
-    image: "https://images.unsplash.com/photo-1588347818122-c6b08c4d1e38?w=400"
+    image: "https://n1s1.hsmedia.ru/25/e8/e5/25e8e5eea7c2d666f620dd76df576c37/5000x3335_0xNx9g56R3_9793494536636481163.jpg"
   },
   {
     id: 61,
@@ -607,7 +607,7 @@ export const recipes = [
     cuisine: "Русская",
     healthy: false,
     vegetarian: false,
-    image: "https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=400"
+    image: "https://img.iamcook.ru/2023/upl/recipes/cat/u-c58bdd9b846e9f250564a81598c42981.JPG"
   },
   {
     id: 62,
@@ -617,7 +617,7 @@ export const recipes = [
     cuisine: "Итальянская",
     healthy: true,
     vegetarian: true,
-    image: "https://images.unsplash.com/photo-1572448848740-2c81631bbcf6?w=400"
+    image: "https://s1.eda.ru/StaticContent/Photos/b/84/b8472a24137d4cfe9fa17981dca840cb.jpg"
   },
   {
     id: 63,
@@ -627,7 +627,7 @@ export const recipes = [
     cuisine: "Ближневосточная",
     healthy: true,
     vegetarian: true,
-    image: "https://images.unsplash.com/photo-1594750015252-0f7d0c9c0a2f?w=400"
+    image: "https://images.gastronom.ru/TuM7eAPF0Sh2euY5_jwn64eooR64y9I2mAFx69hSgz8/pr:recipe-cover-image/g:ce/rs:auto:0:0:0/L2Ntcy9hbGwtaW1hZ2VzLzcwNzNlYTgwLTI0MzItNDAzNC04NDQ2LWY3NjhmMmQ2YWQyMS5qcGc.webp"
   },
   {
     id: 64,
@@ -637,7 +637,7 @@ export const recipes = [
     cuisine: "Мексиканская",
     healthy: false,
     vegetarian: true,
-    image: "https://images.unsplash.com/photo-1588315029754-2dd089d39a1a?w=400"
+    image: "https://vkusvill.ru/upload/resize/1085751/churros_588x409x90_c.jpg"
   },
   {
     id: 65,
@@ -647,7 +647,7 @@ export const recipes = [
     cuisine: "Русская",
     healthy: false,
     vegetarian: false,
-    image: "https://images.unsplash.com/photo-1587334947972-6377d9a6b3e3?w=400"
+    image: "https://vkusnoff.com/img/recepty/1962/big.webp"
   },
   {
     id: 66,
@@ -657,7 +657,7 @@ export const recipes = [
     cuisine: "Итальянская",
     healthy: false,
     vegetarian: true,
-    image: "https://images.unsplash.com/photo-1621996346565-e3dbc353d2e5?w=400"
+    image: "https://avatars.mds.yandex.net/get-vertis-journal/4465444/35733a3e-10af-4633-a2cd-de8820a54379.jpeg/1600x1600"
   },
   {
     id: 67,
@@ -667,7 +667,7 @@ export const recipes = [
     cuisine: "Ближневосточная",
     healthy: true,
     vegetarian: true,
-    image: "https://images.unsplash.com/photo-1540420773420-3366772f4999?w=400"
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSVNAK2EM3dwQSfdT7AI94-r2GGHZQMCLafHA&s"
   },
   {
     id: 68,
@@ -677,7 +677,7 @@ export const recipes = [
     cuisine: "Мексиканская",
     healthy: false,
     vegetarian: false,
-    image: "https://images.unsplash.com/photo-1565299588853-8e81393e2b79?w=400"
+    image: "https://upload.wikimedia.org/wikipedia/commons/0/08/Empanadas_argentinas_de_jam%C3%B3n_y_queso_con_or%C3%A9gano_y_tomate%2C_pinceladas_con_huevo_batido.jpg"
   },
   {
     id: 69,
@@ -687,7 +687,7 @@ export const recipes = [
     cuisine: "Американская",
     healthy: true,
     vegetarian: false,
-    image: "https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=400"
+    image: "https://primebeef.ru/images/cms/data/blog/newyork-steak1.png"
   },
   {
     id: 70,
@@ -697,7 +697,7 @@ export const recipes = [
     cuisine: "Французская",
     healthy: true,
     vegetarian: false,
-    image: "https://images.unsplash.com/photo-1544025162-d76694265947?w=400"
+    image: "https://vkusvill.ru/upload/resize/1046126/tartar-iz-govyadiny_588x409x90_c.webp"
   },
   {
     id: 71,
@@ -707,7 +707,7 @@ export const recipes = [
     cuisine: "Ближневосточная",
     healthy: false,
     vegetarian: true,
-    image: "https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?w=400"
+    image: "https://cookhelp.ru/upload/recipes/lavash_s_syrom_na_skovorode.jpg"
   },
   {
     id: 72,
@@ -717,7 +717,7 @@ export const recipes = [
     cuisine: "Восточно-азиатская",
     healthy: true,
     vegetarian: false,
-    image: "https://images.unsplash.com/photo-1552611052-33b04c4fae74?w=400"
+    image: "https://posudamart.ru/collection/58/60/706058.jpg"
   },
   {
     id: 73,
@@ -727,7 +727,7 @@ export const recipes = [
     cuisine: "Французская",
     healthy: false,
     vegetarian: false,
-    image: "https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?w=400"
+    image: "https://avatars.mds.yandex.net/get-vertis-journal/4465444/3f1c47c8-baf6-4ca2-9b21-da4589a3bd7e.jpeg/1600x1600"
   },
   {
     id: 74,
@@ -737,7 +737,7 @@ export const recipes = [
     cuisine: "Русская",
     healthy: true,
     vegetarian: false,
-    image: "https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=400"
+    image: "https://upload.wikimedia.org/wikipedia/commons/7/72/Holubtsi.jpg"
   },
   {
     id: 75,
@@ -747,7 +747,7 @@ export const recipes = [
     cuisine: "Французская",
     healthy: false,
     vegetarian: true,
-    image: "https://images.unsplash.com/photo-1570194065650-2c0b97cd4b3a?w=400"
+    image: "https://img.iamcook.ru/howto/preview/7d257235a432cf125a75648bace8fa3d.jpg"
   },
   {
     id: 76,
@@ -757,7 +757,7 @@ export const recipes = [
     cuisine: "Восточно-азиатская",
     healthy: true,
     vegetarian: false,
-    image: "https://images.unsplash.com/photo-1552611052-33b04c4fae74?w=400"
+    image: "https://api.indokitay.rappoport.restaurant/storage/d2a8585fad69251fe068cb3af91106d8_origin.jpg"
   },
   {
     id: 77,
@@ -767,7 +767,7 @@ export const recipes = [
     cuisine: "Русская",
     healthy: false,
     vegetarian: false,
-    image: "https://images.unsplash.com/photo-1547592166-23ac45744acd?w=400"
+    image: "https://s1.eda.ru/StaticContent/Photos/120131083619/170816150250/p_O.jpg"
   },
   {
     id: 78,
@@ -777,7 +777,7 @@ export const recipes = [
     cuisine: "Итальянская",
     healthy: true,
     vegetarian: false,
-    image: "https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=400"
+    image: "https://greekcouzine.wordpress.com/wp-content/uploads/2021/01/mprizoles-argiro.png?w=768"
   },
   {
     id: 79,
@@ -787,7 +787,7 @@ export const recipes = [
     cuisine: "Мексиканская",
     healthy: false,
     vegetarian: false,
-    image: "https://images.unsplash.com/photo-1565299588853-8e81393e2b79?w=400"
+    image: "https://images.gastronom.ru/Nv_JX28rFTTbE5CVRqycqG9vr21K7svXi2BxTIwy9f8/pr:recipe-preview-image/g:ce/rs:auto:0:0:0/L2Ntcy9hbGwtaW1hZ2VzLzIzNzA1NTUwLTg5NjUtNDM5NS04NThiLWY1YWQxZjM1ZGIyNy5qcGc.webp"
   },
   {
     id: 80,
@@ -797,7 +797,7 @@ export const recipes = [
     cuisine: "Греческая",
     healthy: true,
     vegetarian: false,
-    image: "https://images.unsplash.com/photo-1594046240348-ccdbdad447b5?w=400"
+    image: "https://grandkulinar.ru/uploads/posts/2015-12/1449523159_dolmades-golubcy-s-vinogradnymi-listyami.jpg"
   },
   {
     id: 81,
@@ -807,7 +807,7 @@ export const recipes = [
     cuisine: "Французская",
     healthy: true,
     vegetarian: false,
-    image: "https://images.unsplash.com/photo-1467003909585-2f8a72700288?w=400"
+    image: "https://images.gastronom.ru/yPEWC3awiEVSJO2igk2XOL4Vo0tkZ6unIC-Hde0PEns/pr:recipe-cover-image/g:ce/rs:auto:0:0:0/L2Ntcy9hbGwtaW1hZ2VzL2I3YTE2NWI5LTdhMjktNDc4Mi1iN2EwLTMyZjg0YThhNjg3ZS5qcGc.webp"
   },
   {
     id: 82,
@@ -817,7 +817,7 @@ export const recipes = [
     cuisine: "Русская",
     healthy: true,
     vegetarian: true,
-    image: "https://images.unsplash.com/photo-1541592106381-b31e9677c0e5?w=400"
+    image: "https://www.chefmarket.ru/blog/wp-content/uploads/2019/03/potatoes-rustic--e1552379462898.jpg"
   },
   {
     id: 83,
@@ -827,7 +827,7 @@ export const recipes = [
     cuisine: "Итальянская",
     healthy: false,
     vegetarian: false,
-    image: "https://images.unsplash.com/photo-1621996346565-e3dbc353d2e5?w=400"
+    image: "https://barilla.ru/wp-content/uploads/2023/10/barilla_collezione_image_recipe_back-of-pack_cannelloni_300dpi_11zon-scaled.webp"
   },
   {
     id: 84,
@@ -837,7 +837,7 @@ export const recipes = [
     cuisine: "Ближневосточная",
     healthy: true,
     vegetarian: true,
-    image: "https://images.unsplash.com/photo-1596649299486-45c5c47db2e1?w=400"
+    image: "https://www.edim.tv/img/small/falafel-with-hummus.jpg"
   },
   {
     id: 85,
@@ -847,7 +847,7 @@ export const recipes = [
     cuisine: "Мексиканская",
     healthy: false,
     vegetarian: true,
-    image: "https://images.unsplash.com/photo-1565299588853-8e81393e2b79?w=400"
+    image: "https://foodies.academy/wp-content/uploads/2019/03/chilaquiles-7.jpg"
   },
   {
     id: 86,
@@ -857,7 +857,7 @@ export const recipes = [
     cuisine: "Восточно-азиатская",
     healthy: true,
     vegetarian: false,
-    image: "https://images.unsplash.com/photo-1467003909585-2f8a72700288?w=400"
+    image: "https://recipes.av.ru//media/recipes/100555_picture_DkwrmXg.jpg"
   },
   {
     id: 87,
@@ -867,7 +867,7 @@ export const recipes = [
     cuisine: "Русская",
     healthy: false,
     vegetarian: true,
-    image: "https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=400"
+    image: "https://menunedeli.ru/wp-content/uploads/2023/09/Gulen_s_gribami_na_skovorode_16_500%D1%85350.jpg"
   },
   {
     id: 88,
@@ -877,7 +877,7 @@ export const recipes = [
     cuisine: "Итальянская",
     healthy: true,
     vegetarian: true,
-    image: "https://images.unsplash.com/photo-1540420773420-3366772f4999?w=400"
+    image: "https://upload.wikimedia.org/wikipedia/commons/1/19/Panzanella_of_sorts.jpg"
   },
   {
     id: 89,
@@ -887,7 +887,7 @@ export const recipes = [
     cuisine: "Ближневосточная",
     healthy: true,
     vegetarian: false,
-    image: "https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=400"
+    image: "https://vkusvill.ru/upload/resize/463503/463503_1200x600x70_c.webp"
   },
   {
     id: 90,
@@ -897,7 +897,7 @@ export const recipes = [
     cuisine: "Мексиканская",
     healthy: false,
     vegetarian: false,
-    image: "https://images.unsplash.com/photo-1565299588853-8e81393e2b79?w=400"
+    image: "https://cdn.inmyroom.ru/uploads/food_recipe/teaser/81/81a1/81a1cf5b-2ba1-47a8-86df-f2638f37a9b8.jpg"
   },
   {
     id: 91,
@@ -907,7 +907,7 @@ export const recipes = [
     cuisine: "Русская",
     healthy: false,
     vegetarian: false,
-    image: "https://images.unsplash.com/photo-1547592166-23ac45744acd?w=400"
+    image: "https://lifehacker.ru/wp-content/uploads/2020/06/6_1592925463-scaled.jpg"
   },
   {
     id: 92,
@@ -917,7 +917,7 @@ export const recipes = [
     cuisine: "Итальянская",
     healthy: true,
     vegetarian: true,
-    image: "https://images.unsplash.com/photo-1572695157366-7e9e9ea1a0a1?w=400"
+    image: "https://lifehacker.ru/wp-content/uploads/2020/09/shutterstock_1249936891-1_1601372499-e1721841373428.jpg"
   },
   {
     id: 93,
@@ -927,7 +927,7 @@ export const recipes = [
     cuisine: "Американская",
     healthy: false,
     vegetarian: false,
-    image: "https://images.unsplash.com/photo-1562967916-eb82221dfb92?w=400"
+    image: "https://gipfel.ru/upload/iblock/168/h1a3c37rbxb6mvz6unm4wm18gn3tdd5e.jpg"
   },
   {
     id: 94,
@@ -937,7 +937,7 @@ export const recipes = [
     cuisine: "Русская",
     healthy: true,
     vegetarian: true,
-    image: "https://images.unsplash.com/photo-1547592166-23ac45744acd?w=400"
+    image: "https://bonduelle.ru/storage/recipes/4cf6c67c8f92891b751b302e9602d21e.jpeg"
   },
   {
     id: 95,
@@ -947,7 +947,7 @@ export const recipes = [
     cuisine: "Греческая",
     healthy: true,
     vegetarian: true,
-    image: "https://images.unsplash.com/photo-1598214886806-c87b84b7078b?w=400"
+    image: "https://dolcevitablog.ru/wp-content/uploads/2022/06/spanakopita_dolcevitablogru_26.jpg"
   },
   {
     id: 96,
@@ -957,7 +957,7 @@ export const recipes = [
     cuisine: "Итальянская",
     healthy: true,
     vegetarian: false,
-    image: "https://images.unsplash.com/photo-1544025162-d76694265947?w=400"
+    image: "https://avatars.mds.yandex.net/get-vertis-journal/4471904/b23ae4b9-fcc7-49f9-9ce4-7a5207989257.jpeg/1600x1600"
   },
   {
     id: 97,
@@ -967,7 +967,7 @@ export const recipes = [
     cuisine: "Мексиканская",
     healthy: false,
     vegetarian: false,
-    image: "https://images.unsplash.com/photo-1565299588853-8e81393e2b79?w=400"
+    image: "https://static-ru.insales.ru/files/1/7974/10886950/original/https_3A_2F_2Ftextreporter.ru_2Fphoto_2FDepositphotos_76751115_s-2019.jpg?1577280278"
   },
   {
     id: 98,
@@ -977,7 +977,7 @@ export const recipes = [
     cuisine: "Восточно-азиатская",
     healthy: true,
     vegetarian: false,
-    image: "https://images.unsplash.com/photo-1552611052-33b04c4fae74?w=400"
+    image: "https://upload.wikimedia.org/wikipedia/commons/b/b1/Yakisoba_%281%29.jpg"
   },
   {
     id: 99,
@@ -987,7 +987,7 @@ export const recipes = [
     cuisine: "Другое",
     healthy: true,
     vegetarian: true,
-    image: "https://images.unsplash.com/photo-1564093497595-593b96d80180?w=400"
+    image: "https://images.gastronom.ru/xx8vnPTumPBABpaMkQIQrO_75nZ0fxSuDQcvJj3gGdE/pr:article-cover-image/g:ce/rs:auto:0:0:0/L2Ntcy9hbGwtaW1hZ2VzLzVmYWM5ZmZlLTJmZjEtNDJlOS05NDc2LTE4OWFhYjNkNmZmNy5qcGc.webp"
   },
   {
     id: 100,
@@ -997,6 +997,6 @@ export const recipes = [
     cuisine: "Французская",
     healthy: false,
     vegetarian: true,
-    image: "https://images.unsplash.com/photo-1570194065650-2c0b97cd4b3a?w=400"
+    image: "https://gurmart.ru/img_cache/cook/12810_518x282.png"
   }
 ];

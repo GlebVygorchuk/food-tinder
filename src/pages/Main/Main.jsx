@@ -217,6 +217,7 @@ export default function Main() {
     }, [dishes])
 
     useEffect(() => {
+        setLoading(true)
         const copy = [...allDishes]
 
         const filtered = copy.filter(item => {
@@ -227,8 +228,11 @@ export default function Main() {
             return matchCuisine && matchHealthy && matchVegetarian
         })
 
-        setDishes(filtered)
-        setCurrentArray(filtered)
+        setTimeout(() => {
+            setDishes(filtered)
+            setCurrentArray(filtered)
+            setLoading(false)
+        }, 500)
     }, [filters.healthy, filters.vegetarian, cuisine])
 
     useEffect(() => {
@@ -341,7 +345,7 @@ export default function Main() {
             onSwipe={handleSwipe}
             onCardLeftScreen={() => handleLeftScreen(index)}
             ref={cardRefs.current[index]}>
-                {/* <img loading="lazy" src={item.image} className="main__card__image"></img> */}
+                <img loading="lazy" src={item.image} className="main__card__image"></img>
                 <h3>{item.title}</h3>
                     <div className="main__swipe-buttons">
                         <button
@@ -487,7 +491,7 @@ export default function Main() {
                     {favorites.map((item, index) => 
                     <div id={item.id} style={{backgroundImage: `url(${item.data.image})`}} key={item.data.id} onClick={() => showSavedRecipe(index)} className="main__info__favorite">
                         <p className="main__info__favorite__title">{item.data.title}</p>
-                        {/* <img className="main__info__favorite__image" src={item.data.image} alt="" /> */}
+                        <img className="main__info__favorite__image" src={item.data.image} alt="" />
                     </div>
                     )}
                 </div> : 

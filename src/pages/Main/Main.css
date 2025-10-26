@@ -155,7 +155,6 @@
   transition: 0.3s;
   cursor: pointer;
   animation: slide 0.3s forwards;
-  background-color: var(--color-dark-extra);
 }
 @media (max-width: 1080px) {
   .main__info__favorite {
