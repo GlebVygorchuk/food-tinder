@@ -344,8 +344,8 @@ export default function Main() {
             <TinderCard
             preventSwipe={['up', 'down']}
             key={item.id}
-            swipeRequirementType="velocity"
-            swipeThreshold={0.1}
+            swipeRequirementType="position"
+            swipeThreshold={50}
             className="main__card"
             onSwipe={handleSwipe}
             onCardLeftScreen={() => handleLeftScreen(index)}
@@ -507,7 +507,10 @@ export default function Main() {
         </section>
         <Modal 
         action={!alreadySaved ? () => addToFavorites(currentIndex + 1, true) : () => deleteRecipe(recipe.index)}
-        button={!alreadySaved ? 'Сохранить' : 'Удалить'}>
+        buttonMobile={!alreadySaved ? 'Сохранить' : 'Удалить'}
+        button={!alreadySaved ? <button onClick={() => addToFavorites(currentIndex + 1, true)} title="Добавить в избранное" id="add" className="main__swipe-button">
+                     <svg id="addToFavoriteModal" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25 25"><path d="m18.25 15.52 1.36 7.92-7.11-3.74-7.11 3.74 1.36-7.92L1 9.92l7.95-1.16 3.55-7.2 3.55 7.2L24 9.92z"/></svg>
+                 </button> : <button id="deleteRecipe" onClick={() => deleteRecipe(recipe.index)} className="main__swipe-button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M22 5a1 1 0 0 1-1 1H3a1 1 0 0 1 0-2h5V3a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v1h5a1 1 0 0 1 1 1zM4.934 21.071 4 8h16l-.934 13.071a1 1 0 0 1-1 .929H5.931a1 1 0 0 1-.997-.929zM15 18a1 1 0 0 0 2 0v-6a1 1 0 0 0-2 0zm-4 0a1 1 0 0 0 2 0v-6a1 1 0 0 0-2 0zm-4 0a1 1 0 0 0 2 0v-6a1 1 0 0 0-2 0z"/></svg></button>}>
             <div className="recipe-modal">
                 <div className="recipe-modal__title">{recipe.title}
                 </div>
@@ -521,7 +524,3 @@ export default function Main() {
         </>
     )
 }
-
-// button={!alreadySaved ? <button onClick={() => addToFavorites(currentIndex + 1, true)} title="Добавить в избранное" id="add" className="main__swipe-button">
-//                     <svg id="addToFavoriteModal" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25 25"><path d="m18.25 15.52 1.36 7.92-7.11-3.74-7.11 3.74 1.36-7.92L1 9.92l7.95-1.16 3.55-7.2 3.55 7.2L24 9.92z"/></svg>
-//                 </button> : <button id="deleteRecipe" onClick={() => deleteRecipe(recipe.index)} className="main__swipe-button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M22 5a1 1 0 0 1-1 1H3a1 1 0 0 1 0-2h5V3a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v1h5a1 1 0 0 1 1 1zM4.934 21.071 4 8h16l-.934 13.071a1 1 0 0 1-1 .929H5.931a1 1 0 0 1-.997-.929zM15 18a1 1 0 0 0 2 0v-6a1 1 0 0 0-2 0zm-4 0a1 1 0 0 0 2 0v-6a1 1 0 0 0-2 0zm-4 0a1 1 0 0 0 2 0v-6a1 1 0 0 0-2 0z"/></svg></button>}>

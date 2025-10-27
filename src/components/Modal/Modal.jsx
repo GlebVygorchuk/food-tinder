@@ -1,12 +1,13 @@
 import { useContext } from "react"
 import { AppContext } from "../AppContext"
 
-export default function Modal({ children, button, action }) {
+export default function Modal({ children, buttonMobile, action, button }) {
     const { modalActive, setModalActive, closeModal, currentIndex, setCurrentIndex } = useContext(AppContext)
 
     return (
         <div onClick={() => setModalActive(false)} className={`backdrop ${modalActive ? 'active' : ''}`}>
             <div className="modal-wrapper">
+            {button}
             <div onClick={e => e.stopPropagation()} className={`modal ${modalActive ? 'active' : ''}`}>
                 {children}
                 <div className="button-wrapper">
@@ -20,9 +21,9 @@ export default function Modal({ children, button, action }) {
             <footer className="modal__footer">
                 <button
                 onClick={action} 
-                id={button === 'Удалить' ? 'deleteDish' : 'saveDish'} 
+                id={buttonMobile === 'Удалить' ? 'deleteDish' : 'saveDish'} 
                 className="modal__footer__button">
-                    {button}
+                    {buttonMobile}
                 </button>
                 <button id="closeDish" className="modal__footer__button">Закрыть</button>
             </footer>

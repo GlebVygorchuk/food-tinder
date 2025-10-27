@@ -11,7 +11,7 @@
     align-items: center;
     pointer-events: none;
     opacity: 0;
-    transition: 0.3s;
+    transition: 0.2s;
     border: transparent;
     z-index: 9999;
     overflow: visible;
@@ -25,7 +25,7 @@
     background-color: var(--color-background);
     box-shadow: var(--box-shadow);
     border-radius: var(--border-radius);
-    transition: 0.3s;
+    transition: 0.2s;
     position: relative;
     color: var(--color-text);
     font-size: 25px;
@@ -58,13 +58,17 @@
     }
 
     &__footer {
-        display: flex;
+        display: none;
         position: fixed;
         bottom: 0;
         height: 70px;
         width: 110%;
         left: -20px;
         background-color: var(--color-background);
+        
+        @include mobile {
+            display: flex;
+        }
 
         &__button {
             width: 100%;
@@ -88,12 +92,7 @@
     top: 5px;
 
     @include mobile {
-        top: 505px;
-        left: 0;
-    }
-
-    @include mobile-small {
-        left: 0;
+        display: none;
     }
 }
 
