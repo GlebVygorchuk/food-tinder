@@ -81,15 +81,18 @@
     }
     
     &__info {
-        width: 30%;
+        width: 31%;
         background-color: var(--color-extra);
-        border-radius: var(--border-radius);
+        border-radius: 20px;
+        padding-top: 12.5px;
 
         &__saved {
             &__header {
                 display: flex;
                 justify-content: space-between;
                 align-items: center;
+                height: 30px;
+                margin-top: 15px;
 
                 button {
                     margin-top: -10px;
@@ -106,6 +109,10 @@
                     &:hover svg {
                         fill: white;
                     }
+                }
+
+                @include mobile {
+                    height: 40px;
                 }
             }
         }
@@ -141,10 +148,15 @@
         &__title {
             color: var(--color-text);
             font-size: 25px;
-            margin-top: 10px;
+            margin-top: 15px;
+            font-weight: 600;
 
             @include tablet {
                 font-size: 22.5px;
+            }
+
+            @include mobile {
+                font-size: 27.5px;
             }
         }
 
@@ -153,7 +165,7 @@
             flex-direction: column;
             row-gap: 15px;
             color: var(--color-text);
-            padding-inline: 20px;
+            padding-inline: 25px;
             padding-bottom: 20px;
         }
 
@@ -244,10 +256,10 @@
     }
 
     &__filters {
-        position: relative;
         display: flex;
         column-gap: 5px;
         height: 60px;
+        align-items: center;
         background-color: var(--color-extra);
         border-radius: var(--border-radius);
         padding-inline: 15px;
@@ -277,9 +289,9 @@
             }
 
             @include mobile-small {
-                font-size: 22px;
+                font-size: 27.5px;
                 text-align: left;
-                padding-inline: 12.5px;
+                padding-inline: 17.5px;
                 padding-block: 7.5px;
             }
 
@@ -313,8 +325,12 @@
                 transition: 0.2s;
                 text-align: left;
 
-                @include mobile-small {
-                    font-size: 20px;
+                @include mobile {
+                    font-size: 30px;
+                    font-weight: 500;
+                    left: 0;
+                    color: black;
+                    background-color: var(--color-extra);
                 }
 
                 &:hover {
@@ -324,13 +340,19 @@
             }
 
             @include mobile {
-                transform: translateY(-20%);
-            }
-
-            @include mobile-small {
-                transform: translateY(50%);
-                left: 20px;
-                top: -400px;
+                top: 0;
+                left: 0;
+                bottom: 0;
+                right: 0;
+                width: 100vw;
+                height: 110vh;
+                position: fixed;
+                display: flex;
+                flex-direction: column;
+                row-gap: 15px;
+                background-color: var(--color-extra);
+                padding-block: 30px;
+                padding-inline: 25px;
             }
         }
 
@@ -341,11 +363,11 @@
             row-gap: 5px;
             z-index: 4;
             position: absolute;
-            bottom: 55px;
-            padding: 5px;
+            bottom: 60px;
+            padding: 10px;
             border-radius: var(--border-radius);
-            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.083);
-            transform: translateY(10px);
+            box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.181);
+            transform: translateY(30px);
             opacity: 0;
             transition: 0.2s;
             pointer-events: none;
@@ -777,11 +799,7 @@
     pointer-events: all;
 
     @include mobile {
-        transform: translateY(25%);
-    }
-
-    @include mobile-small {
-        transform: translateY(38%);
+        transform: translateY(0);
     }
 }
 
@@ -873,7 +891,7 @@
 
 #filters-mobile, #saved {
     display: none;
-    font-size: 22.5px;
+    font-size: 25px;
     padding-inline: 5px;
 
     @include mobile-small {

@@ -47,7 +47,7 @@ export default function Main() {
     const auth = getAuth()
     const userID = auth.currentUser ? auth.currentUser.uid : null
 
-    const navigate = useNavigate() 
+    const navigate = useNavigate()
 
     const cardRefs = useRef([])
     const favoritesRef = useRef([])
@@ -94,8 +94,8 @@ export default function Main() {
 
         setAlreadySaved(false)
         setModalActive(
-            direction === 'right' && favorites ? false : 
-            direction === 'right' ? true : null 
+            direction === 'right' && favorites ? false :
+            direction === 'right' ? true : null
         )
     }
 
@@ -117,7 +117,7 @@ export default function Main() {
             setCurrentArray(recipes)
             setLoading(false)
             setRecipe(prev => ({
-                ...prev, 
+                ...prev,
                 title: pack[pack.length - 1].title,
                 ingredients: pack[pack.length - 1].ingredients,
                 description: pack[pack.length - 1].recipe
@@ -131,7 +131,7 @@ export default function Main() {
         try {
             console.log(userIdRef.current)
             const docsRef = collection(database, 'users', userIdRef.current, 'favorites')
-            
+
             const favorite = dishes[index]
             if (inModal) {
                 console.log(dishes)
@@ -145,9 +145,9 @@ export default function Main() {
             const hasDublicate = favoritesRef.current.some(fav => fav.data.id === favorite.id)
 
             !inModal ? swipe('right', index, true) : null
-            !hasDublicate ? await addDoc(docsRef, favorite).then(() => 
-                toast.success('Сохранено!')) : 
-                toast.warn('Рецепт уже добавлен :)') 
+            !hasDublicate ? await addDoc(docsRef, favorite).then(() =>
+                toast.success('Сохранено!')) :
+                toast.warn('Рецепт уже добавлен :)')
         }
         catch (error) {
             console.log(error)
@@ -155,7 +155,7 @@ export default function Main() {
         finally {
             setModalActive(false)
         }
-    }, [dishes]) 
+    }, [dishes])
 
     function showSavedRecipe(id) {
         setRecipe({
@@ -174,7 +174,7 @@ export default function Main() {
         setTimeout(() => {
             deleteDoc(doc(database, 'users', userID, 'favorites', favorites[id].id))
             toast.info('Рецепт удалён')
-        }, 250)      
+        }, 250)
     }
 
     async function wipe() {
@@ -196,7 +196,7 @@ export default function Main() {
     function chooseCuisine(cuisine) {
         setCuisine(cuisine)
         setFilters(prev => ({
-            ...prev, 
+            ...prev,
             showCuisine: false
         }))
     }
@@ -242,14 +242,14 @@ export default function Main() {
             setTimeout(() => {
                 setSlicePoints(prev => {
                     const newSlicePoints = {
-                        start: prev.start + 7, 
+                        start: prev.start + 7,
                         end: prev.end + 7
                     }
                     const pack = [...currentArray].slice(newSlicePoints.start, newSlicePoints.end)
                     setDishes(pack)
                     setCardsLeft(pack.length)
                     return newSlicePoints
-                }) 
+                })
                 setLoading(false)
             }, 500)
         }
@@ -260,16 +260,16 @@ export default function Main() {
     useEffect(() => {
         setSlicePoints(() => {
             const newSlicePoints = {
-                start: 0, 
+                start: 0,
                 end: 7
             }
             const pack = [...currentArray].slice(newSlicePoints.start, newSlicePoints.end)
             setDishes(pack)
             setCardsLeft(7)
             return newSlicePoints
-        }) 
+        })
     }, [currentArray])
-    
+
     useEffect(() => {
         console.log(currentArray)
         console.log(dishes)
@@ -325,7 +325,7 @@ export default function Main() {
 
     useEffect(() => {
         favoritesRef.current = favorites
-    }, [favorites]) 
+    }, [favorites])
 
     useEffect(() => {
         indexRef.current = currentIndex
@@ -343,9 +343,9 @@ export default function Main() {
         return dishes.map((item, index) => (
             <TinderCard
             preventSwipe={['up', 'down']}
-            key={item.id} 
-            swipeRequirementType="position"
-            swipeThreshold={50}
+            key={item.id}
+            swipeRequirementType="velocity"
+            swipeThreshold={0.5}
             className="main__card"
             onSwipe={handleSwipe}
             onCardLeftScreen={() => handleLeftScreen(index)}
@@ -354,7 +354,7 @@ export default function Main() {
                 <h3>{item.title}</h3>
                     <div className="main__swipe-buttons">
                         <button
-                        style={{position: 'relative'}} 
+                        style={{position: 'relative'}}
                         onClick={() => swipe('left', index, false)} className="option"
                         onTouchEnd={(e) => {
                             e.stopPropagation()
@@ -374,7 +374,7 @@ export default function Main() {
                         title="Добавить в избранное" className="option">
                             <svg id="star" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25 25"><path d="m18.25 15.52 1.36 7.92-7.11-3.74-7.11 3.74 1.36-7.92L1 9.92l7.95-1.16 3.55-7.2 3.55 7.2L24 9.92z"/></svg>
                         </button>
-                        <button 
+                        <button
                         onClick={() => swipe('right', index, false)} className="option">
                             <svg id="like" style={{marginTop: '1px'}} width='30' height='30' fill="#ca0043ff" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.808 11.079C19.829 16.132 12 20.5 12 20.5s-7.829-4.368-8.808-9.421C2.227 6.1 5.066 3.5 8 3.5a4.444 4.444 0 0 1 4 2 4.444 4.444 0 0 1 4-2c2.934 0 5.773 2.6 4.808 7.579z"/></svg>
                         </button>
@@ -409,23 +409,23 @@ export default function Main() {
                     <button
                     id="cuisine-select"
                     style={filters.showCuisine ? {color: '#244cff'} : null}
-                    onClick={() => setFilters(prev => ({...prev, showCuisine: !prev.showCuisine}))} 
+                    onClick={() => setFilters(prev => ({...prev, showCuisine: !prev.showCuisine}))}
                     className="main__filters__button">
                         {cuisine} <span style={filters.showCuisine ? {transform: 'rotate(270deg)'} : null} className="main__filters__button__arrow">&lt;</span>
                     </button>
 
-                    <button 
+                    <button
                     id="healthy-filter"
-                    onClick={() => setFilters(prev => ({...prev, healthy: !prev.healthy}))} 
+                    onClick={() => setFilters(prev => ({...prev, healthy: !prev.healthy}))}
                     className={`main__filters__button ${filters.healthy ? 'active' : ''}`}>
                         Здоровое питание
                     </button>
 
-                    <button 
+                    <button
                     id="vegetarian-filter"
-                    onClick={() => setFilters(prev => ({...prev, vegetarian: !prev.vegetarian}))} 
+                    onClick={() => setFilters(prev => ({...prev, vegetarian: !prev.vegetarian}))}
                     className={`main__filters__button ${filters.vegetarian ? 'active' : ''}`}>
-                        Вегетарианское 
+                        Вегетарианское
                     </button>
 
                     <button onClick={() => setMobileFilters(prev => !prev)} id="filters-mobile" className="main__filters__button">
@@ -434,37 +434,24 @@ export default function Main() {
 
                     <a href="#information" id="saved" className="main__filters__button">Сохранённые</a>
 
-                    <div className={`main__filters__cuisine ${filters.showCuisine ? 'show-cuisine' : ''}`}>
-                        <button style={{borderTopLeftRadius: '5px'}} onClick={() => chooseCuisine('Русская')} className="main__filters__cuisine__button">Русская</button>
-                        <button style={{borderTopRightRadius: '5px'}} onClick={() => chooseCuisine('Греческая')}  className="main__filters__cuisine__button">Греческая</button>
-                        <button onClick={() => chooseCuisine('Итальянская')}  className="main__filters__cuisine__button">Итальянская</button>
-                        <button onClick={() => chooseCuisine('Американская')}  className="main__filters__cuisine__button">Американская</button>
-                        <button onClick={() => chooseCuisine('Восточно-азиатская')}  className="main__filters__cuisine__button">Восточно-азиатская</button>
-                        <button onClick={() => chooseCuisine('Французская')} className="main__filters__cuisine__button">Французская</button>
-                        <button onClick={() => chooseCuisine('Ближневосточная')}  className="main__filters__cuisine__button">Ближневосточная</button>
-                        <button onClick={() => chooseCuisine('Мексиканская')}  className="main__filters__cuisine__button">Мексиканская</button>
-                        <button style={{borderBottomLeftRadius: '5px'}} onClick={() => chooseCuisine('Другое')}  className="main__filters__cuisine__button">Другое</button>
-                        <button style={{borderBottomRightRadius: '5px'}} onClick={() => chooseCuisine('Кухня')}  className="main__filters__cuisine__button">Любая</button>
-                    </div>
-
                     <div className={`main__filters__mobile ${mobileFilters ? 'show-mobile-filters' : ''}`}>
                     <button
                     style={filters.showCuisine ? {color: '#244cff'} : null}
-                    onClick={() => setFilters(prev => ({...prev, showCuisine: !prev.showCuisine}))} 
+                    onClick={() => setFilters(prev => ({...prev, showCuisine: !prev.showCuisine}))}
                     className="main__filters__button">
                         {cuisine} <span style={filters.showCuisine ? {transform: 'rotate(90deg)'} :  {transform: 'rotate(270deg)'}} className="main__filters__button__arrow">&lt;</span>
                     </button>
 
-                    <button 
-                    onClick={() => setFilters(prev => ({...prev, healthy: !prev.healthy}))} 
+                    <button
+                    onClick={() => setFilters(prev => ({...prev, healthy: !prev.healthy}))}
                     className={`main__filters__button ${filters.healthy ? 'active' : ''}`}>
                         Здоровое питание
                     </button>
 
-                    <button 
-                    onClick={() => setFilters(prev => ({...prev, vegetarian: !prev.vegetarian}))} 
+                    <button
+                    onClick={() => setFilters(prev => ({...prev, vegetarian: !prev.vegetarian}))}
                     className={`main__filters__button ${filters.vegetarian ? 'active' : ''}`}>
-                        Вегетарианское 
+                        Вегетарианское
                     </button>
                     </div>
                 </div>
@@ -484,22 +471,19 @@ export default function Main() {
             </div>
             </div>
                 <aside id="information" className="main__info">
-                <div className="main__info__profile">
-                    <p className="main__info__greetings">{auth.currentUser ? `Добро пожаловать, ${userdata.name}!` : 'Вы не вошли в аккаунт :('}</p>
-                </div>
-                {auth.currentUser ? 
+                {auth.currentUser ?
                 <div className="main__info__saved">
                     <div className="main__info__saved__header">
                         <p className="main__info__title">Сохранённые блюда:</p>
                         <button id="wipe" onClick={wipe} className="main__swipe-button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M22 5a1 1 0 0 1-1 1H3a1 1 0 0 1 0-2h5V3a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v1h5a1 1 0 0 1 1 1zM4.934 21.071 4 8h16l-.934 13.071a1 1 0 0 1-1 .929H5.931a1 1 0 0 1-.997-.929zM15 18a1 1 0 0 0 2 0v-6a1 1 0 0 0-2 0zm-4 0a1 1 0 0 0 2 0v-6a1 1 0 0 0-2 0zm-4 0a1 1 0 0 0 2 0v-6a1 1 0 0 0-2 0z"/></svg></button>
                     </div>
-                    {favorites.map((item, index) => 
+                    {favorites.map((item, index) =>
                     <div id={item.id} style={{backgroundImage: `url(${item.data.image})`}} key={item.data.id} onClick={() => showSavedRecipe(index)} className="main__info__favorite">
                         <p className="main__info__favorite__title">{item.data.title}</p>
                         <img className="main__info__favorite__image" src={item.data.image} alt="" />
                     </div>
                     )}
-                </div> : 
+                </div> :
                 <div className="unauthorized">
                     Чтобы сохранять рецепты, войдите в аккаунт =&gt;
                     <button onClick={() => navigate('/register')} style={{marginTop: '10px'}} className="unauthorized__button">Регистрация</button>
@@ -508,12 +492,24 @@ export default function Main() {
                 }
             </aside>
             </main>
+                                <div className={`main__filters__cuisine ${filters.showCuisine ? 'show-cuisine' : ''}`}>
+                        <button style={{borderTopLeftRadius: '5px'}} onClick={() => chooseCuisine('Русская')} className="main__filters__cuisine__button">Русская</button>
+                        <button style={{borderTopRightRadius: '5px'}} onClick={() => chooseCuisine('Греческая')}  className="main__filters__cuisine__button">Греческая</button>
+                        <button onClick={() => chooseCuisine('Итальянская')}  className="main__filters__cuisine__button">Итальянская</button>
+                        <button onClick={() => chooseCuisine('Американская')}  className="main__filters__cuisine__button">Американская</button>
+                        <button onClick={() => chooseCuisine('Восточно-азиатская')}  className="main__filters__cuisine__button">Восточно-азиатская</button>
+                        <button onClick={() => chooseCuisine('Французская')} className="main__filters__cuisine__button">Французская</button>
+                        <button onClick={() => chooseCuisine('Ближневосточная')}  className="main__filters__cuisine__button">Ближневосточная</button>
+                        <button onClick={() => chooseCuisine('Мексиканская')}  className="main__filters__cuisine__button">Мексиканская</button>
+                        <button style={{borderBottomLeftRadius: '5px'}} onClick={() => chooseCuisine('Другое')}  className="main__filters__cuisine__button">Другое</button>
+                        <button style={{borderBottomRightRadius: '5px'}} onClick={() => chooseCuisine('Кухня')}  className="main__filters__cuisine__button">Любая</button>
+                    </div>
         </section>
-        <Modal button={!alreadySaved ? <button onClick={() => addToFavorites(currentIndex + 1, true)} title="Добавить в избранное" id="add" className="main__swipe-button">
-                    <svg id="addToFavoriteModal" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25 25"><path d="m18.25 15.52 1.36 7.92-7.11-3.74-7.11 3.74 1.36-7.92L1 9.92l7.95-1.16 3.55-7.2 3.55 7.2L24 9.92z"/></svg>
-                </button> : <button id="deleteRecipe" onClick={() => deleteRecipe(recipe.index)} className="main__swipe-button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M22 5a1 1 0 0 1-1 1H3a1 1 0 0 1 0-2h5V3a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v1h5a1 1 0 0 1 1 1zM4.934 21.071 4 8h16l-.934 13.071a1 1 0 0 1-1 .929H5.931a1 1 0 0 1-.997-.929zM15 18a1 1 0 0 0 2 0v-6a1 1 0 0 0-2 0zm-4 0a1 1 0 0 0 2 0v-6a1 1 0 0 0-2 0zm-4 0a1 1 0 0 0 2 0v-6a1 1 0 0 0-2 0z"/></svg></button>}>
+        <Modal 
+        action={!alreadySaved ? () => addToFavorites(currentIndex + 1, true) : () => deleteRecipe(recipe.index)}
+        button={!alreadySaved ? 'Сохранить' : 'Удалить'}>
             <div className="recipe-modal">
-                <div className="recipe-modal__title">{recipe.title}                 
+                <div className="recipe-modal__title">{recipe.title}
                 </div>
                 <ul className="recipe-modal__ingredients">
                     {recipe.ingredients && recipe.ingredients.map(item => <li>{item}</li>)}
@@ -525,3 +521,7 @@ export default function Main() {
         </>
     )
 }
+
+// button={!alreadySaved ? <button onClick={() => addToFavorites(currentIndex + 1, true)} title="Добавить в избранное" id="add" className="main__swipe-button">
+//                     <svg id="addToFavoriteModal" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25 25"><path d="m18.25 15.52 1.36 7.92-7.11-3.74-7.11 3.74 1.36-7.92L1 9.92l7.95-1.16 3.55-7.2 3.55 7.2L24 9.92z"/></svg>
+//                 </button> : <button id="deleteRecipe" onClick={() => deleteRecipe(recipe.index)} className="main__swipe-button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M22 5a1 1 0 0 1-1 1H3a1 1 0 0 1 0-2h5V3a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v1h5a1 1 0 0 1 1 1zM4.934 21.071 4 8h16l-.934 13.071a1 1 0 0 1-1 .929H5.931a1 1 0 0 1-.997-.929zM15 18a1 1 0 0 0 2 0v-6a1 1 0 0 0-2 0zm-4 0a1 1 0 0 0 2 0v-6a1 1 0 0 0-2 0zm-4 0a1 1 0 0 0 2 0v-6a1 1 0 0 0-2 0z"/></svg></button>}>

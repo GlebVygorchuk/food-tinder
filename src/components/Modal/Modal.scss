@@ -21,8 +21,8 @@
     width: 500px;
     height: 400px;
     padding: 25px 30px;
+    padding-bottom: 100px;
     background-color: var(--color-background);
-    border: 1.5px solid var(--color-text);
     box-shadow: var(--box-shadow);
     border-radius: var(--border-radius);
     transition: 0.3s;
@@ -33,14 +33,13 @@
     overflow: scroll;
 
     @include mobile {
-        width: 400px;
-        height: 500px;
-        border-radius: 10px;
+        width: 100vw;
+        height: 100vh;
+        border-radius: 0;
     }
 
     @include mobile-small {
-        width: 350px;
-        font-size: 22.5px;
+        font-size: 25px;
     }
 
     &__close-button {
@@ -54,6 +53,24 @@
             height: 3px;
             background-color: var(--color-text);
             border-radius: var(--border-radius);
+        }
+    }
+
+    &__footer {
+        display: flex;
+        position: fixed;
+        bottom: 0;
+        height: 70px;
+        width: 110%;
+        left: -20px;
+        background-color: var(--color-background);
+
+        &__button {
+            width: 100%;
+            font-size: 25px;
+            font-weight: 600;
+            transition: 0.1s;
+            color: white;
         }
     }
 }
@@ -97,4 +114,19 @@
     opacity: 1;
     pointer-events: all;
     transform: scale(1, 1);
+}
+
+#deleteDish {
+    background-color: rgb(255, 69, 28);
+    padding-left: 20px;
+}
+
+#saveDish {
+    background-color: var(--color-hover);
+    padding-left: 20px;
+}
+
+#closeDish {
+    padding-right: 20px;
+    background-color: black;
 }
