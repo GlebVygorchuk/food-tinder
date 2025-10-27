@@ -345,7 +345,7 @@ export default function Main() {
             preventSwipe={['up', 'down']}
             key={item.id}
             swipeRequirementType="velocity"
-            swipeThreshold={0.5}
+            swipeThreshold={0.1}
             className="main__card"
             onSwipe={handleSwipe}
             onCardLeftScreen={() => handleLeftScreen(index)}

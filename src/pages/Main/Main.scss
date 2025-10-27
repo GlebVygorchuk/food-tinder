@@ -349,9 +349,10 @@
                 position: fixed;
                 display: flex;
                 flex-direction: column;
+                justify-content: center;
                 row-gap: 15px;
                 background-color: var(--color-extra);
-                padding-block: 30px;
+                padding-bottom: 100px;
                 padding-inline: 25px;
             }
         }
